@@ -37,20 +37,26 @@ body {
 }
 
 #input {
-    width: 75%;
+    display: inline-block;
+    width: 50%;
+    height: 30em;
+}
+
+#pond {
     height: 20em;
-    background: linear-gradient(#fff 15%,rgb(57, 108, 247) 15%, #fff 100%);
+    background-color: #7aadbc;
+    background: linear-gradient(to top left, #523928 45%, transparent 45%),
+                linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
 
 #control {
-    float: right;
-    width: 25%;
-    height: 30em;
-    background: linear-gradient(green, blue);
+    height: 10em;
+    background-color: #a5bfc9;
 }
 
 #output {
-    width: 75%;
-    height: 10em;
-    background: linear-gradient(green, blue);
+    display: inline-block;
+    width: 50%;
+    height: 30em;
+    background-color: #a5bfc9;
 }
