@@ -70,6 +70,10 @@ body {
     padding: 10px;
 }
 
+.location:hover {
+    font-size: 150%;
+}
+
 #water-surface {
     top: 7%;
     left: 25%;
