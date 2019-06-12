@@ -4,3 +4,26 @@
     box-sizing: border-box;
 }
 
+/*
+  ========================================
+  Header and footer
+  ========================================
+*/
+.main-header {
+    background-color: #2f7183;
+    color: #e0eef1;
+}
+
+.nav {
+    background-color: #7aadbc;
+}
+
+
+/*
+  ========================================
+  App section
+  ========================================
+*/
+.app {
+    background-color: #0a4859;
+}
