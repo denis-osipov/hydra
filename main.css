@@ -35,3 +35,22 @@ body {
 .app {
     background-color: #0a4859;
 }
+
+#input {
+    width: 75%;
+    height: 20em;
+    background: linear-gradient(#fff 15%,rgb(57, 108, 247) 15%, #fff 100%);
+}
+
+#control {
+    float: right;
+    width: 25%;
+    height: 30em;
+    background: linear-gradient(green, blue);
+}
+
+#output {
+    width: 75%;
+    height: 10em;
+    background: linear-gradient(green, blue);
+}
