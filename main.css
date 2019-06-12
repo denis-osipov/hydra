@@ -51,15 +51,15 @@ body {
 }
 
 #control {
-    height: 10em;
-    background-color: #a5bfc9;
+    height: 10em;    
+    color: #aee5f4;
 }
 
 #output {
     display: inline-block;
     width: 50%;
     height: 30em;
-    background-color: #a5bfc9;
+    color: #aee5f4;
 }
 
 .location {
