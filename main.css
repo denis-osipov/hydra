@@ -5,12 +5,20 @@
 */
 body {
     color: #295B70;
+    background-color: #fff;
+    background: linear-gradient(to right, #7aadbc, #fff 15%);
 }
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+.container {
+    width: 940px;
+    margin: 20px auto 20px;
+    background-color: #fff;
 }
 
 section {
@@ -26,16 +34,37 @@ section {
 
 /*
   ========================================
-  Header and footer
+  Header
   ========================================
 */
 .main-header {
     background-color: #2f7183;
     color: #e0eef1;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.nav {
-    background-color: #7aadbc;
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav li {
+    display: inline-block;
+    width: 140px;
+    background-color: #4a8798;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.nav li:hover {
+    background-color: #1b5d70;
 }
 
 /*
@@ -45,6 +74,8 @@ section {
 */
 .app {
     background-color: #0a4859;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #input {
@@ -71,6 +102,7 @@ section {
     width: 50%;
     height: 30em;
     color: #aee5f4;
+    padding: 10px;
 }
 
 .location {
@@ -97,7 +129,7 @@ section {
 
 #sediment-surface {
     top: 50%;
-    left: 45%;
+    right: 35%;
 }
 
 #sediment {
