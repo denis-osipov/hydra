@@ -8,19 +8,16 @@ body {
     background-color: #fff;
     background: linear-gradient(to right, #7aadbc, #fff 15%);
 }
-
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
-
 .container {
     width: 940px;
     margin: 20px auto;
     background-color: #fff;
 }
-
 section {
     margin-bottom: 50px;
 }
@@ -36,17 +33,14 @@ section {
     padding: 20px;
     border-radius: 10px;
 }
-
 ul {
     margin: 0;
     padding: 0;
 }
-
 .links a {
     text-decoration: none;
     color: #fff;
 }
-
 .links li {
     display: inline-block;
     width: 140px;
@@ -55,7 +49,6 @@ ul {
     padding: 10px;
     text-align: center;
 }
-
 .links li:hover {
     background-color: #1b5d70;
 }
@@ -65,14 +58,12 @@ ul {
   About ERICA
   ========================================
 */
-
 #erica-logo {
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
     width: 200px;
 }
-
 
 /*
   ========================================
@@ -84,13 +75,11 @@ ul {
     border-radius: 10px;
     padding: 10px;
 }
-
 #input {
     display: inline-block;
     width: 50%;
     height: 30em;
 }
-
 #pond {
     position: relative;
     height: 20em;
@@ -98,12 +87,10 @@ ul {
     background: linear-gradient(to top left, #523928 45%, transparent 45%),
                 linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
-
 #control {
     height: 10em;    
     color: #aee5f4;
 }
-
 #output {
     display: inline-block;
     width: 50%;
@@ -111,7 +98,6 @@ ul {
     color: #aee5f4;
     padding: 10px;
 }
-
 .location {
     position: absolute;
     border: 2px solid;
@@ -119,26 +105,21 @@ ul {
     background-color: #fff;
     padding: 10px;
 }
-
 .location:hover {
     font-size: 150%;
 }
-
 #water-surface {
     top: 7%;
     left: 25%;
 }
-
 #water {
     top: 33%;
     left: 25%;
 }
-
 #sediment-surface {
     top: 50%;
     right: 35%;
 }
-
 #sediment {
     bottom: 25%;
     right: 20%;
