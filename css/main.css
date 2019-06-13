@@ -136,3 +136,7 @@ ul {
     bottom: 25%;
     right: 20%;
 }
+
+.organism {
+    display: inline-block;
+}
