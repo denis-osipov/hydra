@@ -16,14 +16,19 @@ var Organism = function(selector, button) {
     this.locations = [];
     this.doseRate = null;
 
+    // Fix name and make button draggable
     this.setName = function() {
-        console.log("Setting name");
         this.name = this.selector.value;
         this.selector.disabled = true;
-        this.button.disabled = true;
+        this.button.removeEventListener("click", setNameBind);
+        this.setLocation();
     };
 
-    this.button.addEventListener("click", this.setName.bind(this));
+    this.setLocation = function() {
+    };
+
+    var setNameBind = this.setName.bind(this);
+    this.button.addEventListener("click", setNameBind);
 };
 
 var Media = function(name) {
