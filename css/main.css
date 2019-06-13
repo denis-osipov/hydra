@@ -33,13 +33,9 @@ section {
     padding: 20px;
     border-radius: 10px;
 }
-ul {
+.links-list {
     margin: 0;
     padding: 0;
-}
-.links a {
-    text-decoration: none;
-    color: #fff;
 }
 .link {
     display: inline-block;
@@ -51,6 +47,10 @@ ul {
 }
 .link:hover {
     background-color: #1b5d70;
+}
+.link a {
+    text-decoration: none;
+    color: #fff;
 }
 
 /*
