@@ -10,10 +10,20 @@ ERICA version 1.3.1.33
 
 // Create constructors
 
-var Organism = function(name) {
-    this.name = name;
+var Organism = function(selector, button) {
+    this.selector = selector;
+    this.button = button;
     this.locations = [];
     this.doseRate = null;
+
+    this.setName = function() {
+        console.log("Setting name");
+        this.name = this.selector.value;
+        this.selector.disabled = true;
+        this.button.disabled = true;
+    };
+
+    this.button.addEventListener("click", this.setName.bind(this));
 };
 
 var Media = function(name) {
@@ -33,6 +43,10 @@ var Nuclide = function(element, isotope) {
 
 // ERICA's data
 var organismNames = ["Phytoplankton", "Zooplankton"];
+
+
+// User input
+var organismList = [];
 
 
 // Organisms fieldset
@@ -62,6 +76,8 @@ var addOrganism = function() {
     newOrganism.appendChild(button);
     
     addOrganismButton.parentNode.insertBefore(newOrganism, addOrganismButton);
+
+    organismList.push(new Organism(selector, button));
 };
 
 addOrganismButton.addEventListener("click", addOrganism);
