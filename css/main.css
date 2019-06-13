@@ -98,6 +98,8 @@ ul {
     color: #aee5f4;
     padding: 10px;
 }
+
+/* Location elements */
 .location {
     position: absolute;
     border: 2px solid;
