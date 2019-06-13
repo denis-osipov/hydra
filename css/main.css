@@ -41,7 +41,7 @@ ul {
     text-decoration: none;
     color: #fff;
 }
-.links li {
+.link {
     display: inline-block;
     width: 140px;
     background-color: #4a8798;
@@ -49,7 +49,7 @@ ul {
     padding: 10px;
     text-align: center;
 }
-.links li:hover {
+.link:hover {
     background-color: #1b5d70;
 }
 
@@ -58,7 +58,7 @@ ul {
   About ERICA
   ========================================
 */
-#erica-logo {
+.logo {
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -70,7 +70,7 @@ ul {
   App section
   ========================================
 */
-.app {
+.app-frame {
     background-color: #0a4859;
     border-radius: 10px;
     padding: 10px;
