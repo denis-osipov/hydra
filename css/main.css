@@ -75,29 +75,27 @@ section {
     border-radius: 10px;
     padding: 10px;
 }
-#input {
+.app-subframe {
     display: inline-block;
     width: 50%;
     height: 300px;
 }
-#pond {
+.output-frame {
+    color: #aee5f4;
+    padding: 10px;
+}
+.pond-frame {
     position: relative;
     height: 200px;
     background-color: #7aadbc;
     background: linear-gradient(to top left, #523928 45%, transparent 45%),
                 linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
-#control {
+.control-frame {
     height: 100px;    
     color: #aee5f4;
 }
-#output {
-    display: inline-block;
-    width: 50%;
-    height: 300px;
-    color: #aee5f4;
-    padding: 10px;
-}
+
 
 /* Location elements */
 .location {
