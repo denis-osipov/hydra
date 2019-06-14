@@ -16,15 +16,15 @@ var Organism = function(selector, button) {
     this.locations = [];
     this.doseRate = null;
 
-    // Fix name and make button draggable
+    // Fix name and let add organism to some habitat
     this.setName = function() {
         this.name = this.selector.value;
         this.selector.disabled = true;
         this.button.removeEventListener("click", setNameBind);
-        this.setLocation();
-    };
-
-    this.setLocation = function() {
+        this.button.addEventListener("click", function(){
+            activeOrganism = this;
+            inputImage.style.cursor = "cell";
+        }.bind(this));
     };
 
     var setNameBind = this.setName.bind(this);
@@ -50,8 +50,13 @@ var Nuclide = function(element, isotope) {
 var organismNames = ["Phytoplankton", "Zooplankton"];
 
 
+// App elements
+var inputImage = document.getElementById("pond");
+
+
 // User input
 var organismList = [];
+var activeOrganism;
 
 
 // Organisms fieldset
