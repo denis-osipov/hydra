@@ -62,10 +62,12 @@ var addItem = function(event, itemType) {
         case "organism":
             var array = organismNames;
             var itemConstructor = Organism;
+            var itemList = organismList;
             break;
         case "nuclide":
             var array = isotopes;
             var itemConstructor = Nuclide;
+            var itemList = isotopeList;
     }
 
     // Parent container
@@ -91,7 +93,7 @@ var addItem = function(event, itemType) {
     
     target.parentNode.insertBefore(newItem, target);
 
-    isotopeList.push(new itemConstructor(selector, button));
+    itemList.push(new itemConstructor(selector, button));
 };
 
 
