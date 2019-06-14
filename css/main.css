@@ -78,7 +78,6 @@ section {
 .app-subframe {
     display: inline-block;
     width: 50%;
-    height: 300px;
 }
 .output-frame {
     color: #aee5f4;
@@ -92,7 +91,6 @@ section {
                 linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
 .control-frame {
-    height: 100px;    
     color: #aee5f4;
 }
 
@@ -125,6 +123,7 @@ section {
     right: 20%;
 }
 
-.organism {
+.organism,
+.isotope {
     display: inline-block;
 }

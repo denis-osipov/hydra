@@ -57,6 +57,7 @@ var Nuclide = function(element, isotope) {
 
 // ERICA's data
 var organismNames = ["Phytoplankton", "Zooplankton"];
+var isotopes = ["Cs-137", "Sr-90"];
 
 
 // App elements
@@ -65,6 +66,7 @@ var inputImage = document.getElementById("pond");
 
 // User input
 var organismList = [];
+var isotopeList = [];
 var activeOrganism;
 
 
@@ -100,6 +102,40 @@ var addOrganism = function() {
 };
 
 addOrganismButton.addEventListener("click", addOrganism);
+
+
+// Isotopes fieldset
+
+var addIsotopeButton = document.getElementById("add-isotope");
+
+// Add isotope selector right before "add" button
+var addIsotope = function() {
+
+    // Parent container
+    var newIsotope = document.createElement("div");
+    newIsotope.className = "isotope";  // for styling
+
+    // Selector
+    var selector = document.createElement("select");
+    for (var i = 0; i < isotopes.length; i++) {
+        var option = document.createElement("option");
+        option.textContent = isotopes[i];
+        selector.appendChild(option);
+    }
+    newIsotope.appendChild(selector);
+
+    // Isotope button
+    var button = document.createElement("button");
+    button.type = "button";
+    button.textContent = "o";
+    newIsotope.appendChild(button);
+    
+    addIsotopeButton.parentNode.insertBefore(newIsotope, addIsotopeButton);
+
+    isotopeList.push(new Nuclide(selector, button));
+};
+
+addIsotopeButton.addEventListener("click", addIsotope);
 
 
 // Habitats
