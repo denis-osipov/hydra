@@ -125,7 +125,6 @@ section {
     right: 20%;
 }
 
-.organism,
-.isotope {
+.selector {
     display: inline-block;
 }

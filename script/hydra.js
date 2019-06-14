@@ -55,6 +55,46 @@ var Nuclide = function(element, isotope) {
 };
 
 
+// Add item selector right before target element (button)
+var addItem = function(event, itemType) {
+
+    switch (itemType) {
+        case "organism":
+            var array = organismNames;
+            var itemConstructor = Organism;
+            break;
+        case "nuclide":
+            var array = isotopes;
+            var itemConstructor = Nuclide;
+    }
+
+    // Parent container
+    var newItem = document.createElement("div");
+    newItem.className = "selector";  // for styling
+
+    // Selector
+    var selector = document.createElement("select");
+    for (var i = 0; i < array.length; i++) {
+        var option = document.createElement("option");
+        option.textContent = array[i];
+        selector.appendChild(option);
+    }
+    newItem.appendChild(selector);
+
+    // Item button
+    var button = document.createElement("button");
+    button.type = "button";
+    button.textContent = "^";
+    newItem.appendChild(button);
+
+    var target = event.target;
+    
+    target.parentNode.insertBefore(newItem, target);
+
+    isotopeList.push(new itemConstructor(selector, button));
+};
+
+
 // ERICA's data
 var organismNames = ["Phytoplankton", "Zooplankton"];
 var isotopes = ["Cs-137", "Sr-90"];
@@ -71,71 +111,13 @@ var activeOrganism;
 
 
 // Organisms fieldset
-
 var addOrganismButton = document.getElementById("add-organism");
-
-// Add organism selector right before "add" button
-var addOrganism = function() {
-
-    // Parent container
-    var newOrganism = document.createElement("div");
-    newOrganism.className = "organism";  // for styling
-
-    // Selector
-    var selector = document.createElement("select");
-    for (var i = 0; i < organismNames.length; i++) {
-        var option = document.createElement("option");
-        option.textContent = organismNames[i];
-        selector.appendChild(option);
-    }
-    newOrganism.appendChild(selector);
-
-    // Organism button
-    var button = document.createElement("button");
-    button.type = "button";
-    button.textContent = "^";
-    newOrganism.appendChild(button);
-    
-    addOrganismButton.parentNode.insertBefore(newOrganism, addOrganismButton);
-
-    organismList.push(new Organism(selector, button));
-};
-
-addOrganismButton.addEventListener("click", addOrganism);
+addOrganismButton.addEventListener("click", function(e){addItem(e, "organism")});
 
 
 // Isotopes fieldset
-
 var addIsotopeButton = document.getElementById("add-isotope");
-
-// Add isotope selector right before "add" button
-var addIsotope = function() {
-
-    // Parent container
-    var newIsotope = document.createElement("div");
-    newIsotope.className = "isotope";  // for styling
-
-    // Selector
-    var selector = document.createElement("select");
-    for (var i = 0; i < isotopes.length; i++) {
-        var option = document.createElement("option");
-        option.textContent = isotopes[i];
-        selector.appendChild(option);
-    }
-    newIsotope.appendChild(selector);
-
-    // Isotope button
-    var button = document.createElement("button");
-    button.type = "button";
-    button.textContent = "o";
-    newIsotope.appendChild(button);
-    
-    addIsotopeButton.parentNode.insertBefore(newIsotope, addIsotopeButton);
-
-    isotopeList.push(new Nuclide(selector, button));
-};
-
-addIsotopeButton.addEventListener("click", addIsotope);
+addIsotopeButton.addEventListener("click", function(e){addItem(e, "nuclide")});
 
 
 // Habitats
