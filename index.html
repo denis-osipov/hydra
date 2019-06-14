@@ -9,15 +9,17 @@
     <body>
 
         <div class="container">
-            <header class="main-header">
-                <h1>Hydra tool</h1>
-                <h2>alternative interface for <em>(some)</em> ERICA's assets</h2>
+
+            <header class="header">
+
+                <h1 class="main-header">Hydra tool</h1>
+                <h2 class="sub-header">alternative interface for <em>(some)</em> ERICA's assets</h2>
 
                 <!-- Links to other resources -->
-                <aside class="nav">
-                    <ul>
-                        <li><a href="http://www.erica-tool.com/" target="_blank">ERICA website</a></li>
-                        <li><a href="https://github.com/denis-osipov/hydra" target="_blank">Hydra on GitHub</a></li>
+                <aside class="links">
+                    <ul class="links-list">
+                        <li class="link"><a href="http://www.erica-tool.com/" target="_blank">ERICA website</a></li>
+                        <li class="link"><a href="https://github.com/denis-osipov/hydra" target="_blank">Hydra on GitHub</a></li>
                     </ul>
                 </aside>
 
@@ -28,40 +30,37 @@
 
                 <img class="logo" src="img/erica.png" alt="ERICA Assesssment Tool logo">
 
-                <h3>About ERICA</h3>
+                <h3 class="content-header">About ERICA</h3>
                 
                 <p>The ERICA Tool is a software system that has a structure based upon the tiered <a href="https://wiki.ceh.ac.uk/display/rpemain/ERICA" target="_blank">ERICA Integrated Approach</a> to assessing the radiological risk to terrestrial, freshwater and marine biota. The Tool guides the user through the assessment process, recording information and decisions and allowing the necessary calculations to be performed to estimate risks to selected animals and plants.</p>
                 <p>Hydra uses coefficients from ERICA Tool 1.3.1.33.</p>
                 <p>More on <a href="http://erica-tool.com/" target="_blank">ERICA Assessment Tool website</a>.</p>
+
             </section>
 
             <!-- How to use Hydra -->
             <section class="docs">
-                <h3>How to use Hydra</h3>
-                <ol>
+
+                <h3 class="content-header">How to use Hydra</h3>
+                <ol class="how-to">
                     <li>Drag and drop organisms in media.</li>
                     <li>Enter specific activities of radionuclides. Hydra will calculate missing values using ERICA's coefficients.</li>
                     <li>Push Calculate button.</li>
                     <li>Get results under app frame.</li>
                 </ol>
+
             </section>
 
             <!-- App frame -->
-            <div class="app">
-
-                <!--
+            <div class="app-frame"><!--
 
                 Input
 
-                -->
-                <div id="input">
-
-                    <!--
+                --><div class="app-subframe input-frame" id="input"><!--
 
                     Pond
 
-                    -->
-                    <div id="pond">
+                    --><div class="input-sub-frame pond-frame" id="pond">
                         <div id="water-surface" class="location">Water-surface</div>
                         <div id="water" class="location">Water</div>
                         <div id="sediment-surface" class="location">Sediment-surface</div>
@@ -70,17 +69,18 @@
 
                     Controls
 
-                    --><div id="control">
+                    --><div class="input-sub-frame control-frame" id="control">
 
                         <form>
 
-                            <fieldset>
+                            <fieldset class="control-field">
                                 <legend>Isotopes</legend>
                             </fieldset>
 
-                            <fieldset>
+                            <fieldset class="control-field">
                                 <legend>Organisms</legend>
                             </fieldset>
+
                         </form>
 
                     </div>
@@ -88,7 +88,7 @@
 
                 Output
 
-                --><div id="output">
+                --><div class="app-subframe output-frame" id="output">
                     <table id="results">
                         <caption>Results</caption>
                     </table>
