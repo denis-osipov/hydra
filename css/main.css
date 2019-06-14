@@ -74,6 +74,8 @@ section {
     background-color: #0a4859;
     border-radius: 10px;
     padding: 10px;
+    display: flex;
+    align-items: top;
 }
 .app-subframe {
     display: inline-block;
