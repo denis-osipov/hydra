@@ -36,8 +36,17 @@ var Media = function(name) {
     this.nuclides = [];
 };
 
-var Habitat = function(name) {
-    this.name = name;
+var Habitat = function(region) {
+    this.region = region;
+    this.residents = [];
+    this.region.addEventListener("click", function(){
+        if (activeOrganism) {
+            this.residents.push(activeOrganism);
+            activeOrganism.locations.push(this);
+            activeOrganism = null;
+            inputImage.style.cursor = "";
+        }
+    }.bind(this));
 };
 
 var Nuclide = function(element, isotope) {
@@ -91,3 +100,11 @@ var addOrganism = function() {
 };
 
 addOrganismButton.addEventListener("click", addOrganism);
+
+
+// Habitats
+var habitats = [];
+var locations = document.getElementsByClassName("location");
+for (var i = 0; i < locations.length; i++) {
+    habitats.push(new Habitat(locations[i]));
+}
