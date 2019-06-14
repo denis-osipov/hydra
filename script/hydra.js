@@ -42,7 +42,6 @@ var Habitat = function(region) {
     this.region.addEventListener("click", function(){
         if (activeOrganism) {
             this.residents.push(activeOrganism);
-            activeOrganism.locations.push(this);
             activeOrganism = null;
             inputImage.style.cursor = "";
         }
