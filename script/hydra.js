@@ -52,6 +52,13 @@ var Isotope = function(name) {
     this.name = name;
 }
 
+
+// Calculation function
+
+var calculate = function() {
+
+};
+
 // Add item selector right before target element (button)
 var addItemSelector = function(event, type) {
 
@@ -133,3 +140,6 @@ for (var i = 0; i < locations.length; i++) {
         habitats[e.target.id].addData();
     });
 }
+
+var calcButton = document.getElementById("calculate");
+calcButton.addEventListener("click", calculate);
