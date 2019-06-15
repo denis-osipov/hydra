@@ -16,17 +16,21 @@ var activeItem;
 
 var Habitat = function(media) {
     this.media = media;
-    this.inhabitants = [];
+    this.inhabitants = {};
 };
 
 Habitat.prototype.addData = function() {
     if (activeItem instanceof Organism) {
-        this.inhabitants.push(activeItem);
+        this.inhabitants[activeItem.name] = activeItem.isotopes;
     }
     else if (activeItem instanceof Isotope) {
-        for (var i = 0; i < this.inhabitants.length; i++) {
-            var activity = parseFloat(prompt("Enter " + activeItem.name + " activity in " + this.inhabitants[i].name));
-            this.inhabitants[i].isotopes[activeItem.name] = activity;
+        for (var inhabitant in this.inhabitants) {
+            var input = prompt("Enter " + activeItem.name + " activity in " +
+                                inhabitant + 
+                                " or leave empty field to keep current value");
+            if (input !== null && input !== "") {
+                this.inhabitants[inhabitant][activeItem.name] = parseFloat(input);
+            }
         }
         for (var medium in this.media) {
             var activity = parseFloat(prompt("Enter " + activeItem.name + " activity in " + medium));
