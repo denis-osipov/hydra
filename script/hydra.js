@@ -25,7 +25,9 @@ Habitat.prototype.addData = function() {
     }
     else if (activeItem instanceof Isotope) {
         for (var medium in this.media) {
-            media[medium].isotopes.push(activeItem);
+            if (!media[medium].isotopes.includes(activeItem.name)) {
+                media[medium].isotopes.push(activeItem);
+            }
         }
     }
     activeItem = null;
