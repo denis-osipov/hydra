@@ -2,7 +2,7 @@
 
 Script for dose rate calculation.
 
-Uses ERICA Assessment tool's assets.
+Uses ERICA Assessment Tool's assets.
 ERICA version 1.3.1.33
 
 */
