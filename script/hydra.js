@@ -67,6 +67,7 @@ var addItemSelector = function(event, type) {
     button.addEventListener("click", function(e) {
         var itemName = e.target.previousSibling.value;
         activeItem = new constructor(itemName);
+        document.getElementById("input").style.cursor = "cell";
     });
     newItemSelector.appendChild(button);
 
