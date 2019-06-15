@@ -34,7 +34,7 @@ Habitat.prototype.addData = function() {
         }
         for (var medium in this.media) {
             var activity = parseFloat(prompt("Enter " + activeItem.name + " activity in " + medium));
-            media[medium].isotopes[activeItem.name] = activity;
+            media[medium][activeItem.name] = activity;
             }
     }
 
@@ -42,11 +42,6 @@ Habitat.prototype.addData = function() {
     document.getElementById("input").style.cursor = "";
     activeItem = null;
 };
-
-var Medium = function(name) {
-    this.name = name;
-    this.isotopes = {};
-}
 
 var Organism = function(name) {
     this.name = name;
@@ -113,11 +108,9 @@ addIsotopeButton.addEventListener("click", function(e){
 
 
 // Media
-var waterMedium = new Medium("water");
-var sedimentMedium = new Medium("sediment");
 var media = {
-    water: waterMedium,
-    sediment: sedimentMedium
+    water: {},
+    sediment: {}
 };
 
 // Habitats
