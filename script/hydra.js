@@ -40,11 +40,12 @@ var addItemSelector = function(event, type) {
         case "isotope":
             var array = isotopes;
             var itemConstructor = Isotope;
+            break;
     }
 
     // Parent container
-    var newItem = document.createElement("div");
-    newItem.className = "selector";  // for styling
+    var newItemSelector = document.createElement("div");
+    newItemSelector.className = "selector";  // for styling
 
     // Selector
     var selector = document.createElement("select");
@@ -53,17 +54,16 @@ var addItemSelector = function(event, type) {
         option.textContent = array[i];
         selector.appendChild(option);
     }
-    newItem.appendChild(selector);
+    newItemSelector.appendChild(selector);
 
     // Item button
     var button = document.createElement("button");
     button.type = "button";
     button.textContent = "^";
-    newItem.appendChild(button);
+    newItemSelector.appendChild(button);
 
     var target = event.target;
-    
-    target.parentNode.insertBefore(newItem, target);
+    target.parentNode.insertBefore(newItemSelector, target);
 };
 
 // organisms fieldset
@@ -77,3 +77,4 @@ var addIsotopeButton = document.getElementById("add-isotope");
 addIsotopeButton.addEventListener("click", function(e){
     addItemSelector(e, "isotope")
 });
+
