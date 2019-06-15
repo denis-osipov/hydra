@@ -56,7 +56,8 @@ var Isotope = function(name) {
 // Calculation function
 
 var calculate = function() {
-
+    var results = document.getElementById("results");
+    results.innerHTML += "<p>Calculation results</p>";
 };
 
 // Add item selector right before target element (button)
