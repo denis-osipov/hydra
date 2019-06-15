@@ -75,11 +75,12 @@ body {
     background-color: #0a4859;
     border-radius: 10px;
     padding: 10px;
+    display: flex;
+    align-items: top;
 }
 .app-subframe {
     display: inline-block;
     width: 50%;
-    height: 300px;
 }
 .output-frame {
     color: #aee5f4;
@@ -93,7 +94,6 @@ body {
                 linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
 .control-frame {
-    height: 100px;    
     color: #aee5f4;
 }
 
@@ -124,4 +124,8 @@ body {
 #sediment {
     bottom: 25%;
     right: 20%;
+}
+
+.selector {
+    display: inline-block;
 }
