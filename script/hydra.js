@@ -10,63 +10,36 @@ ERICA version 1.3.1.33
 
 // Create constructors
 
-var Organism = function(selector, button) {
-    this.selector = selector;
-    this.button = button;
-    this.locations = [];
-    this.doseRate = null;
-
-    // Fix name and let add organism to some habitat
-    this.setName = function() {
-        this.name = this.selector.value;
-        this.selector.disabled = true;
-        this.button.removeEventListener("click", setNameBind);
-        this.button.addEventListener("click", function(){
-            activeOrganism = this;
-            inputImage.style.cursor = "cell";
-        }.bind(this));
-    };
-
-    var setNameBind = this.setName.bind(this);
-    this.button.addEventListener("click", setNameBind);
+var Habitat = function() {
+    this.media = [];
+    this.inhabitants = [];
 };
 
-var Media = function(name) {
+var Medium = function(name) {
     this.name = name;
     this.nuclides = [];
-};
+}
 
-var Habitat = function(region) {
-    this.region = region;
-    this.residents = [];
-    this.region.addEventListener("click", function(){
-        if (activeOrganism) {
-            this.residents.push(activeOrganism);
-            activeOrganism = null;
-            inputImage.style.cursor = "";
-        }
-    }.bind(this));
-};
+var Organism = function(name) {
+    this.name = name;
+    this.nuclides = [];
+}
 
-var Nuclide = function(element, isotope) {
-    this.element = element;
-    this.isotope = isotope;
-};
-
+var Isotope = function(name) {
+    this.name = name;
+}
 
 // Add item selector right before target element (button)
-var addItem = function(event, itemType) {
+var addItemSelector = function(event, type) {
 
-    switch (itemType) {
+    switch (type) {
         case "organism":
             var array = organismNames;
             var itemConstructor = Organism;
-            var itemList = organismList;
             break;
-        case "nuclide":
+        case "isotope":
             var array = isotopes;
-            var itemConstructor = Nuclide;
-            var itemList = isotopeList;
+            var itemConstructor = Isotope;
     }
 
     // Parent container
@@ -91,39 +64,16 @@ var addItem = function(event, itemType) {
     var target = event.target;
     
     target.parentNode.insertBefore(newItem, target);
-
-    itemList.push(new itemConstructor(selector, button));
 };
 
-
-// ERICA's data
-var organismNames = ["Phytoplankton", "Zooplankton"];
-var isotopes = ["Cs-137", "Sr-90"];
-
-
-// App elements
-var inputImage = document.getElementById("pond");
-
-
-// User input
-var organismList = [];
-var isotopeList = [];
-var activeOrganism;
-
-
-// Organisms fieldset
+// organisms fieldset
 var addOrganismButton = document.getElementById("add-organism");
-addOrganismButton.addEventListener("click", function(e){addItem(e, "organism")});
+addOrganismButton.addEventListener("click", function(e){
+    addItemSelector(e, "organism")
+});
 
-
-// Isotopes fieldset
+// isotopes fieldset
 var addIsotopeButton = document.getElementById("add-isotope");
-addIsotopeButton.addEventListener("click", function(e){addItem(e, "nuclide")});
-
-
-// Habitats
-var habitats = [];
-var locations = document.getElementsByClassName("location");
-for (var i = 0; i < locations.length; i++) {
-    habitats.push(new Habitat(locations[i]));
-}
+addIsotopeButton.addEventListener("click", function(e){
+    addItemSelector(e, "isotope")
+});
