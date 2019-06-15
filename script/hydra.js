@@ -19,18 +19,31 @@ var Habitat = function(media) {
     this.inhabitants = [];
 };
 
+Habitat.prototype.addData = function() {
+    if (activeItem instanceof Organism) {
+        this.inhabitants.push(activeItem);
+    }
+    else if (activeItem instanceof Isotope) {
+        for (var medium in this.media) {
+            media[medium].isotopes.push(activeItem);
+        }
+    }
+    activeItem = null;
+};
+
 var Medium = function(name) {
     this.name = name;
-    this.nuclides = {};
+    this.isotopes = [];
 }
 
 var Organism = function(name) {
     this.name = name;
-    this.nuclides = {};
+    this.isotopes = [];
 }
 
 var Isotope = function(name) {
     this.name = name;
+    this.activity = 0;
 }
 
 // Add item selector right before target element (button)
@@ -42,7 +55,7 @@ var addItemSelector = function(event, type) {
             var constructor = Organism;
             break;
         case "isotope":
-            var array = isotopes;
+            var array = isotopeNames;
             var constructor = Isotope;
             break;
     }
@@ -89,8 +102,12 @@ addIsotopeButton.addEventListener("click", function(e){
 
 
 // Media
-var waterMedium = Medium("water");
-var sedimentMedium = Medium("sediment");
+var waterMedium = new Medium("water");
+var sedimentMedium = new Medium("sediment");
+var media = {
+    water: waterMedium,
+    sediment: sedimentMedium
+};
 
 // Habitats
 var waterSurface = new Habitat({water: 0.5});
@@ -99,3 +116,11 @@ var sedimentSurface = new Habitat({water: 0.5, sediment: 0.5});
 var sediment = new Habitat({sediment: 0.5});
 
 var habitats = [waterSurface, water, sedimentSurface, sediment];
+
+var locations = document.getElementsByClassName("location");
+
+for (var i = 0; i < habitats.length; i++) {
+    locations[i].addEventListener("click", function() {
+        habitats[i].addData();
+    });
+}
