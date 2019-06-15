@@ -8,21 +8,25 @@ ERICA version 1.3.1.33
 */
 
 
+// Global active item
+var activeItem;
+
+
 // Create constructors
 
-var Habitat = function() {
-    this.media = [];
+var Habitat = function(media) {
+    this.media = media;
     this.inhabitants = [];
 };
 
 var Medium = function(name) {
     this.name = name;
-    this.nuclides = [];
+    this.nuclides = {};
 }
 
 var Organism = function(name) {
     this.name = name;
-    this.nuclides = [];
+    this.nuclides = {};
 }
 
 var Isotope = function(name) {
@@ -35,11 +39,11 @@ var addItemSelector = function(event, type) {
     switch (type) {
         case "organism":
             var array = organismNames;
-            var itemConstructor = Organism;
+            var constructor = Organism;
             break;
         case "isotope":
             var array = isotopes;
-            var itemConstructor = Isotope;
+            var constructor = Isotope;
             break;
     }
 
@@ -60,6 +64,10 @@ var addItemSelector = function(event, type) {
     var button = document.createElement("button");
     button.type = "button";
     button.textContent = "^";
+    button.addEventListener("click", function(e) {
+        var itemName = e.target.previousSibling.value;
+        activeItem = new constructor(itemName);
+    });
     newItemSelector.appendChild(button);
 
     var target = event.target;
@@ -78,3 +86,15 @@ addIsotopeButton.addEventListener("click", function(e){
     addItemSelector(e, "isotope")
 });
 
+
+// Media
+var waterMedium = Medium("water");
+var sedimentMedium = Medium("sediment");
+
+// Habitats
+var waterSurface = new Habitat({water: 0.5});
+var water = new Habitat({water: 1.0});
+var sedimentSurface = new Habitat({water: 0.5, sediment: 0.5});
+var sediment = new Habitat({sediment: 0.5});
+
+var habitats = [waterSurface, water, sedimentSurface, sediment];
