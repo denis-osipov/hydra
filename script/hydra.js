@@ -115,12 +115,17 @@ var water = new Habitat({water: 1.0});
 var sedimentSurface = new Habitat({water: 0.5, sediment: 0.5});
 var sediment = new Habitat({sediment: 0.5});
 
-var habitats = [waterSurface, water, sedimentSurface, sediment];
+var habitats = {
+    "water-surface": waterSurface,
+    "water": water,
+    "sediment-surface": sedimentSurface,
+    "sediment": sediment
+};
 
 var locations = document.getElementsByClassName("location");
 
-for (var i = 0; i < habitats.length; i++) {
-    locations[i].addEventListener("click", function() {
-        habitats[i].addData();
+for (var i = 0; i < locations.length; i++) {
+    locations[i].addEventListener("click", function(e) {
+        habitats[e.target.id].addData();
     });
 }
