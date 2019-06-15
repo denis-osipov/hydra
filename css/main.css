@@ -18,7 +18,8 @@ body {
     margin: 20px auto;
     background-color: #fff;
 }
-section {
+.text-content {
+    line-height: 1.5;
     margin-bottom: 50px;
 }
 
@@ -84,6 +85,7 @@ section {
 .output-frame {
     color: #aee5f4;
     padding: 10px;
+    position: relative;
 }
 .pond-frame {
     position: relative;
@@ -127,4 +129,9 @@ section {
 
 .selector {
     display: inline-block;
+}
+
+#calculate {
+    position: absolute;
+    bottom: 0;
 }
