@@ -24,28 +24,33 @@ Habitat.prototype.addData = function() {
         this.inhabitants.push(activeItem);
     }
     else if (activeItem instanceof Isotope) {
-        for (var medium in this.media) {
-            if (!media[medium].isotopes.includes(activeItem.name)) {
-                media[medium].isotopes.push(activeItem);
-            }
+        for (var i = 0; i < this.inhabitants.length; i++) {
+            var activity = parseFloat(prompt("Enter " + activeItem.name + " activity in " + this.inhabitants[i].name));
+            this.inhabitants[i].isotopes[activeItem.name] = activity;
         }
+        for (var medium in this.media) {
+            var activity = parseFloat(prompt("Enter " + activeItem.name + " activity in " + medium));
+            media[medium].isotopes[activeItem.name] = activity;
+            }
     }
+
+    // Reset
+    document.getElementById("input").style.cursor = "";
     activeItem = null;
 };
 
 var Medium = function(name) {
     this.name = name;
-    this.isotopes = [];
+    this.isotopes = {};
 }
 
 var Organism = function(name) {
     this.name = name;
-    this.isotopes = [];
+    this.isotopes = {};
 }
 
 var Isotope = function(name) {
     this.name = name;
-    this.activity = 0;
 }
 
 // Add item selector right before target element (button)
