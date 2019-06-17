@@ -19,7 +19,18 @@ var handleFiles = function() {
     const fileList = this.files;
     for (var i = 0; i < fileList.length; i++) {
         var file = fileList[i];
-        console.log(file.name);
+        var name = file.name.split(".")[0];
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var sql = `CREATE TABLE ${name} (id INTEGER PRIMARY KEY`;
+            var lines = this.result.split("\r\n");
+            var headers = lines[0].split(";");
+            for (var j = 0; j < headers.length; j++) {
+                sql += `, ${headers[j]}`;
+            }
+            sql += ");";
+        }
+        reader.readAsText(file);
     }
 };
 
