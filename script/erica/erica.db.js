@@ -34,8 +34,11 @@ var handleFiles = function() {
 
             // Insert data
             var headerNames = [];
+            var headerTypes = [];
             for (var i = 0; i < headers.length; i++) {
-                headerNames.push(headers[i].split(" ")[0]);
+                var header = headers[i].split(" ");
+                headerNames.push(header[0]);
+                headerTypes.push(header[1])
             }
             var valuePlaceholder = Array(headerNames.length);
             valuePlaceholder.fill("?");
@@ -43,7 +46,13 @@ var handleFiles = function() {
                 `INSERT INTO ${name} (${headerNames}) VALUES (${valuePlaceholder});`
                 );
             for (var i = 1; i < lines.length; i++) {
-                stmt.run([lines[i]]);
+                var values = lines[i].split(";");
+                values.forEach(function(element, index, array) {
+                    if (headerTypes[index] === "REAL") {
+                        element = parseFloat(element);
+                    }
+                });
+                stmt.run(values);
             }
         }
         reader.readAsText(file);
