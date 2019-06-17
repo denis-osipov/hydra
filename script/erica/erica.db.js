@@ -37,7 +37,11 @@ var handleFiles = function() {
             for (var i = 0; i < headers.length; i++) {
                 headerNames.push(headers[i].split(" ")[0]);
             }
-            var stmt = db.prepare(`INSERT INTO ${name} (${headerNames}) VALUES (?);`);
+            var valuePlaceholder = Array(headerNames.length);
+            valuePlaceholder.fill("?");
+            var stmt = db.prepare(
+                `INSERT INTO ${name} (${headerNames}) VALUES (${valuePlaceholder});`
+                );
             for (var i = 1; i < lines.length; i++) {
                 stmt.run([lines[i]]);
             }
