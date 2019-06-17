@@ -10,3 +10,15 @@ var db;
 initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(function (SQL) {
     db = new SQL.Database();
 });
+
+var inputElement = document.getElementById("input");
+
+var handleFiles = function() {
+    const fileList = this.files;
+    for (var i = 0; i < fileList.length; i++) {
+        var file = fileList[i];
+        console.log(file.name);
+    }
+};
+
+inputElement.addEventListener("change", handleFiles);
