@@ -22,6 +22,7 @@ var handleFiles = function() {
         let name = file.name.split(".")[0];
         var reader = new FileReader();
         reader.onload = function(event) {
+            // Create table
             var sql = `CREATE TABLE ${name} (id INTEGER PRIMARY KEY`;
             var lines = this.result.split("\r\n");
             var headers = lines[0].split(";");
@@ -30,6 +31,16 @@ var handleFiles = function() {
             }
             sql += ");";
             db.run(sql);
+
+            // Insert data
+            var headerNames = [];
+            for (var i = 0; i < headers.length; i++) {
+                headerNames.push(headers[i].split(" ")[0]);
+            }
+            var stmt = db.prepare(`INSERT INTO ${name} (${headerNames}) VALUES (?);`);
+            for (var i = 1; i < lines.length; i++) {
+                stmt.run([lines[i]]);
+            }
         }
         reader.readAsText(file);
     }
