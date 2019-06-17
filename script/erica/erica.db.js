@@ -19,7 +19,7 @@ var handleFiles = function() {
     const fileList = this.files;
     for (var i = 0; i < fileList.length; i++) {
         var file = fileList[i];
-        var name = file.name.split(".")[0];
+        let name = file.name.split(".")[0];
         var reader = new FileReader();
         reader.onload = function(event) {
             var sql = `CREATE TABLE ${name} (id INTEGER PRIMARY KEY`;
@@ -29,6 +29,7 @@ var handleFiles = function() {
                 sql += `, ${headers[j]}`;
             }
             sql += ");";
+            db.run(sql);
         }
         reader.readAsText(file);
     }
