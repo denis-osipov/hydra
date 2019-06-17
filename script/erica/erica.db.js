@@ -5,12 +5,14 @@ with sql.js v1.0.0 (https://github.com/kripken/sql.js).
 
 */
 
-//Open a blank database
+// Open a blank database
 var db;
 initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(function (SQL) {
     db = new SQL.Database();
 });
 
+
+// Handle files
 var inputElement = document.getElementById("input");
 
 var handleFiles = function() {
