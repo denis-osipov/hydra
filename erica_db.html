@@ -6,7 +6,13 @@
         <script src="script/sql.js/sql-wasm.js"></script>
     </head>
     <body>
-        <input type="file" id="input" multiple>
+        <form>
+            <fieldset>
+                <legend>Create SQLite tables from CSV files</legend>
+                <label>Create SQLite from CSV <input type="file" id="to-create" multiple></label>
+                <label>Preprocess files <input type="file" id="to-preprocess"></label>
+            </fieldset>
+        </form>
         <script src="script/erica/erica.db.js"></script>
     </body>
 </html>

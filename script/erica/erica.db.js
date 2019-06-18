@@ -13,9 +13,10 @@ initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(functi
 
 
 // Handle files
-var inputElement = document.getElementById("input");
+var toCreate = document.getElementById("to-create");
+var toPreprocess = document.getElementById("to-preprocess");
 
-var handleFiles = function() {
+var createTables = function() {
     const fileList = this.files;
     for (var i = 0; i < fileList.length; i++) {
         var file = fileList[i];
@@ -59,4 +60,9 @@ var handleFiles = function() {
     }
 };
 
-inputElement.addEventListener("change", handleFiles);
+var preprocessTable = function(){
+
+};
+
+toCreate.addEventListener("change", createTables);
+toPreprocess.addEventListener("change", preprocessTable);
