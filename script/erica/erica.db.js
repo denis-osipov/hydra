@@ -23,15 +23,13 @@ var createTables = function() {
         let name = file.name.split(".")[0];
         var reader = new FileReader();
         reader.onload = function(event) {
-            // Create table
-            var sql = `CREATE TABLE ${name} (id INTEGER PRIMARY KEY`;
+
             var lines = this.result.split("\r\n");
+
+            /* SQLite implicitly set "rowid" column, that uniquely identifies
+            each row within the table. So, we don't need to set PRIMARY KEY*/
+            db.run(`CREATE TABLE ${name} (${lines[0].replace(/;/g, ",")})`);
             var headers = lines[0].split(";");
-            for (var j = 0; j < headers.length; j++) {
-                sql += `, ${headers[j]}`;
-            }
-            sql += ");";
-            db.run(sql);
 
             // Insert data
             var headerNames = [];
@@ -44,7 +42,7 @@ var createTables = function() {
             var valuePlaceholder = Array(headerNames.length);
             valuePlaceholder.fill("?");
             var stmt = db.prepare(
-                `INSERT INTO ${name} (${headerNames}) VALUES (${valuePlaceholder});`
+                `INSERT INTO ${name} VALUES (${valuePlaceholder});`
                 );
             for (var i = 1; i < lines.length; i++) {
                 var values = lines[i].split(";");
