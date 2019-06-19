@@ -14,7 +14,6 @@ initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(functi
 
 // Handle files
 var toCreate = document.getElementById("to-create");
-var toPreprocess = document.getElementById("to-preprocess");
 
 var createTables = function() {
     const fileList = this.files;
@@ -59,12 +58,8 @@ var createTables = function() {
     }
 };
 
-var preprocessTable = function(){
-
-};
-
 toCreate.addEventListener("change", createTables);
-toPreprocess.addEventListener("change", preprocessTable);
+
 
 // Save database
 var saveBtn = document.getElementById("savedb");
