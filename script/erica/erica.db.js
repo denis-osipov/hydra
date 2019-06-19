@@ -66,7 +66,7 @@ var saveBtn = document.getElementById("savedb");
 
 var saveDatabase = function(){
     var database = db.export();
-    var dbFile = new Blob(database);
+    var dbFile = new Blob([database]);
     var dbURL = URL.createObjectURL(dbFile);
     var ref = document.createElement("a");
     document.body.appendChild(ref);
