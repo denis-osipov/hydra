@@ -65,3 +65,20 @@ var preprocessTable = function(){
 
 toCreate.addEventListener("change", createTables);
 toPreprocess.addEventListener("change", preprocessTable);
+
+// Save database
+var saveBtn = document.getElementById("savedb");
+
+var saveDatabase = function(){
+    var database = db.export();
+    var dbFile = new Blob(database);
+    var dbURL = URL.createObjectURL(dbFile);
+    var ref = document.createElement("a");
+    document.body.appendChild(ref);
+    ref.href = dbURL;
+    ref.download = "erica.db";
+    ref.click();
+    window.URL.revokeObjectURL(dbURL);
+};
+
+saveBtn.addEventListener("click", saveDatabase);
