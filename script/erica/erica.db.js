@@ -53,7 +53,7 @@ var createTables = function() {
                 stmt.run(values);
             }
             stmt.free();
-        }
+        };
         reader.readAsText(file);
     }
 };
