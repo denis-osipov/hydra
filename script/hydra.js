@@ -144,3 +144,13 @@ for (var i = 0; i < locations.length; i++) {
 
 var calcButton = document.getElementById("calculate");
 calcButton.addEventListener("click", calculate);
+
+
+// Setting
+var Setting = function() {
+    this.isotopes = [];
+    this.organisms = [];
+};
+
+// Spatial and temporal series
+Setting.prototype.series = function(setting, type) {};
