@@ -11,8 +11,8 @@ ERICA version 1.3.1.33
 var Setting = function() {
     this.isotopes = new Set();
     this.organisms = new Set();
-    this.distributionCoefficients = [];
-    this.concentrationRatios = [];
+    this.distributionCoefficients = {};
+    this.concentrationRatios = {};
     this.media = [];
     this.habitats = [];
     this.occupancyFactors = [];
@@ -31,6 +31,28 @@ Setting.prototype.addIsotope = function(isotope) {
 
 Setting.prototype.addOrganism = function(organism) {
     this.organisms.add(organism);
+};
+
+// Set radioecology parameters
+Setting.prototype.setDistributionCoefficients = function(nuclide, value) {
+    this.distributionCoefficients[nuclide] = value;
+};
+
+Setting.prototype.setConcentrationRatios = function(nuclide, organism, value) {
+    this.concentrationRatios[nuclide] = {};
+    this.concentrationRatios[nuclide][organism] = value;
+};
+
+/*
+Set occupancy factors
+values must be an array of 4 floats in [0, 1] in order:
+    - Water-surface
+    - Water
+    - Sediment-surface
+    - Sediment
+*/
+Setting.prototype.setOccupancyFactors = function(organism, values) {
+    this.occupancyFactors[organism] = values;
 };
 
 
