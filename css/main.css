@@ -106,8 +106,11 @@ body {
     border-radius: 50%;
     background-color: #fff;
     padding: 10px;
+    transition: font-size 0.5s;
 }
-.location:hover {
+
+.location:hover,
+.location:focus {
     font-size: 150%;
 }
 #water-surface {
