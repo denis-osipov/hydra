@@ -55,6 +55,16 @@ Setting.prototype.setOccupancyFactors = function(organism, values) {
     this.occupancyFactors[organism] = values;
 };
 
+/* Set radiation weighting factors
+values must be an array of 3 floats in [0, +inf) in order:
+    - alpha
+    - beta/gamma
+    - low beta
+*/
+Setting.prototype.setRadiationWeightingFactors = function(values) {
+    this.radiationWeightingFactors = values;
+};
+
 
 var setting = new Setting();
 
