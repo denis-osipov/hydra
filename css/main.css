@@ -100,39 +100,18 @@ body {
 
 
 /* Location elements */
-/*TODO: Don't play animation on load*/
 .location {
     position: absolute;
     border: 2px solid;
     border-radius: 50%;
     background-color: #fff;
     padding: 10px;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-name: shrink;
+    transition: font-size 0.5s;
 }
 
 .location:hover,
 .location:focus {
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-name: grow;
-}
-@keyframes grow {
-    from {
-        font-size: 100%;
-    }
-    to {
-        font-size: 150%;
-    }
-}
-@keyframes shrink {
-    from {
-        font-size: 150%;
-    }
-    to {
-        font-size: 100%;
-    }
+    font-size: 150%;
 }
 #water-surface {
     top: 7%;
