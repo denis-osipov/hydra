@@ -76,7 +76,6 @@ body {
     border-radius: 10px;
     padding: 10px;
     display: flex;
-    align-items: top;
 }
 .app-subframe {
     display: inline-block;
@@ -87,6 +86,10 @@ body {
     padding: 10px;
     position: relative;
 }
+#calculate {
+    position: absolute;
+    bottom: 0;
+}
 .pond-frame {
     position: relative;
     height: 200px;
@@ -96,6 +99,9 @@ body {
 }
 .control-frame {
     color: #aee5f4;
+}
+.selector {
+    display: inline-block;
 }
 
 
@@ -128,13 +134,4 @@ body {
 #sediment {
     bottom: 25%;
     right: 20%;
-}
-
-.selector {
-    display: inline-block;
-}
-
-#calculate {
-    position: absolute;
-    bottom: 0;
 }
