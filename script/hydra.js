@@ -19,6 +19,7 @@ var Setting = function() {
     this.radiationWeightingFactors = [];
     this.activityConcentrations = {};
     this.percentageDryWeight = null;
+    this.doseRates = {};
 };
 
 // Spatial and temporal series
@@ -76,6 +77,16 @@ Setting.prototype.setPercentageDryWeight = function(value) {
     this.percentageDryWeight = value;
 };
 
+// Fill missing activity concentrations
+Setting.prototype.fillActivityConcentrations = function(nuclide) {
+    console.log(nuclide);
+};
+
+// Calculate dose rates
+Setting.prototype.calculate = function() {
+    this.isotopes.forEach(this.fillActivityConcentrations);
+};
+
 
 // Create new setting
 var setting = new Setting();
@@ -126,3 +137,7 @@ var addIsotopeButton = document.getElementById("add-isotope");
 addIsotopeButton.addEventListener("click", function(e){
     addItemSelector(e, isotopes)
 });
+
+// Calculate button
+var calculateButton = document.getElementById("calculate");
+calculateButton.addEventListener("click", setting.calculate);
