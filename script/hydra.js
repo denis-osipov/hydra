@@ -17,7 +17,7 @@ var Setting = function() {
     this.habitats = [];
     this.occupancyFactors = [];
     this.radiationWeightingFactors = [];
-    this.activityConcentrations = [];
+    this.activityConcentrations = {};
     this.percentageDryWeight = null;
 };
 
@@ -65,9 +65,20 @@ Setting.prototype.setRadiationWeightingFactors = function(values) {
     this.radiationWeightingFactors = values;
 };
 
+// Set activity concentrations
+Setting.prototype.setActivityConcentrations = function(nuclide, object, value) {
+    this.activityConcentrations[nuclide] = {};
+    this.activityConcentrations[nuclide][object] = value;
+};
 
+// Set percentage dry weight value for soil (value in [0, 100])
+Setting.prototype.setPercentageDryWeight = function(value) {
+    this.percentageDryWeight = value;
+};
+
+
+// Create new setting
 var setting = new Setting();
-
 
 // Add item selector right before target element (button)
 var addItemSelector = function(event, array) {
