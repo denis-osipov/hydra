@@ -91,7 +91,9 @@ Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, va
 
 // Result
 var Result = function(setting) {
-    this.parameters = setting.parameters;
+    for (parameter in setting.parameters) {
+        this[parameter] = setting.parameters[parameter];
+    }
 };
 
 Result.prototype.fillGaps = function(setting) {
