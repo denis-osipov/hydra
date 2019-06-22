@@ -10,22 +10,22 @@ ERICA version 1.3.1.33
 // Setting
 var Setting = function() {
     this.parameters = {
-        isotopes = new Set(),
-        organisms = new Set(),
-        distributionCoefficients = {},
-        concentrationRatios = {},
-        media = ["Water", "Sediment"],
-        habitats = {
+        isotopes: new Set(),
+        organisms: new Set(),
+        distributionCoefficients: {},
+        concentrationRatios: {},
+        media: ["Water", "Sediment"],
+        habitats: {
             "Water-surface": [0.5, 0.0],
             "Water": [1.0, 0.0],
             "Sediment-surface": [0.5, 0.5],
             "Sediment": [0.0, 1.0]
         },
-        occupancyFactors = {},
-        radiationWeightingFactors = [10.0, 1.0, 3.0],
-        activityConcentrations = {},
-        percentageDryWeight = 100,
-        doseConversionCoefficients = {},
+        occupancyFactors: {},
+        radiationWeightingFactors: [10.0, 1.0, 3.0],
+        activityConcentrations: {},
+        percentageDryWeight: 100,
+        doseConversionCoefficients: {},
     };
 
 };
