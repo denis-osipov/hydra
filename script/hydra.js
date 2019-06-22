@@ -61,7 +61,8 @@ Setting.prototype.setOccupancyFactors = function(organism, values) {
     this.parameters.occupancyFactors[organism] = values;
 };
 
-/* Set radiation weighting factors
+/*
+Set radiation weighting factors
 values must be an array of 3 floats in [0, +inf) in order:
     - alpha
     - beta/gamma
@@ -82,10 +83,19 @@ Setting.prototype.setPercentageDryWeight = function(value) {
     this.parameters.percentageDryWeight = value;
 };
 
-// Set dose conversion coefficients
-Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, value) {
+/*
+Set dose conversion coefficients
+values must be an array of 6 floats in [0, +inf) in order:
+    - internal alpha
+    - internal beta/gamma
+    - internal low beta
+    - external alpha
+    - external beta/gamma
+    - external low beta
+*/
+Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, values) {
     this.parameters.doseConversionCoefficients[isotope] = {};
-    this.parameters.doseConversionCoefficients[isotope][organism] = value;
+    this.parameters.doseConversionCoefficients[isotope][organism] = values;
 }
 
 
@@ -155,7 +165,7 @@ Result.prototype.fillGaps = function(setting) {
             this.occupancyFactors[organism] = erica.occ[organism];
         }
     }
-    
+
 };
 
 // Calculate dose rates
@@ -207,13 +217,13 @@ var addItemSelector = function(event, array) {
 // organisms fieldset
 var addOrganismButton = document.getElementById("add-organism");
 addOrganismButton.addEventListener("click", function(e){
-    addItemSelector(e, organisms)
+    addItemSelector(e, erica.organisms)
 });
 
 // isotopes fieldset
 var addIsotopeButton = document.getElementById("add-isotope");
 addIsotopeButton.addEventListener("click", function(e){
-    addItemSelector(e, isotopes)
+    addItemSelector(e, erica.isotopes)
 });
 
 // Calculate button
