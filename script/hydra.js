@@ -67,9 +67,9 @@ Setting.prototype.setRadiationWeightingFactors = function(values) {
 };
 
 // Set activity concentrations
-Setting.prototype.setActivityConcentrations = function(nuclide, object, value) {
-    this.activityConcentrations[nuclide] = {};
-    this.activityConcentrations[nuclide][object] = value;
+Setting.prototype.setActivityConcentrations = function(isotope, object, value) {
+    this.activityConcentrations[isotope] = {};
+    this.activityConcentrations[isotope][object] = value;
 };
 
 // Set percentage dry weight value for soil (value in [0, 100])
