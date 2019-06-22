@@ -96,8 +96,58 @@ var Result = function(setting) {
     }
 };
 
+// Fill missing data using ERICA's coefficients
 Result.prototype.fillGaps = function(setting) {
-    // filling missing data
+    for (isotope of this.isotopes) {
+
+        // Stop if there is no data about some isotope
+        if (!this.activityConcentrations[isotope]) {
+            console.log(`Can't find any data for ${isotope}`);
+            continue;
+        }
+
+        // Fill Kd and activity concentrations for water and sediment
+        // Perform calculations using data only for water or sediment
+        var nuclide = isotope.split("-");
+        if (!this.distributionCoefficients[nuclide]) {
+            this.distributionCoefficients[nuclide] = erica.kd[nuclide];
+        }
+        
+        var kd = this.distributionCoefficients[nuclide];
+        var activity = this.activityConcentrations[isotope];
+
+        if (!activity["water"] && activity["sediment"]) {
+            activity["water"] = activity["sediment"] / kd;
+        }
+
+        if (!activity["sediment"] && activity["water"]) {
+            activity["sediment"] = activity["water"] * kd;
+        }
+
+        // Fill CR, activity concentrations and DCC for organisms
+        if (!this.concentrationRatios[nuclide]) {
+            this.concentrationRatios[nuclide] = {};
+        }
+        var cr = this.concentrationRatios[nuclide];
+
+        if (!this.doseConversionCoefficients[isotope]) {
+            this.doseConversionCoefficients[isotope] = {};
+        }
+        var dcc = this.doseConversionCoefficients[isotope];
+
+        for (organism of this.organisms) {
+            if (!cr[organism]) {
+                cr[organism] = erica.cr[nuclide][organism];
+            }
+            if (!activity[organism] && activity["water"]) {
+                activity[organism] = activity["water"] * cr[organism];
+            }
+            if (!dcc[organism]) {
+                dcc[organism] = erica.dcc[isotope][organism];
+            }
+        }
+
+    }
 };
 
 // Calculate dose rates
