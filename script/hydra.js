@@ -148,6 +148,14 @@ Result.prototype.fillGaps = function(setting) {
         }
 
     }
+
+    // Fill occupancy factors
+    for (organism of organisms) {
+        if (!this.occupancyFactors[organism]) {
+            this.occupancyFactors[organism] = erica.occ[organism];
+        }
+    }
+    
 };
 
 // Calculate dose rates
