@@ -19,6 +19,7 @@ var Setting = function() {
     this.radiationWeightingFactors = [];
     this.activityConcentrations = {};
     this.percentageDryWeight = null;
+    this.doseConversionCoefficients = {};
 };
 
 // Spatial and temporal series
@@ -75,6 +76,12 @@ Setting.prototype.setActivityConcentrations = function(nuclide, object, value) {
 Setting.prototype.setPercentageDryWeight = function(value) {
     this.percentageDryWeight = value;
 };
+
+// Set dose conversion coefficients
+Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, value) {
+    this.doseConversionCoefficients[isotope] = {};
+    this.doseConversionCoefficients[isotope][organism] = value;
+}
 
 
 // Result
