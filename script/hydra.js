@@ -27,9 +27,6 @@ var Setting = function() {
     this.doseConversionCoefficients = {};
 };
 
-// Spatial and temporal series
-Setting.prototype.addSeries = function(setting, type) {};
-
 // Add isotopes and organisms to setting
 Setting.prototype.addIsotope = function(isotope) {
     this.isotopes.add(isotope);
