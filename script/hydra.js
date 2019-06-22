@@ -13,12 +13,17 @@ var Setting = function() {
     this.organisms = new Set();
     this.distributionCoefficients = {};
     this.concentrationRatios = {};
-    this.media = [];
-    this.habitats = [];
-    this.occupancyFactors = [];
-    this.radiationWeightingFactors = [];
+    this.media = ["Water", "Sediment"];
+    this.habitats = {
+        "Water-surface": [0.5, 0.0],
+        "Water": [1.0, 0.0],
+        "Sediment-surface": [0.5, 0.5],
+        "Sediment": [0.0, 1.0]
+    };
+    this.occupancyFactors = {};
+    this.radiationWeightingFactors = [10.0, 1.0, 3.0];
     this.activityConcentrations = {};
-    this.percentageDryWeight = null;
+    this.percentageDryWeight = 100;
     this.doseConversionCoefficients = {};
 };
 
