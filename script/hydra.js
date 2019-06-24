@@ -9,44 +9,41 @@ ERICA version 1.3.1.33
 
 // Setting
 var Setting = function() {
-    this.parameters = {
-        isotopes: new Set(),
-        organisms: new Set(),
-        distributionCoefficients: {},
-        concentrationRatios: {},
-        media: ["Water", "Sediment"],
-        habitats: {
+    this.isotopes = new Set();
+    this.organisms = new Set();
+    this.distributionCoefficients = {};
+    this.concentrationRatios = {};
+    this.media = ["Water", "Sediment"];
+    this.habitats = {
             "Water-surface": [0.5, 0.0],
             "Water": [1.0, 0.0],
             "Sediment-surface": [0.5, 0.5],
             "Sediment": [0.0, 1.0]
-        },
-        occupancyFactors: {},
-        radiationWeightingFactors: [10.0, 1.0, 3.0],
-        activityConcentrations: {},
-        percentageDryWeight: 100,
-        doseConversionCoefficients: {},
-    };
-
+        };
+    this.occupancyFactors = {};
+    this.radiationWeightingFactors = [10.0, 1.0, 3.0];
+    this.activityConcentrations = {};
+    this.percentageDryWeight = 100;
+    this.doseConversionCoefficients = {};
 };
 
 // Add isotopes and organisms to setting
 Setting.prototype.addIsotope = function(isotope) {
-    this.parameters.isotopes.add(isotope);
+    this.isotopes.add(isotope);
 };
 
 Setting.prototype.addOrganism = function(organism) {
-    this.parameters.organisms.add(organism);
+    this.organisms.add(organism);
 };
 
 // Set radioecology parameters
 Setting.prototype.setDistributionCoefficients = function(nuclide, value) {
-    this.parameters.distributionCoefficients[nuclide] = value;
+    this.distributionCoefficients[nuclide] = value;
 };
 
 Setting.prototype.setConcentrationRatios = function(nuclide, organism, value) {
-    this.parameters.concentrationRatios[nuclide] = {};
-    this.parameters.concentrationRatios[nuclide][organism] = value;
+    this.concentrationRatios[nuclide] = {};
+    this.concentrationRatios[nuclide][organism] = value;
 };
 
 /*
@@ -58,7 +55,7 @@ values must be an array of 4 floats in [0, 1] in order:
     - Sediment
 */
 Setting.prototype.setOccupancyFactors = function(organism, values) {
-    this.parameters.occupancyFactors[organism] = values;
+    this.occupancyFactors[organism] = values;
 };
 
 /*
@@ -69,18 +66,18 @@ values must be an array of 3 floats in [0, +inf) in order:
     - low beta
 */
 Setting.prototype.setRadiationWeightingFactors = function(values) {
-    this.parameters.radiationWeightingFactors = values;
+    this.radiationWeightingFactors = values;
 };
 
 // Set activity concentrations
 Setting.prototype.setActivityConcentrations = function(isotope, object, value) {
-    this.parameters.activityConcentrations[isotope] = {};
-    this.parameters.activityConcentrations[isotope][object] = value;
+    this.activityConcentrations[isotope] = {};
+    this.activityConcentrations[isotope][object] = value;
 };
 
 // Set percentage dry weight value for soil (value in [0, 100])
 Setting.prototype.setPercentageDryWeight = function(value) {
-    this.parameters.percentageDryWeight = value;
+    this.percentageDryWeight = value;
 };
 
 /*
@@ -94,15 +91,23 @@ values must be an array of 6 floats in [0, +inf) in order:
     - external low beta
 */
 Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, values) {
-    this.parameters.doseConversionCoefficients[isotope] = {};
-    this.parameters.doseConversionCoefficients[isotope][organism] = values;
+    this.doseConversionCoefficients[isotope] = {};
+    this.doseConversionCoefficients[isotope][organism] = values;
 }
 
 
 // Result
 var Result = function(setting) {
-    for (parameter in setting.parameters) {
-        this[parameter] = setting.parameters[parameter];
+    // Make deep clone of setting to not alter it during calculation
+    var deepClone = JSON.parse(JSON.stringify(setting, function(key, value) {
+        // Convert sets to arrays (JSON.stringify doesn't work with sets)
+        if (value instanceof Set) {
+            return Array.from(value);
+        }
+        return value;
+    }));
+    for (property in deepClone) {
+        this[property] = deepClone[property];
     }
 };
 
