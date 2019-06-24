@@ -160,7 +160,7 @@ Result.prototype.fillGaps = function(setting) {
     }
 
     // Fill occupancy factors
-    for (organism of organisms) {
+    for (organism of this.organisms) {
         if (!this.occupancyFactors[organism]) {
             this.occupancyFactors[organism] = erica.occ[organism];
         }
