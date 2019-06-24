@@ -178,20 +178,22 @@ Result.prototype.getCoefficients = function() {
     // Use aliases
     var dcc = this.doseConversionCoefficients;
     var wf = this.radiationWeightingFactors;
-    var coefs = {};
+
+    this.internalCoefficients = {};
+    this.externalCoefficients = {};
     
-    for (isotope in dcc) {
-        coefs[isotope] = {};
-        for (organism in dcc[isotope]) {
-            coefs[isotope][organism] = [];
-            var dccValues = dcc[isotope][organism];
-            dccValues.forEach(function(value, index) {
-                coefs[isotope][organism].push(value * wf[index % wf.length]);
+    for (isotope of this.isotopes) {
+        this.internalCoefficients[isotope] = {};
+        this.externalCoefficients[isotope] = {};
+        for (organism of this.organisms) {
+            coefs = [];
+            dcc[isotope][organism].forEach(function(value, index) {
+                coefs.push(value * wf[index % wf.length]);
             });
+            this.internalCoefficients[isotope][organism] = coefs[0] + coefs[1] + coefs[2];
+            this.externalCoefficients[isotope][organism] = coefs[3] + coefs[4] + coefs[5];
         }
     }
-
-    this.finalCoefficients = coefs;
 };
 
 // Calculate internal dose rates
