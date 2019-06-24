@@ -194,6 +194,11 @@ Result.prototype.getCoefficients = function() {
     this.finalCoefficients = coefs;
 };
 
+// Calculate internal dose rates
+Result.prototype.getInternal = function() {
+    this.internalDoseRates = {};
+};
+
 // Calculate dose rates
 Result.prototype.calculate = function() {
     // Get missing data
@@ -201,6 +206,9 @@ Result.prototype.calculate = function() {
 
     // Get summary coefficients
     this.getCoefficients();
+
+    // Calculate internal dose rates
+    this.getInternal();
 };
 
 
