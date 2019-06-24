@@ -185,9 +185,9 @@ Result.prototype.getCoefficients = function() {
         for (organism in dcc[isotope]) {
             coefs[isotope][organism] = [];
             var dccValues = dcc[isotope][organism];
-            for (var i = 0; i < dccValues.length; i++) {
-                coefs[isotope][organism].push(dccValues[i] * wf[i % wf.length]);
-            }
+            dccValues.forEach(function(value, index) {
+                coefs[isotope][organism].push(value * wf[index % wf.length]);
+            });
         }
     }
 
