@@ -173,11 +173,34 @@ Result.prototype.fillGaps = function(setting) {
 
 };
 
+// Get summary coefficients for calculations
+Result.prototype.getCoefficients = function() {
+    // Use aliases
+    var dcc = this.doseConversionCoefficients;
+    var wf = this.radiationWeightingFactors;
+    var coefs = {};
+    
+    for (isotope in dcc) {
+        coefs[isotope] = {};
+        for (organism in dcc[isotope]) {
+            coefs[isotope][organism] = [];
+            var dccValues = dcc[isotope][organism];
+            for (var i = 0; i < dccValues.length; i++) {
+                coefs[isotope][organism].push(dccValues[i] * wf[i % wf.length]);
+            }
+        }
+    }
+
+    this.finalCoefficients = coefs;
+};
+
 // Calculate dose rates
 Result.prototype.calculate = function() {
+    // Get missing data
     this.fillGaps();
 
-    // calculation
+    // Get summary coefficients
+    this.getCoefficients();
 };
 
 
