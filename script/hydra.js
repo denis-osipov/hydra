@@ -131,12 +131,12 @@ Result.prototype.fillGaps = function(setting) {
         var kd = this.distributionCoefficients[nuclide];
         var activity = this.activityConcentrations[isotope];
 
-        if (!activity["water"] && activity["sediment"]) {
-            activity["water"] = activity["sediment"] / kd;
+        if (!activity["Water"] && activity["Sediment"]) {
+            activity["Water"] = activity["Sediment"] / kd;
         }
 
-        if (!activity["sediment"] && activity["water"]) {
-            activity["sediment"] = activity["water"] * kd;
+        if (!activity["Sediment"] && activity["Water"]) {
+            activity["Sediment"] = activity["Water"] * kd;
         }
 
         // Fill CR, activity concentrations and DCC for organisms
@@ -154,8 +154,8 @@ Result.prototype.fillGaps = function(setting) {
             if (!cr[organism]) {
                 cr[organism] = erica.cr[nuclide][organism];
             }
-            if (!activity[organism] && activity["water"]) {
-                activity[organism] = activity["water"] * cr[organism];
+            if (!activity[organism] && activity["Water"]) {
+                activity[organism] = activity["Water"] * cr[organism];
             }
             if (!dcc[organism]) {
                 dcc[organism] = erica.dcc[isotope][organism];
