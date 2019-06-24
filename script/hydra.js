@@ -123,7 +123,7 @@ Result.prototype.fillGaps = function(setting) {
 
         // Fill Kd and activity concentrations for water and sediment
         // Perform calculations using data only for water or sediment
-        var nuclide = isotope.split("-");
+        var nuclide = isotope.split("-")[0];
         if (!this.distributionCoefficients[nuclide]) {
             this.distributionCoefficients[nuclide] = erica.kd[nuclide];
         }
