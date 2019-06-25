@@ -79,6 +79,7 @@ var addItemSelector = function(event, type) {
     newItemSelector.className = "selector";  // for styling
 
     // Selector
+    // TODO: Add labels for selectors
     var selector = document.createElement("select");
     for (var i = 0; i < array.length; i++) {
         var option = document.createElement("option");
