@@ -240,6 +240,23 @@ Result.prototype.getExternal = function() {
     }
 };
 
+// Calculate total dose rate using occupancy factors
+Result.prototype.getTotal = function() {
+    this.totalDoseRate = {};
+    var habitats = Object.keys(this.habitats);
+    for (isotope of this.isotopes) {
+        this.totalDoseRate[isotope] = {};
+        for (organism of this.organisms) {
+            var occupancy = this.occupancyFactors[organism];
+            var total = this.internalDoseRates[isotope][organism];
+            for (var i = 0; i < habitats.length; i++) {
+                total += this.habitatDoseRates[habitats[i]][isotope][organism] * occupancy[i];
+            }
+            this.totalDoseRate[isotope][organism] = total;
+        }
+    }
+};
+
 // Calculate dose rates
 Result.prototype.calculate = function() {
     // Get missing data
@@ -251,6 +268,7 @@ Result.prototype.calculate = function() {
     // Calculate internal and external dose rates
     this.getInternal();
     this.getExternal();
+    this.getTotal();
 };
 
 
