@@ -199,6 +199,14 @@ Result.prototype.getCoefficients = function() {
 // Calculate internal dose rates
 Result.prototype.getInternal = function() {
     this.internalDoseRates = {};
+    for (isotope of this.isotopes) {
+        this.internalDoseRates[isotope] = {};
+        var activity = this.activityConcentrations[isotope];
+        var coef = this.internalCoefficients[isotope];
+        for (organism of this.organisms) {
+            this.internalDoseRates[isotope][organism] = activity[organism] * coef[organism];
+        }
+    }
 };
 
 // Calculate dose rates
