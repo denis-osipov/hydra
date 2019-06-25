@@ -209,6 +209,37 @@ Result.prototype.getInternal = function() {
     }
 };
 
+// Calculate external dose rates from each media
+Result.prototype.getExternal = function() {
+    this.externalDoseRates = {};
+    for (isotope of this.isotopes) {
+        this.externalDoseRates[isotope] = {};
+        var activity = this.activityConcentrations[isotope];
+        var coef = this.externalCoefficients[isotope];
+        for (organism of this.organisms) {
+            this.externalDoseRates[isotope][organism] = [
+                activity["Water"] * coef[organism],
+                activity["Sediment"] * coef[organism]
+            ];
+        }
+    }
+
+    // Calculate external dose rates for habitats
+    this.habitatDoseRates = {};
+    for (habitat in this.habitats) {
+        var coef = this.habitats[habitat];
+        var temp = {};
+        for (isotope of this.isotopes) {
+            temp[isotope] = {};
+            for (organism of this.organisms) {
+                var ext = this.externalDoseRates[isotope][organism];
+                temp[isotope][organism] = ext[0] * coef[0] + ext[1] * coef[1];
+            }
+        }
+        this.habitatDoseRates[habitat] = temp;
+    }
+};
+
 // Calculate dose rates
 Result.prototype.calculate = function() {
     // Get missing data
@@ -217,8 +248,9 @@ Result.prototype.calculate = function() {
     // Get summary coefficients
     this.getCoefficients();
 
-    // Calculate internal dose rates
+    // Calculate internal and external dose rates
     this.getInternal();
+    this.getExternal();
 };
 
 
