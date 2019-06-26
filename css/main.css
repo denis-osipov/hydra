@@ -8,16 +8,19 @@ body {
   background-color: #fff;
   background: linear-gradient(to right, #7aadbc, #fff 15%);
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 .container {
   width: 940px;
   margin: 20px auto;
   background-color: #fff;
 }
+
 .text-content {
   line-height: 1.5;
   margin-bottom: 50px;
@@ -34,10 +37,12 @@ body {
   padding: 20px;
   border-radius: 10px;
 }
+
 .links-list {
   margin: 0;
   padding: 0;
 }
+
 .link {
   display: inline-block;
   width: 140px;
@@ -46,9 +51,11 @@ body {
   padding: 10px;
   text-align: center;
 }
+
 .link:hover {
   background-color: #1b5d70;
 }
+
 .link a {
   text-decoration: none;
   color: #fff;
@@ -77,19 +84,23 @@ body {
   padding: 10px;
   display: flex;
 }
+
 .app-subframe {
   display: inline-block;
   width: 50%;
 }
+
 .output-frame {
   color: #aee5f4;
   padding: 10px;
   position: relative;
 }
+
 #calculate {
   position: absolute;
   bottom: 0;
 }
+
 .pond-frame {
   position: relative;
   height: 200px;
@@ -97,9 +108,11 @@ body {
   background: linear-gradient(to top left, #523928 45%, transparent 45%),
         linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
+
 .control-frame {
   color: #aee5f4;
 }
+
 .selector {
   display: inline-block;
 }
@@ -119,18 +132,22 @@ body {
 .location:focus {
   font-size: 150%;
 }
+
 #water-surface {
   top: 7%;
   left: 25%;
 }
+
 #water {
   top: 33%;
   left: 25%;
 }
+
 #sediment-surface {
   top: 50%;
   right: 35%;
 }
+
 #sediment {
   bottom: 25%;
   right: 20%;
