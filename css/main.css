@@ -121,7 +121,7 @@ body {
 /* Location elements */
 .location {
   position: absolute;
-  border: 2px solid;
+  border: 2px solid #7aadbc;
   border-radius: 50%;
   background-color: #fff;
   padding: 10px;
