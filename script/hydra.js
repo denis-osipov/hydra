@@ -61,6 +61,7 @@ var calculate = function() {
 };
 
 // Add item selector right before target element (button)
+// TODO: Replace selectors with checkbox lists
 var addItemSelector = function(event, type) {
 
     switch (type) {
