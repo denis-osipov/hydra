@@ -272,6 +272,8 @@ Result.prototype.calculate = function() {
 };
 
 
+// Get list elements
+var organismsList = document.getElementById("organisms");
 // Create new setting
 var setting = new Setting();
 

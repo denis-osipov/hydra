@@ -122,10 +122,14 @@ body {
     font-size: 150%;
 }
 
-.left-list {
+.box-header {
+  margin: 0;
+}
+
+.left-box {
   left: 10px;
 }
 
-.right-list {
+.right-box {
   right: 10px;
 }
