@@ -126,6 +126,11 @@ body {
   margin: 0;
 }
 
+.box-list {
+  margin: 0;
+  padding: 15px;
+}
+
 .left-box {
   left: 10px;
 }

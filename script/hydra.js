@@ -272,10 +272,23 @@ Result.prototype.calculate = function() {
 };
 
 
-// Get list elements
-var organismsList = document.getElementById("organisms");
 // Create new setting
 var setting = new Setting();
+
+
+// Update list elements
+var organismsList = document.getElementById("organisms");
+var isotopesList = document.getElementById("isotopes");
+
+var updateList = function(source, target) {
+    target.innerHTML = "";
+    for (item of source) {
+        var itemEl = document.createElement("li");
+        itemEl.textContent = item;
+        target.appendChild(itemEl);
+    }
+};
+
 
 // Add item selector right before target element (button)
 var addItemSelector = function(event, array) {
@@ -301,9 +314,11 @@ var addItemSelector = function(event, array) {
         var value = e.target.previousSibling.value;
         if (event.target.id === "add-isotope") {
             setting.addIsotope(value);
+            updateList(setting.isotopes, isotopes);
         }
         else {
             setting.addOrganism(value);
+            updateList(setting.organisms, organisms);
         }
     });
     newItemSelector.appendChild(button);
@@ -311,6 +326,7 @@ var addItemSelector = function(event, array) {
     var target = event.target;
     target.parentNode.insertBefore(newItemSelector, target);
 };
+
 
 // organisms fieldset
 var addOrganismButton = document.getElementById("add-organism");
