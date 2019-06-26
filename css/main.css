@@ -105,33 +105,27 @@ body {
 }
 
 
-/* Location elements */
-.location {
+/* List of organisms and isotopes */
+.box {
     position: absolute;
+    top: 10px;
+    bottom: 10px;
     border: 2px solid;
-    border-radius: 50%;
+    border-radius: 10px;
     background-color: #fff;
     padding: 10px;
-    transition: font-size 0.5s;
+    transition: 0.5s;
 }
 
-.location:hover,
-.location:focus {
+.box:hover,
+.box:focus {
     font-size: 150%;
 }
-#water-surface {
-    top: 7%;
-    left: 25%;
+
+.left-list {
+  left: 10px;
 }
-#water {
-    top: 33%;
-    left: 25%;
-}
-#sediment-surface {
-    top: 50%;
-    right: 35%;
-}
-#sediment {
-    bottom: 25%;
-    right: 20%;
+
+.right-list {
+  right: 10px;
 }
