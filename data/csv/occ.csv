@@ -35,10 +35,10 @@ Water-surface;Pelagic fish;0
 Water;Pelagic fish;1
 Sediment-surface;Pelagic fish;0
 Sediment;Pelagic fish;0
-Water-surface;Bird ;0
-Water;Bird ;1
-Sediment-surface;Bird ;0
-Sediment;Bird ;0
+Water-surface;Bird;0
+Water;Bird;1
+Sediment-surface;Bird;0
+Sediment;Bird;0
 Water-surface;Mammal;0
 Water;Mammal;1
 Sediment-surface;Mammal;0
