@@ -16,14 +16,14 @@ body {
 }
 
 .container {
-  width: 940px;
   margin: 20px auto;
+  width: 940px;
   background-color: #fff;
 }
 
 .text-content {
-  line-height: 1.5;
   margin-bottom: 50px;
+  line-height: 1.5;
 }
 
 /*
@@ -32,10 +32,10 @@ body {
   ========================================
 */
 .header {
-  background-color: #2f7183;
-  color: #e0eef1;
   padding: 20px;
+  background-color: #2f7183;
   border-radius: 10px;
+  color: #e0eef1;
 }
 
 .links-list {
@@ -45,11 +45,11 @@ body {
 
 .link {
   display: inline-block;
+  padding: 10px;
   width: 140px;
+  text-align: center;
   background-color: #4a8798;
   border-radius: 10px;
-  padding: 10px;
-  text-align: center;
 }
 
 .link:hover {
@@ -68,8 +68,8 @@ body {
 */
 .logo {
   float: left;
-  margin-right: 20px;
   margin-bottom: 20px;
+  margin-right: 20px;
   width: 200px;
 }
 
@@ -79,10 +79,10 @@ body {
   ========================================
 */
 .app-frame {
+  display: flex;
+  padding: 10px;
   background-color: #0a4859;
   border-radius: 10px;
-  padding: 10px;
-  display: flex;
 }
 
 .app-subframe {
@@ -91,14 +91,14 @@ body {
 }
 
 .output-frame {
-  color: #aee5f4;
-  padding: 10px;
   position: relative;
+  padding: 10px;
+  color: #aee5f4;
 }
 
 #calculate {
-  position: absolute;
   bottom: 0;
+  position: absolute;
 }
 
 .pond-frame {
@@ -121,10 +121,10 @@ body {
 /* Location elements */
 .location {
   position: absolute;
+  padding: 10px;
+  background-color: #fff;
   border: 2px solid #7aadbc;
   border-radius: 50%;
-  background-color: #fff;
-  padding: 10px;
   transition: 0.5s;
 }
 
@@ -134,18 +134,18 @@ body {
 }
 
 #water-surface {
-  top: 7%;
   left: 25%;
+  top: 7%;
 }
 
 #water {
-  top: 33%;
   left: 25%;
+  top: 33%;
 }
 
 #sediment-surface {
-  top: 50%;
   right: 35%;
+  top: 50%;
 }
 
 #sediment {
