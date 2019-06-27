@@ -279,11 +279,11 @@ var setting = new Setting();
 // Update list elements
 var organismsList = document.getElementById("organisms");
 organismsList.parentElement.addEventListener("click", function() {
-    showTable("organisms");
+    showInput("organisms");
 });
 var isotopesList = document.getElementById("isotopes");
 isotopesList.parentElement.addEventListener("click", function() {
-    showTable("isotopes");
+    showInput("isotopes");
 })
 
 var updateList = function(source, target) {
@@ -296,7 +296,7 @@ var updateList = function(source, target) {
 };
 
 // Show table for inputs
-var showTable = function(type) {
+var showInput = function(type) {
     var appFrame = document.getElementsByClassName("app-frame")[0];
     var container = document.createElement("div");
     container.className = "input-box";
@@ -307,6 +307,11 @@ var showTable = function(type) {
 
     var table = generateTable(type);
     form.appendChild(table);
+
+    var resetButton = document.createElement("input");
+    resetButton.type = "reset";
+    resetButton.value = "Reset";
+    form.appendChild(resetButton);
 };
 
 var generateTable = function(type) {
@@ -357,7 +362,7 @@ var generateTable = function(type) {
             // allow decimals
             value.step = "0.001";
             if (setting.activityConcentrations[row]) {
-                value.value = setting.activityConcentrations[row][col];
+                value.defaultValue = setting.activityConcentrations[row][col];
             }
             cell.appendChild(value);
             bodyRow.append(cell);
