@@ -341,9 +341,15 @@ var generateTable = function(type) {
         bodyRow.appendChild(header);
         for (col of cols) {
             var cell = document.createElement("td");
+            var value = document.createElement("input");
+            value.type = "number";
+            value.min = "0";
+            // allow decimals
+            value.step = "0.1";
             if (setting.activityConcentrations[row]) {
-                cell.textContent = setting.activityConcentrations[row][col];
+                value.value = setting.activityConcentrations[row][col];
             }
+            cell.appendChild(value);
             bodyRow.append(cell);
         }
         tableBody.appendChild(bodyRow);
