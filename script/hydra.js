@@ -298,6 +298,19 @@ var showTable = function() {
     appFrame.appendChild(container);
 };
 
+var generateTable = function(type) {
+    var rows;
+    var cols;
+    if (type === "isotopes") {
+        rows = Array.from(setting.isotopes);
+        cols = setting.media.concat(Array.from(setting.organisms));
+    }
+    else if (type === "organisms") {
+        rows = Array.from(setting.organisms);
+        cols = Object.keys(setting.habitats);
+    }
+};
+
 
 // Add item selector right before target element (button)
 var addItemSelector = function(event, array) {
