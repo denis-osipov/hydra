@@ -290,7 +290,7 @@ var updateList = function(source, target) {
 };
 
 // Show table for inputs
-var showTable = function() {
+var showTable = function(type) {
     var appFrame = document.getElementsByClassName("app-frame")[0];
     var container = document.createElement("div");
     container.className = "input-box";
@@ -299,7 +299,7 @@ var showTable = function() {
     var form = document.createElement("form");
     container.appendChild(form);
 
-    var table = generateTable("isotopes");
+    var table = generateTable(type);
     form.appendChild(table);
 };
 
@@ -349,7 +349,7 @@ var generateTable = function(type) {
             value.name = row + "." + col.replace(/ /g, "_");
             value.min = "0";
             // allow decimals
-            value.step = "0.1";
+            value.step = "0.001";
             if (setting.activityConcentrations[row]) {
                 value.value = setting.activityConcentrations[row][col];
             }
