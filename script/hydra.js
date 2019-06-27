@@ -331,6 +331,25 @@ var generateTable = function(type) {
     tableHeader.appendChild(headerRow);
     table.appendChild(tableHeader);
 
+    // Generate body
+    var tableBody = document.createElement("tbody");
+    for (row of rows) {
+        var bodyRow = document.createElement("tr");
+        var header = document.createElement("th");
+        header.textContent = row;
+        header.scope = "row";
+        bodyRow.appendChild(header);
+        for (col of cols) {
+            var cell = document.createElement("td");
+            if (setting.activityConcentrations[row]) {
+                cell.textContent = setting.activityConcentrations[row][col];
+            }
+            bodyRow.append(cell);
+        }
+        tableBody.appendChild(bodyRow);
+    }
+    table.appendChild(tableBody);
+
     return table;
 };
 
