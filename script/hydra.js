@@ -276,6 +276,7 @@ Result.prototype.calculate = function() {
 var setting = new Setting();
 
 // Add item selector right before target element (button)
+// TODO: Replace selectors with checkbox lists
 var addItemSelector = function(event, array) {
 
     // Parent container
@@ -283,6 +284,7 @@ var addItemSelector = function(event, array) {
     newItemSelector.className = "selector";  // for styling
 
     // Selector
+    // TODO: Add labels for selectors
     var selector = document.createElement("select");
     for (var i = 0; i < array.length; i++) {
         var option = document.createElement("option");

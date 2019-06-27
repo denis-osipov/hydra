@@ -4,23 +4,26 @@
   ========================================
 */
 body {
-    color: #295B70;
-    background-color: #fff;
-    background: linear-gradient(to right, #7aadbc, #fff 15%);
+  color: #295B70;
+  background-color: #fff;
+  background: linear-gradient(to right, #7aadbc, #fff 15%);
 }
+
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .container {
-    width: 940px;
-    margin: 20px auto;
-    background-color: #fff;
+  margin: 20px auto;
+  width: 940px;
+  background-color: #fff;
 }
+
 .text-content {
-    line-height: 1.5;
-    margin-bottom: 50px;
+  margin-bottom: 50px;
+  line-height: 1.5;
 }
 
 /*
@@ -29,29 +32,33 @@ body {
   ========================================
 */
 .header {
-    background-color: #2f7183;
-    color: #e0eef1;
-    padding: 20px;
-    border-radius: 10px;
+  padding: 20px;
+  background-color: #2f7183;
+  border-radius: 10px;
+  color: #e0eef1;
 }
+
 .links-list {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
+
 .link {
-    display: inline-block;
-    width: 140px;
-    background-color: #4a8798;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
+  display: inline-block;
+  padding: 10px;
+  width: 140px;
+  text-align: center;
+  background-color: #4a8798;
+  border-radius: 10px;
 }
+
 .link:hover {
-    background-color: #1b5d70;
+  background-color: #1b5d70;
 }
+
 .link a {
-    text-decoration: none;
-    color: #fff;
+  text-decoration: none;
+  color: #fff;
 }
 
 /*
@@ -60,10 +67,10 @@ body {
   ========================================
 */
 .logo {
-    float: left;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    width: 200px;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  width: 200px;
 }
 
 /*
@@ -72,66 +79,76 @@ body {
   ========================================
 */
 .app-frame {
-    background-color: #0a4859;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
+  display: flex;
+  padding: 10px;
+  background-color: #0a4859;
+  border-radius: 10px;
 }
+
 .app-subframe {
-    display: inline-block;
-    width: 50%;
+  display: inline-block;
+  width: 50%;
 }
+
 .output-frame {
-    color: #aee5f4;
-    padding: 10px;
-    position: relative;
+  position: relative;
+  padding: 10px;
+  color: #aee5f4;
 }
+
 #calculate {
-    position: absolute;
-    bottom: 0;
+  bottom: 0;
+  position: absolute;
 }
+
 .pond-frame {
-    position: relative;
-    height: 200px;
-    background-color: #7aadbc;
-    background: linear-gradient(to top left, #523928 45%, transparent 45%),
-                linear-gradient(#fff 10%,#396cf7 10%, #fff);
+  position: relative;
+  height: 200px;
+  background-color: #7aadbc;
+  background: linear-gradient(to top left, #523928 45%, transparent 45%),
+        linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
+
 .control-frame {
-    color: #aee5f4;
+  color: #aee5f4;
 }
+
 .selector {
-    display: inline-block;
+  display: inline-block;
 }
 
 
 /* Location elements */
 .location {
-    position: absolute;
-    border: 2px solid;
-    border-radius: 50%;
-    background-color: #fff;
-    padding: 10px;
-    transition: font-size 0.5s;
+  position: absolute;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid #7aadbc;
+  border-radius: 50%;
+  transition: 0.5s;
 }
 
 .location:hover,
 .location:focus {
-    font-size: 150%;
+  font-size: 150%;
 }
+
 #water-surface {
-    top: 7%;
-    left: 25%;
+  left: 25%;
+  top: 7%;
 }
+
 #water {
-    top: 33%;
-    left: 25%;
+  left: 25%;
+  top: 33%;
 }
+
 #sediment-surface {
-    top: 50%;
-    right: 35%;
+  right: 35%;
+  top: 50%;
 }
+
 #sediment {
-    bottom: 25%;
-    right: 20%;
+  bottom: 25%;
+  right: 20%;
 }
