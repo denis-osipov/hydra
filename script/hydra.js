@@ -278,7 +278,13 @@ var setting = new Setting();
 
 // Update list elements
 var organismsList = document.getElementById("organisms");
+organismsList.parentElement.addEventListener("click", function() {
+    showTable("organisms");
+});
 var isotopesList = document.getElementById("isotopes");
+isotopesList.parentElement.addEventListener("click", function() {
+    showTable("isotopes");
+})
 
 var updateList = function(source, target) {
     target.innerHTML = "";
