@@ -289,6 +289,15 @@ var updateList = function(source, target) {
     }
 };
 
+// Show table for inputs
+var showTable = function() {
+    var appFrame = document.getElementsByClassName("app-frame")[0];
+    var container = document.createElement("div");
+    container.className = "input-box";
+    container.textContent = "Table";
+    appFrame.appendChild(container);
+};
+
 
 // Add item selector right before target element (button)
 var addItemSelector = function(event, array) {
