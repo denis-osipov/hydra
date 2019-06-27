@@ -308,6 +308,12 @@ var showInput = function(type) {
     var table = generateTable(type);
     form.appendChild(table);
 
+    var confirmButton = document.createElement("button");
+    confirmButton.type = "button";
+    confirmButton.textContent = "OK";
+    confirmButton.addEventListener("click", getInput);
+    form.appendChild(confirmButton);
+
     var resetButton = document.createElement("input");
     resetButton.type = "reset";
     resetButton.value = "Reset";
