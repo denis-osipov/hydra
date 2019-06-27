@@ -303,6 +303,7 @@ var showInput = function(type) {
     appFrame.appendChild(container);
 
     var form = document.createElement("form");
+    form.name = type;
     container.appendChild(form);
 
     var table = generateTable(type);
@@ -319,6 +320,45 @@ var showInput = function(type) {
     resetButton.value = "Reset";
     form.appendChild(resetButton);
 };
+
+
+// Write user input into setting
+var getInput = function(event) {
+    var form = event.target.closest("form");
+    var inputs = form.querySelectorAll("table input");
+    if (form.name === "isotopes") {
+        var target = setting.activityConcentrations;
+        for (input of inputs) {
+            if (input.value) {
+                var names = input.name.replace(/_/, " ").split(".");
+                var isotope = names[0];
+                var object = names[1];
+                if (!target[isotope]) {
+                    target[isotope] = {};
+                }
+                target[isotope][object] = parseFloat(input.value);
+            }
+        }
+    }
+    else if (form.name === "organism") {
+        var target = setting.occupancyFactors;
+        for (input of inputs) {
+            var names = input.name.replace(/_/, " ").split(".");
+            var organism = names[0];
+            if (!target[organism]) {
+                target[organism] = [];
+            }
+            target[organism].push(parseFloat(input.value));
+        }
+
+        // TODO: Fill data if not all value were given
+        for (organism in target) {
+        }
+
+    }
+    event.target.closest("div").remove();
+};
+
 
 var generateTable = function(type) {
     var table = document.createElement("table");
@@ -363,8 +403,12 @@ var generateTable = function(type) {
             var cell = document.createElement("td");
             var value = document.createElement("input");
             value.type = "number";
-            value.name = row + "." + col.replace(/ /g, "_");
+            value.name = (row + "." + col).replace(/ /g, "_");
             value.min = "0";
+            if (type === "organisms") {
+                // TODO: Don't allow input more than 1 in total
+                value.max = "1";
+            }
             // allow decimals
             value.step = "0.001";
             if (setting.activityConcentrations[row]) {
