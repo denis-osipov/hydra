@@ -318,6 +318,19 @@ var generateTable = function(type) {
         cols = Object.keys(setting.habitats);
     }
 
+    // Generate header
+    var tableHeader = document.createElement("thead");
+    var headerRow = document.createElement("tr");
+    headerRow.appendChild(document.createElement("td"));
+    for (col of cols) {
+        var header = document.createElement("th");
+        header.textContent = col;
+        header.scope = "col";
+        headerRow.appendChild(header);
+    }
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+
     return table;
 };
 
