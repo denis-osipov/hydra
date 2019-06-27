@@ -296,8 +296,11 @@ var showTable = function() {
     container.className = "input-box";
     appFrame.appendChild(container);
 
+    var form = document.createElement("form");
+    container.appendChild(form);
+
     var table = generateTable("isotopes");
-    container.appendChild(table);
+    form.appendChild(table);
 };
 
 var generateTable = function(type) {
@@ -343,6 +346,7 @@ var generateTable = function(type) {
             var cell = document.createElement("td");
             var value = document.createElement("input");
             value.type = "number";
+            value.name = row + "." + col.replace(/ /g, "_");
             value.min = "0";
             // allow decimals
             value.step = "0.1";
