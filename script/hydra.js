@@ -294,21 +294,31 @@ var showTable = function() {
     var appFrame = document.getElementsByClassName("app-frame")[0];
     var container = document.createElement("div");
     container.className = "input-box";
-    container.textContent = "Table";
     appFrame.appendChild(container);
+
+    var table = generateTable("isotopes");
+    container.appendChild(table);
 };
 
 var generateTable = function(type) {
+    var table = document.createElement("table");
+    var caption = document.createElement("caption");
+    table.appendChild(caption);
     var rows;
     var cols;
+
     if (type === "isotopes") {
+        caption.textContent = "Enter activity concentrations, Bq/kg";
         rows = Array.from(setting.isotopes);
         cols = setting.media.concat(Array.from(setting.organisms));
     }
     else if (type === "organisms") {
+        caption.textContent = "Enter occupancy factors for organisms";
         rows = Array.from(setting.organisms);
         cols = Object.keys(setting.habitats);
     }
+
+    return table;
 };
 
 
