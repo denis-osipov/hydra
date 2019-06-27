@@ -1,15 +1,10 @@
 /*
 
-ERICA Assessment Tool data
+Parse ERICA Assessment Tool data
 
 */
 
-var db;
-var dcc = {};
-var organisms = [];
-var isotopes = [];
-
-var initSqlJs = window.initSqlJs;
+var erica = {};
 
 initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(SQL => {
 
@@ -19,29 +14,71 @@ initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(SQL =>
     request.responseType = "arraybuffer";
     request.onload = function() {
         var dataArray = new Uint8Array(this.response);
-        db = new SQL.Database(dataArray);
+        var db = new SQL.Database(dataArray);
 
         //Get organisms and isotopes
+        erica.organisms = [];
         db.each("SELECT name FROM organisms;", function(row) {
-            organisms.push(row.name);
-        })
+            erica.organisms.push(row.name);
+        });
 
+        erica.isotopes = [];
         db.each("SELECT name FROM isotopes;", function(row) {
-            isotopes.push(row.name);
-        })
+            erica.isotopes.push(row.name);
+        });
 
         // Get DCCs
+        erica.dcc = {};
         db.each("SELECT * FROM dcc;", function(row) {
-            if (!dcc[row.organism]) {
-                dcc[row.organism] = {};
+            if (!erica.dcc[row.isotope]) {
+                erica.dcc[row.isotope] = {};
             }
-            dcc[row.organism][row.isotope] = {
-                int_alpha: row.int_alpha,
-                int_beta_gamma: row.int_beta_gamma,
-                ext_low_beta: row.ext_low_beta,
-                ext_beta_gamma: row.ext_beta_gamma,
-                int_low_beta: row.int_low_beta
-            };
+            erica.dcc[row.isotope][row.organism] = [
+                row.int_alpha,
+                row.int_beta_gamma,
+                row.int_low_beta,
+                0, // external alpha not used by ERICA
+                row.ext_beta_gamma,
+                row.ext_low_beta
+            ];
+        });
+
+        // Get radioecology parameters, Kd and CR
+        erica.kd = {};
+        db.each("SELECT * FROM kd;", function(row) {
+            erica.kd[row.nuclide] = row.value;
+        });
+
+        erica.cr = {};
+        db.each("SELECT * FROM cr;", function(row) {
+            if (!erica.cr[row.nuclide]) {
+                erica.cr[row.nuclide] = {};
+            }
+            erica.cr[row.nuclide][row.organism] = row.value;
+        });
+
+        // Get occupancy factors
+        erica.occ = {};
+        db.each("SELECT * FROM occ;", function(row) {
+            if (!erica.occ[row.organism]) {
+                erica.occ[row.organism] = Array(4);
+            }
+            var index;
+            switch (row.habitat) {
+                case "Water-surface":
+                    index = 0;
+                    break;
+                case "Water":
+                    index = 1;
+                    break;
+                case "Sediment-surface":
+                    index = 2;
+                    break;
+                case "Sediment":
+                    index = 3;
+                    break;
+            }
+            erica.occ[row.organism][index] = row.value;
         });
     };
     request.send();

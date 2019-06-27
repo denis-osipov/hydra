@@ -7,73 +7,277 @@ ERICA version 1.3.1.33
 
 */
 
-
-// Global active item
-var activeItem;
-
-
-// Create constructors
-
-var Habitat = function(media) {
-    this.media = media;
-    this.inhabitants = {};
+// Setting
+var Setting = function() {
+    this.isotopes = new Set();
+    this.organisms = new Set();
+    this.distributionCoefficients = {};
+    this.concentrationRatios = {};
+    this.media = ["Water", "Sediment"];
+    this.habitats = {
+            "Water-surface": [0.5, 0.0],
+            "Water": [1.0, 0.0],
+            "Sediment-surface": [0.5, 0.5],
+            "Sediment": [0.0, 1.0]
+        };
+    this.occupancyFactors = {};
+    this.radiationWeightingFactors = [10.0, 1.0, 3.0];
+    this.activityConcentrations = {};
+    this.percentageDryWeight = 100;
+    this.doseConversionCoefficients = {};
 };
 
-Habitat.prototype.addData = function() {
-    if (activeItem instanceof Organism) {
-        this.inhabitants[activeItem.name] = activeItem.isotopes;
+// Add isotopes and organisms to setting
+Setting.prototype.addIsotope = function(isotope) {
+    this.isotopes.add(isotope);
+};
+
+Setting.prototype.addOrganism = function(organism) {
+    this.organisms.add(organism);
+};
+
+// Set radioecology parameters
+Setting.prototype.setDistributionCoefficients = function(nuclide, value) {
+    this.distributionCoefficients[nuclide] = value;
+};
+
+Setting.prototype.setConcentrationRatios = function(nuclide, organism, value) {
+    this.concentrationRatios[nuclide] = {};
+    this.concentrationRatios[nuclide][organism] = value;
+};
+
+/*
+Set occupancy factors
+values must be an array of 4 floats in [0, 1] in order:
+    - Water-surface
+    - Water
+    - Sediment-surface
+    - Sediment
+*/
+Setting.prototype.setOccupancyFactors = function(organism, values) {
+    this.occupancyFactors[organism] = values;
+};
+
+/*
+Set radiation weighting factors
+values must be an array of 3 floats in [0, +inf) in order:
+    - alpha
+    - beta/gamma
+    - low beta
+*/
+Setting.prototype.setRadiationWeightingFactors = function(values) {
+    this.radiationWeightingFactors = values;
+};
+
+// Set activity concentrations
+Setting.prototype.setActivityConcentrations = function(isotope, object, value) {
+    this.activityConcentrations[isotope] = {};
+    this.activityConcentrations[isotope][object] = value;
+};
+
+// Set percentage dry weight value for soil (value in [0, 100])
+Setting.prototype.setPercentageDryWeight = function(value) {
+    this.percentageDryWeight = value;
+};
+
+/*
+Set dose conversion coefficients
+values must be an array of 6 floats in [0, +inf) in order:
+    - internal alpha
+    - internal beta/gamma
+    - internal low beta
+    - external alpha
+    - external beta/gamma
+    - external low beta
+*/
+Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, values) {
+    this.doseConversionCoefficients[isotope] = {};
+    this.doseConversionCoefficients[isotope][organism] = values;
+}
+
+
+// Result
+var Result = function(setting) {
+    // Make deep clone of setting to not alter it during calculation
+    var deepClone = JSON.parse(JSON.stringify(setting, function(key, value) {
+        // Convert sets to arrays (JSON.stringify doesn't work with sets)
+        if (value instanceof Set) {
+            return Array.from(value);
+        }
+        return value;
+    }));
+    for (property in deepClone) {
+        this[property] = deepClone[property];
     }
-    else if (activeItem instanceof Isotope) {
-        for (var inhabitant in this.inhabitants) {
-            var input = prompt("Enter " + activeItem.name + " activity in " +
-                                inhabitant + 
-                                " or leave empty field to keep current value");
-            if (input !== null && input !== "") {
-                this.inhabitants[inhabitant][activeItem.name] = parseFloat(input);
+};
+
+// Fill missing data using ERICA's coefficients
+Result.prototype.fillGaps = function(setting) {
+    for (isotope of this.isotopes) {
+
+        // Stop if there is no data about some isotope
+        if (!this.activityConcentrations[isotope]) {
+            console.log(`Can't find any data for ${isotope}`);
+            continue;
+        }
+
+        // Fill Kd and activity concentrations for water and sediment
+        // Perform calculations using data only for water or sediment
+        var nuclide = isotope.split("-")[0];
+        if (!this.distributionCoefficients[nuclide]) {
+            this.distributionCoefficients[nuclide] = erica.kd[nuclide];
+        }
+        
+        var kd = this.distributionCoefficients[nuclide];
+        var activity = this.activityConcentrations[isotope];
+
+        if (!activity["Water"] && activity["Sediment"]) {
+            activity["Water"] = activity["Sediment"] / kd;
+        }
+
+        if (!activity["Sediment"] && activity["Water"]) {
+            activity["Sediment"] = activity["Water"] * kd;
+        }
+
+        // Fill CR, activity concentrations and DCC for organisms
+        if (!this.concentrationRatios[nuclide]) {
+            this.concentrationRatios[nuclide] = {};
+        }
+        var cr = this.concentrationRatios[nuclide];
+
+        if (!this.doseConversionCoefficients[isotope]) {
+            this.doseConversionCoefficients[isotope] = {};
+        }
+        var dcc = this.doseConversionCoefficients[isotope];
+
+        for (organism of this.organisms) {
+            if (!cr[organism]) {
+                cr[organism] = erica.cr[nuclide][organism];
+            }
+            if (!activity[organism] && activity["Water"]) {
+                activity[organism] = activity["Water"] * cr[organism];
+            }
+            if (!dcc[organism]) {
+                dcc[organism] = erica.dcc[isotope][organism];
             }
         }
-        for (var medium in this.media) {
-            var activity = parseFloat(prompt("Enter " + activeItem.name + " activity in " + medium));
-            media[medium][activeItem.name] = activity;
-            }
+
     }
 
-    // Reset
-    document.getElementById("input").style.cursor = "";
-    activeItem = null;
+    // Fill occupancy factors
+    for (organism of this.organisms) {
+        if (!this.occupancyFactors[organism]) {
+            this.occupancyFactors[organism] = erica.occ[organism];
+        }
+    }
+
 };
 
-var Organism = function(name) {
-    this.name = name;
-    this.isotopes = {};
-}
+// Get summary coefficients for calculations
+Result.prototype.getCoefficients = function() {
+    // Use aliases
+    var dcc = this.doseConversionCoefficients;
+    var wf = this.radiationWeightingFactors;
 
-var Isotope = function(name) {
-    this.name = name;
-}
-
-
-// Calculation function
-
-var calculate = function() {
-    var results = document.getElementById("results");
-    results.innerHTML += "<p>Calculation results</p>";
+    this.internalCoefficients = {};
+    this.externalCoefficients = {};
+    
+    for (isotope of this.isotopes) {
+        this.internalCoefficients[isotope] = {};
+        this.externalCoefficients[isotope] = {};
+        for (organism of this.organisms) {
+            coefs = [];
+            dcc[isotope][organism].forEach(function(value, index) {
+                coefs.push(value * wf[index % wf.length]);
+            });
+            this.internalCoefficients[isotope][organism] = coefs[0] + coefs[1] + coefs[2];
+            this.externalCoefficients[isotope][organism] = coefs[3] + coefs[4] + coefs[5];
+        }
+    }
 };
+
+// Calculate internal dose rates
+Result.prototype.getInternal = function() {
+    this.internalDoseRates = {};
+    for (isotope of this.isotopes) {
+        this.internalDoseRates[isotope] = {};
+        var activity = this.activityConcentrations[isotope];
+        var coef = this.internalCoefficients[isotope];
+        for (organism of this.organisms) {
+            this.internalDoseRates[isotope][organism] = activity[organism] * coef[organism];
+        }
+    }
+};
+
+// Calculate external dose rates from each media
+Result.prototype.getExternal = function() {
+    this.externalDoseRates = {};
+    for (isotope of this.isotopes) {
+        this.externalDoseRates[isotope] = {};
+        var activity = this.activityConcentrations[isotope];
+        var coef = this.externalCoefficients[isotope];
+        for (organism of this.organisms) {
+            this.externalDoseRates[isotope][organism] = [
+                activity["Water"] * coef[organism],
+                activity["Sediment"] * coef[organism]
+            ];
+        }
+    }
+
+    // Calculate external dose rates for habitats
+    this.habitatDoseRates = {};
+    for (habitat in this.habitats) {
+        var coef = this.habitats[habitat];
+        var temp = {};
+        for (isotope of this.isotopes) {
+            temp[isotope] = {};
+            for (organism of this.organisms) {
+                var ext = this.externalDoseRates[isotope][organism];
+                temp[isotope][organism] = ext[0] * coef[0] + ext[1] * coef[1];
+            }
+        }
+        this.habitatDoseRates[habitat] = temp;
+    }
+};
+
+// Calculate total dose rate using occupancy factors
+Result.prototype.getTotal = function() {
+    this.totalDoseRate = {};
+    var habitats = Object.keys(this.habitats);
+    for (isotope of this.isotopes) {
+        this.totalDoseRate[isotope] = {};
+        for (organism of this.organisms) {
+            var occupancy = this.occupancyFactors[organism];
+            var total = this.internalDoseRates[isotope][organism];
+            for (var i = 0; i < habitats.length; i++) {
+                total += this.habitatDoseRates[habitats[i]][isotope][organism] * occupancy[i];
+            }
+            this.totalDoseRate[isotope][organism] = total;
+        }
+    }
+};
+
+// Calculate dose rates
+Result.prototype.calculate = function() {
+    // Get missing data
+    this.fillGaps();
+
+    // Get summary coefficients
+    this.getCoefficients();
+
+    // Calculate internal and external dose rates
+    this.getInternal();
+    this.getExternal();
+    this.getTotal();
+};
+
+
+// Create new setting
+var setting = new Setting();
 
 // Add item selector right before target element (button)
 // TODO: Replace selectors with checkbox lists
-var addItemSelector = function(event, type) {
-
-    switch (type) {
-        case "organism":
-            var array = organismNames;
-            var constructor = Organism;
-            break;
-        case "isotope":
-            var array = isotopeNames;
-            var constructor = Isotope;
-            break;
-    }
+var addItemSelector = function(event, array) {
 
     // Parent container
     var newItemSelector = document.createElement("div");
@@ -94,9 +298,13 @@ var addItemSelector = function(event, type) {
     button.type = "button";
     button.textContent = "^";
     button.addEventListener("click", function(e) {
-        var itemName = e.target.previousSibling.value;
-        activeItem = new constructor(itemName);
-        document.getElementById("input").style.cursor = "cell";
+        var value = e.target.previousSibling.value;
+        if (event.target.id === "add-isotope") {
+            setting.addIsotope(value);
+        }
+        else {
+            setting.addOrganism(value);
+        }
     });
     newItemSelector.appendChild(button);
 
@@ -107,42 +315,15 @@ var addItemSelector = function(event, type) {
 // organisms fieldset
 var addOrganismButton = document.getElementById("add-organism");
 addOrganismButton.addEventListener("click", function(e){
-    addItemSelector(e, "organism")
+    addItemSelector(e, erica.organisms)
 });
 
 // isotopes fieldset
 var addIsotopeButton = document.getElementById("add-isotope");
 addIsotopeButton.addEventListener("click", function(e){
-    addItemSelector(e, "isotope")
+    addItemSelector(e, erica.isotopes)
 });
 
-
-// Media
-var media = {
-    water: {},
-    sediment: {}
-};
-
-// Habitats
-var waterSurface = new Habitat({water: 0.5});
-var water = new Habitat({water: 1.0});
-var sedimentSurface = new Habitat({water: 0.5, sediment: 0.5});
-var sediment = new Habitat({sediment: 0.5});
-
-var habitats = {
-    "water-surface": waterSurface,
-    "water": water,
-    "sediment-surface": sedimentSurface,
-    "sediment": sediment
-};
-
-var locations = document.getElementsByClassName("location");
-
-for (var i = 0; i < locations.length; i++) {
-    locations[i].addEventListener("click", function(e) {
-        habitats[e.target.id].addData();
-    });
-}
-
-var calcButton = document.getElementById("calculate");
-calcButton.addEventListener("click", calculate);
+// Calculate button
+var calculateButton = document.getElementById("calculate");
+calculateButton.addEventListener("click", setting.calculate);

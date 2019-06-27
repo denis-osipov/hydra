@@ -1,0 +1,53 @@
+habitat TEXT;organism TEXT;value REAL
+Water-surface;Phytoplankton;0
+Water;Phytoplankton;1
+Sediment-surface;Phytoplankton;0
+Sediment;Phytoplankton;0
+Water-surface;Vascular plant;0
+Water;Vascular plant;0
+Sediment-surface;Vascular plant;1
+Sediment;Vascular plant;0
+Water-surface;Zooplankton;0
+Water;Zooplankton;1
+Sediment-surface;Zooplankton;0
+Sediment;Zooplankton;0
+Water-surface;Insect larvae;0
+Water;Insect larvae;0
+Sediment-surface;Insect larvae;0
+Sediment;Insect larvae;1
+Water-surface;Mollusc - bivalve;0
+Water;Mollusc - bivalve;0
+Sediment-surface;Mollusc - bivalve;1
+Sediment;Mollusc - bivalve;0
+Water-surface;Mollusc - gastropod;0
+Water;Mollusc - gastropod;0
+Sediment-surface;Mollusc - gastropod;1
+Sediment;Mollusc - gastropod;0
+Water-surface;Crustacean;0
+Water;Crustacean;0
+Sediment-surface;Crustacean;1
+Sediment;Crustacean;0
+Water-surface;Benthic fish;0
+Water;Benthic fish;0
+Sediment-surface;Benthic fish;1
+Sediment;Benthic fish;0
+Water-surface;Pelagic fish;0
+Water;Pelagic fish;1
+Sediment-surface;Pelagic fish;0
+Sediment;Pelagic fish;0
+Water-surface;Bird;0
+Water;Bird;1
+Sediment-surface;Bird;0
+Sediment;Bird;0
+Water-surface;Mammal;0
+Water;Mammal;1
+Sediment-surface;Mammal;0
+Sediment;Mammal;0
+Water-surface;Amphibian;0
+Water;Amphibian;1
+Sediment-surface;Amphibian;0
+Sediment;Amphibian;0
+Water-surface;Reptile;0
+Water;Reptile;0.5
+Sediment-surface;Reptile;0
+Sediment;Reptile;0.5
