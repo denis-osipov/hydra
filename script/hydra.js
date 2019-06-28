@@ -20,8 +20,6 @@ var Setting = function() {
             "Sediment-surface": [0.5, 0.5],
             "Sediment": [0.0, 1.0]
         };
-    // TODO: make occupancyFactors be object of objects
-    // to unify table generations and getting input from user
     this.occupancyFactors = {};
     this.radiationWeightingFactors = [10.0, 1.0, 3.0];
     this.activityConcentrations = {};
@@ -50,11 +48,8 @@ Setting.prototype.setConcentrationRatios = function(nuclide, organism, value) {
 
 /*
 Set occupancy factors
-values must be an array of 4 floats in [0, 1] in order:
-    - Water-surface
-    - Water
-    - Sediment-surface
-    - Sediment
+values must be an object with 4 habitats as keys and floats in [0, 1] as values.
+Habitats: Water-surface, Water, Sediment-surface, Sediment
 */
 Setting.prototype.setOccupancyFactors = function(organism, values) {
     this.occupancyFactors[organism] = values;
@@ -326,46 +321,41 @@ var showInput = function(type) {
 
 // Write user input into setting
 var getInput = function(event) {
+
+    // Initial set up
     var form = event.target.closest("form");
     var inputs = form.querySelectorAll("table input");
+    var target;
     if (form.name === "isotopes") {
         var target = setting.activityConcentrations;
-        for (input of inputs) {
-            if (input.value) {
-                var names = input.name.replace(/_/, " ").split(".");
-                var isotope = names[0];
-                var object = names[1];
-                if (!target[isotope]) {
-                    target[isotope] = {};
-                }
-                target[isotope][object] = parseFloat(input.value);
-            }
-        }
     }
     else if (form.name === "organisms") {
         var target = setting.occupancyFactors;
-        for (input of inputs) {
-            var names = input.name.replace(/_/, " ").split(".");
-            var organism = names[0];
-            if (target[organism] === undefined ||
-                target[organism].length === Object.keys(setting.habitats).length) {
-                target[organism] = [];
-            }
-            target[organism].push(parseFloat(input.value));
-        }
-
-        // Fill data if not all value were given
-        for (organism in target) {
-            if (!target[organism].every(isNaN)) {
-                target[organism].forEach(function(value, index, array) {
-                    if (isNaN(value)) {
-                        array[index] = 0;
-                    }
-                });
-            }
-        }
-
     }
+
+    // Fill setting with values
+    for (input of inputs) {
+        var names = input.name.replace(/_/, " ").split(".");
+        if (!target[names[0]]) {
+            target[names[0]] = {};
+        }
+        target[names[0]][names[1]] = parseFloat(input.value);
+    }
+
+    // Handle empty values
+    for (object in target) {
+        if (Object.values(target[object]).every(isNaN)) {
+            delete target[object];
+        }
+        else if (form.name === "organisms") {
+            for (property in target[object]) {
+                if (isNaN(target[object][property])) {
+                    target[object][property] = 0;
+                }
+            }
+        }
+    }
+
     event.target.closest("div").remove();
 };
 
@@ -376,16 +366,19 @@ var generateTable = function(type) {
     table.appendChild(caption);
     var rows;
     var cols;
+    var source;
 
     if (type === "isotopes") {
         caption.textContent = "Enter activity concentrations, Bq/kg";
         rows = Array.from(setting.isotopes);
         cols = setting.media.concat(Array.from(setting.organisms));
+        source = setting.activityConcentrations;
     }
     else if (type === "organisms") {
         caption.textContent = "Enter occupancy factors for organisms";
         rows = Array.from(setting.organisms);
         cols = Object.keys(setting.habitats);
+        source = setting.occupancyFactors;
     }
 
     // Generate header
@@ -422,16 +415,8 @@ var generateTable = function(type) {
             // allow decimals
             value.step = "0.001";
 
-            // TODO: change when reimplement occupancyFactors
-            if (type === "isotopes") {
-                if (setting.activityConcentrations[row]) {
-                    value.defaultValue = setting.activityConcentrations[row][col];
-                }
-            }
-            else if (type === "organisms") {
-                if (setting.occupancyFactors[row]) {
-                    value.defaultValue = setting.occupancyFactors[row].shift();
-                }
+            if (source[row]) {
+                value.defaultValue = source[row][col];
             }
 
             cell.appendChild(value);
