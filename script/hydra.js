@@ -345,14 +345,21 @@ var getInput = function(event) {
         for (input of inputs) {
             var names = input.name.replace(/_/, " ").split(".");
             var organism = names[0];
-            if (!target[organism]) {
+            if (target[organism] === undefined) {
                 target[organism] = [];
             }
             target[organism].push(parseFloat(input.value));
         }
 
-        // TODO: Fill data if not all value were given
+        // Fill data if not all value were given
         for (organism in target) {
+            if (!target[organism].every(isNaN)) {
+                target[organism].forEach(function(value) {
+                    if (isNaN(value)) {
+                        value = 0;
+                    }
+                });
+            }
         }
 
     }
