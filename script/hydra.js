@@ -340,7 +340,7 @@ var getInput = function(event) {
             }
         }
     }
-    else if (form.name === "organism") {
+    else if (form.name === "organisms") {
         var target = setting.occupancyFactors;
         for (input of inputs) {
             var names = input.name.replace(/_/, " ").split(".");
