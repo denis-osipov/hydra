@@ -41,18 +41,23 @@ Setting.prototype.setDistributionCoefficients = function(nuclide, value) {
     this.distributionCoefficients[nuclide] = value;
 };
 
-Setting.prototype.setConcentrationRatios = function(nuclide, organism, value) {
-    this.concentrationRatios[nuclide] = {};
-    this.concentrationRatios[nuclide][organism] = value;
+Setting.prototype.setConcentrationRatios = function(nuclide, object, value) {
+    if (!this.concentrationRatios[nuclide]) {
+        this.concentrationRatios[nuclide] = {};
+    }
+    this.concentrationRatios[nuclide][object] = value;
 };
 
 /*
 Set occupancy factors
-values must be an object with 4 habitats as keys and floats in [0, 1] as values.
+value must be a float in [0, 1].
 Habitats: Water-surface, Water, Sediment-surface, Sediment
 */
-Setting.prototype.setOccupancyFactors = function(organism, values) {
-    this.occupancyFactors[organism] = values;
+Setting.prototype.setOccupancyFactors = function(organism, habitat, value) {
+    if (!this.occupancyFactors[organism]) {
+        this.occupancyFactors[organism] = {};
+    }
+    this.occupancyFactors[organism][habitat] = value;
 };
 
 /*
@@ -68,7 +73,9 @@ Setting.prototype.setRadiationWeightingFactors = function(values) {
 
 // Set activity concentrations
 Setting.prototype.setActivityConcentrations = function(isotope, object, value) {
-    this.activityConcentrations[isotope] = {};
+    if (!this.activityConcentrations[isotope]) {
+        this.activityConcentrations[isotope] = {};
+    }
     this.activityConcentrations[isotope][object] = value;
 };
 
@@ -88,7 +95,9 @@ values must be an array of 6 floats in [0, +inf) in order:
     - external low beta
 */
 Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, values) {
-    this.doseConversionCoefficients[isotope] = {};
+    if (!this.doseConversionCoefficients[isotope]) {
+        this.doseConversionCoefficients[isotope] = {};
+    }
     this.doseConversionCoefficients[isotope][organism] = values;
 }
 
@@ -113,7 +122,10 @@ Result.prototype.fillGaps = function(setting) {
     for (isotope of this.isotopes) {
 
         // Stop if there is no data about some isotope
-        if (!this.activityConcentrations[isotope]) {
+        if (!this.activityConcentrations[isotope] ||
+            Object.values(this.activityConcentrations[isotope]).every(function(value) {
+                return isNaN(value) || value === null;
+            })) {
             console.log(`Can't find any data for ${isotope}`);
             continue;
         }
@@ -163,8 +175,18 @@ Result.prototype.fillGaps = function(setting) {
 
     // Fill occupancy factors
     for (organism of this.organisms) {
-        if (!this.occupancyFactors[organism]) {
-            this.occupancyFactors[organism] = erica.occ[organism];
+        var factors = this.occupancyFactors[organism];
+        if (Object.values(factors).every(function(value) {
+            return isNaN(value) || value === null;
+        })) {
+            factors = erica.occ[organism];
+        }
+        else {
+            for (habitat in factors) {
+                if (isNaN(factors[habitat]) || factors[habitat] === null) {
+                    factors[habitat] = 0;
+                }
+            }
         }
     }
 
@@ -325,35 +347,18 @@ var getInput = function(event) {
     // Initial set up
     var form = event.target.closest("form");
     var inputs = form.querySelectorAll("table input");
-    var target;
+    var setter;
     if (form.name === "isotopes") {
-        var target = setting.activityConcentrations;
+        setter = setting.setActivityConcentrations.bind(setting);
     }
     else if (form.name === "organisms") {
-        var target = setting.occupancyFactors;
+        setter = setting.setOccupancyFactors.bind(setting);
     }
 
     // Fill setting with values
     for (input of inputs) {
         var names = input.name.replace(/_/, " ").split(".");
-        if (!target[names[0]]) {
-            target[names[0]] = {};
-        }
-        target[names[0]][names[1]] = parseFloat(input.value);
-    }
-
-    // Handle empty values
-    for (object in target) {
-        if (Object.values(target[object]).every(isNaN)) {
-            delete target[object];
-        }
-        else if (form.name === "organisms") {
-            for (property in target[object]) {
-                if (isNaN(target[object][property])) {
-                    target[object][property] = 0;
-                }
-            }
-        }
+        setter(names[0], names[1], parseFloat(input.value));
     }
 
     event.target.closest("div").remove();
