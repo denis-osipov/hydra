@@ -20,6 +20,8 @@ var Setting = function() {
             "Sediment-surface": [0.5, 0.5],
             "Sediment": [0.0, 1.0]
         };
+    // TODO: make occupancyFactors be object of objects
+    // to unify table generations and getting input from user
     this.occupancyFactors = {};
     this.radiationWeightingFactors = [10.0, 1.0, 3.0];
     this.activityConcentrations = {};
@@ -419,9 +421,19 @@ var generateTable = function(type) {
             }
             // allow decimals
             value.step = "0.001";
-            if (setting.activityConcentrations[row]) {
-                value.defaultValue = setting.activityConcentrations[row][col];
+
+            // TODO: change when reimplement occupancyFactors
+            if (type === "isotopes") {
+                if (setting.activityConcentrations[row]) {
+                    value.defaultValue = setting.activityConcentrations[row][col];
+                }
             }
+            else if (type === "organisms") {
+                if (setting.occupancyFactors[row]) {
+                    value.defaultValue = setting.occupancyFactors[row].shift();
+                }
+            }
+
             cell.appendChild(value);
             bodyRow.append(cell);
         }
