@@ -79,7 +79,12 @@ Setting.prototype.setOccupancyFactor = function(organism, habitat, value) {
 };
 
 Setting.prototype.getOccupancyFactor = function(organism, habitat) {
-    return this.occupancyFactors[organism][habitat];
+    if (habitat) {
+        return this.occupancyFactors[organism][habitat];
+    }
+    else {
+        return this.occupancyFactors[organism];
+    }
 };
 
 /*
@@ -106,7 +111,12 @@ Setting.prototype.setActivityConcentration = function(isotope, object, value) {
 };
 
 Setting.prototype.getActivityConcentration = function(isotope, object) {
-    return this.activityConcentrations[isotope][object];
+    if (object) {
+        return this.activityConcentrations[isotope][object];
+    }
+    else {
+        return this.activityConcentrations[isotope];
+    }
 };
 
 // Set and get percentage dry weight value for soil (value in [0, 100])
@@ -409,19 +419,19 @@ var generateTable = function(type) {
     table.appendChild(caption);
     var rows;
     var cols;
-    var source;
+    var getter;
 
     if (type === "isotopes") {
         caption.textContent = "Enter activity concentrations, Bq/kg";
         rows = Array.from(setting.isotopes);
         cols = setting.media.concat(Array.from(setting.organisms));
-        source = setting.activityConcentrations;
+        getter = setting.getActivityConcentration.bind(setting);
     }
     else if (type === "organisms") {
         caption.textContent = "Enter occupancy factors for organisms";
         rows = Array.from(setting.organisms);
         cols = Object.keys(setting.habitats);
-        source = setting.occupancyFactors;
+        getter = setting.getOccupancyFactor.bind(setting);
     }
 
     // Generate header
@@ -458,8 +468,8 @@ var generateTable = function(type) {
             // allow decimals
             value.step = "0.001";
 
-            if (source[row]) {
-                value.defaultValue = source[row][col];
+            if (getter(row)) {
+                value.defaultValue = getter(row, col);
             }
 
             cell.appendChild(value);
@@ -497,11 +507,11 @@ var addItemSelector = function(event, array) {
         var value = e.target.previousSibling.value;
         if (event.target.id === "add-isotope") {
             setting.addIsotope(value);
-            updateList(setting.isotopes, isotopes);
+            updateList(setting.getIsotopes(), isotopes);
         }
         else {
             setting.addOrganism(value);
-            updateList(setting.organisms, organisms);
+            updateList(setting.getOrganisms(), organisms);
         }
     });
     newItemSelector.appendChild(button);
