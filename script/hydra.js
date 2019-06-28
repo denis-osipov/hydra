@@ -345,7 +345,8 @@ var getInput = function(event) {
         for (input of inputs) {
             var names = input.name.replace(/_/, " ").split(".");
             var organism = names[0];
-            if (target[organism] === undefined) {
+            if (target[organism] === undefined ||
+                target[organism].length === Object.keys(setting.habitats).length) {
                 target[organism] = [];
             }
             target[organism].push(parseFloat(input.value));
