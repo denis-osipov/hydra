@@ -423,13 +423,13 @@ var generateTable = function(type) {
 
     if (type === "isotopes") {
         caption.textContent = "Enter activity concentrations, Bq/kg";
-        rows = Array.from(setting.isotopes);
-        cols = setting.media.concat(Array.from(setting.organisms));
+        rows = setting.getIsotopes();
+        cols = setting.media.concat(setting.getOrganisms());
         getter = setting.getActivityConcentration.bind(setting);
     }
     else if (type === "organisms") {
         caption.textContent = "Enter occupancy factors for organisms";
-        rows = Array.from(setting.organisms);
+        rows = setting.getOrganisms();
         cols = Object.keys(setting.habitats);
         getter = setting.getOccupancyFactor.bind(setting);
     }
