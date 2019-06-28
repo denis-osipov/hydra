@@ -387,10 +387,10 @@ var getInput = function(event) {
     var inputs = form.querySelectorAll("table input");
     var setter;
     if (form.name === "isotopes") {
-        setter = setting.setActivityConcentrations.bind(setting);
+        setter = setting.setActivityConcentration.bind(setting);
     }
     else if (form.name === "organisms") {
-        setter = setting.setOccupancyFactors.bind(setting);
+        setter = setting.setOccupancyFactor.bind(setting);
     }
 
     // Fill setting with values
