@@ -27,41 +27,63 @@ var Setting = function() {
     this.doseConversionCoefficients = {};
 };
 
-// Add isotopes and organisms to setting
+// Isotopes adder and getter
 Setting.prototype.addIsotope = function(isotope) {
     this.isotopes.add(isotope);
 };
 
+// Get isotopes as array
+Setting.prototype.getIsotopes = function() {
+    return Array.from(this.isotopes);
+};
+
+// Organisms adder and getter
 Setting.prototype.addOrganism = function(organism) {
     this.organisms.add(organism);
 };
 
-// Set radioecology parameters
-Setting.prototype.setDistributionCoefficients = function(nuclide, value) {
+Setting.prototype.getOrganisms = function() {
+    return Array.from(this.organisms);
+};
+
+// Set and get radioecology parameters
+Setting.prototype.setDistributionCoefficient = function(nuclide, value) {
     this.distributionCoefficients[nuclide] = value;
 };
 
-Setting.prototype.setConcentrationRatios = function(nuclide, object, value) {
+Setting.prototype.getDistributionCoefficient = function(nuclide) {
+    return this.distributionCoefficients[nuclide];
+};
+
+Setting.prototype.setConcentrationRatio = function(nuclide, object, value) {
     if (!this.concentrationRatios[nuclide]) {
         this.concentrationRatios[nuclide] = {};
     }
     this.concentrationRatios[nuclide][object] = value;
 };
 
+Setting.prototype.getConcentrationRatio = function(nuclide, object) {
+    return this.concentrationRatios[nuclide][object];
+};
+
 /*
-Set occupancy factors
+Set and get occupancy factors
 value must be a float in [0, 1].
 Habitats: Water-surface, Water, Sediment-surface, Sediment
 */
-Setting.prototype.setOccupancyFactors = function(organism, habitat, value) {
+Setting.prototype.setOccupancyFactor = function(organism, habitat, value) {
     if (!this.occupancyFactors[organism]) {
         this.occupancyFactors[organism] = {};
     }
     this.occupancyFactors[organism][habitat] = value;
 };
 
+Setting.prototype.getOccupancyFactor = function(organism, habitat) {
+    return this.occupancyFactors[organism][habitat];
+};
+
 /*
-Set radiation weighting factors
+Set and get radiation weighting factors
 values must be an array of 3 floats in [0, +inf) in order:
     - alpha
     - beta/gamma
@@ -71,21 +93,33 @@ Setting.prototype.setRadiationWeightingFactors = function(values) {
     this.radiationWeightingFactors = values;
 };
 
-// Set activity concentrations
-Setting.prototype.setActivityConcentrations = function(isotope, object, value) {
+Setting.prototype.getRadiationWeightingFactors = function() {
+    return this.radiationWeightingFactors;
+};
+
+// Set and get activity concentrations
+Setting.prototype.setActivityConcentration = function(isotope, object, value) {
     if (!this.activityConcentrations[isotope]) {
         this.activityConcentrations[isotope] = {};
     }
     this.activityConcentrations[isotope][object] = value;
 };
 
-// Set percentage dry weight value for soil (value in [0, 100])
+Setting.prototype.getActivityConcentration = function(isotope, object) {
+    return this.activityConcentrations[isotope][object];
+};
+
+// Set and get percentage dry weight value for soil (value in [0, 100])
 Setting.prototype.setPercentageDryWeight = function(value) {
     this.percentageDryWeight = value;
 };
 
+Setting.prototype.getPercentageDryWeight = function() {
+    return this.percentageDryWeight;
+};
+
 /*
-Set dose conversion coefficients
+Set and get dose conversion coefficients
 values must be an array of 6 floats in [0, +inf) in order:
     - internal alpha
     - internal beta/gamma
@@ -100,6 +134,10 @@ Setting.prototype.setDoseConversionCoefficients = function(isotope, organism, va
     }
     this.doseConversionCoefficients[isotope][organism] = values;
 }
+
+Setting.prototype.getDoseConversionCoefficients = function(isotope, organism) {
+    return this.doseConversionCoefficients[isotope][organism];
+};
 
 
 // Result
