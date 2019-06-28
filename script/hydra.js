@@ -355,9 +355,9 @@ var getInput = function(event) {
         // Fill data if not all value were given
         for (organism in target) {
             if (!target[organism].every(isNaN)) {
-                target[organism].forEach(function(value) {
+                target[organism].forEach(function(value, index, array) {
                     if (isNaN(value)) {
-                        value = 0;
+                        array[index] = 0;
                     }
                 });
             }
