@@ -37,6 +37,15 @@ Setting.prototype.getIsotopes = function() {
     return Array.from(this.isotopes);
 };
 
+// Get nuclides list
+Setting.prototype.getNuclides = function() {
+    var nuclides = this.getIsotopes();
+    nuclides.forEach(function(value, index, array) {
+        array[index] = value.split("-")[0];
+    });
+    return nuclides;
+};
+
 // Organisms adder and getter
 Setting.prototype.addOrganism = function(organism) {
     this.organisms.add(organism);
@@ -459,19 +468,13 @@ var generateTable = function(type) {
             break;
         case "CRs":
             caption.textContent = "Enter concentration ratios";
-            rows = setting.getIsotopes();
-            rows.forEach(function(value, index, array) {
-                array[index] = value.split("-")[0];
-            });
+            rows = setting.getNuclides();
             cols = setting.getOrganisms();
             getter = setting.getConcentrationRatio.bind(setting);
             break;
         case "Kds":
             caption.textContent = "Enter distribution coefficients";
-            rows = setting.getIsotopes();
-            rows.forEach(function(value, index, array) {
-                array[index] = value.split("-")[0];
-            });
+            rows = setting.getNuclides();
             cols = ["Sediment to water activity concentration ratio"];
             getter = setting.getDistributionCoefficient.bind(setting);
             break;
