@@ -63,7 +63,12 @@ Setting.prototype.setConcentrationRatio = function(nuclide, object, value) {
 };
 
 Setting.prototype.getConcentrationRatio = function(nuclide, object) {
-    return this.concentrationRatios[nuclide][object];
+    if (object) {
+        return this.concentrationRatios[nuclide][object];
+    }
+    else {
+        return this.concentrationRatios[nuclide];
+    }
 };
 
 /*
@@ -352,6 +357,10 @@ var isotopesList = document.getElementById("isotopes");
 isotopesList.parentElement.addEventListener("click", function() {
     showInput("isotopes");
 })
+var concentrationRatios = document.getElementById("c-ratios");
+concentrationRatios.addEventListener("click", function() {
+    showInput("CRs");
+});
 
 var updateList = function(source, target) {
     target.innerHTML = "";
@@ -402,6 +411,9 @@ var getInput = function(event) {
     else if (form.name === "organisms") {
         setter = setting.setOccupancyFactor.bind(setting);
     }
+    else if (form.name === "CRs") {
+        setter = setting.setConcentrationRatio.bind(setting);
+    }
 
     // Fill setting with values
     for (input of inputs) {
@@ -432,6 +444,12 @@ var generateTable = function(type) {
         rows = setting.getOrganisms();
         cols = Object.keys(setting.habitats);
         getter = setting.getOccupancyFactor.bind(setting);
+    }
+    else if (type === "CRs") {
+        caption.textContent = "Enter concentration ratios";
+        rows = setting.getIsotopes();
+        cols = setting.getOrganisms();
+        getter = setting.getConcentrationRatio.bind(setting);
     }
 
     // Generate header
