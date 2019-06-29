@@ -149,6 +149,12 @@ body {
   border-radius: 50%;
 }
 
+.top-right-box {
+  right: 30%;
+  top: 10px;
+  border-radius: 50%;
+}
+
 .input-box {
     position: absolute;
     bottom: 5%;
