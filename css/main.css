@@ -106,22 +106,20 @@ body {
 }
 
 
-/* List of organisms and isotopes */
+/* List of parameters */
 .box {
     position: absolute;
-    top: 10px;
-    bottom: 10px;
     border: 2px solid;
     border-radius: 10px;
     background-color: #fff;
     padding: 10px;
-    transition: 0.5s;
+    transition: 0.25s;
     cursor: pointer;
 }
 
 .box:hover,
 .box:focus {
-    font-size: 150%;
+    font-size: 110%;
 }
 
 .box-header {
@@ -134,11 +132,21 @@ body {
 }
 
 .left-box {
+  bottom: 10px;
   left: 10px;
+  top: 10px;
 }
 
 .right-box {
+  bottom: 10px;
   right: 10px;
+  top: 10px;
+}
+
+.top-left-box {
+  left: 30%;
+  top: 10px;
+  border-radius: 50%;
 }
 
 .input-box {
