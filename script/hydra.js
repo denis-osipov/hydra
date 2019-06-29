@@ -135,7 +135,8 @@ Setting.prototype.getActivityConcentration = function(isotope, object) {
 };
 
 // Set and get percentage dry weight value for soil (value in [0, 100])
-Setting.prototype.setPercentageDryWeight = function(value) {
+// texts added for uniformity with other setters
+Setting.prototype.setPercentageDryWeight = function(text1, text2, value) {
     this.percentageDryWeight = value;
 };
 
@@ -375,6 +376,10 @@ var distributionCoefficients = document.getElementById("k-ratios");
 distributionCoefficients.addEventListener("click", function() {
     showInput("Kds");
 });
+var percentageDryWeight = document.getElementById("dry-weight");
+percentageDryWeight.addEventListener("click", function() {
+    showInput("dry");
+});
 
 var updateList = function(source, target) {
     target.innerHTML = "";
@@ -433,6 +438,8 @@ var getInput = function(event) {
         case "Kds":
             setter = setting.setDistributionCoefficient.bind(setting);
             break;
+        case "dry":
+            setter = setting.setPercentageDryWeight.bind(setting);
     }
 
     // Fill setting with values
@@ -478,6 +485,12 @@ var generateTable = function(type) {
             cols = ["Sediment to water activity concentration ratio"];
             getter = setting.getDistributionCoefficient.bind(setting);
             break;
+        case "dry":
+            caption.textContent = "Enter percentage dry weight for sediment";
+            rows = ["%"];
+            cols = ["Sediment to water activity concentration ratio"];
+            getter = setting.getPercentageDryWeight.bind(setting);
+            break;
     }
 
     // Generate header
@@ -513,6 +526,12 @@ var generateTable = function(type) {
             }
             // allow decimals
             value.step = "0.001";
+
+            // Customization for dry weight
+            if (type === "dry") {
+                value.max = "100";
+                value.step = "0.1";
+            }
 
             if (getter(row)) {
                 value.defaultValue = getter(row, col);
