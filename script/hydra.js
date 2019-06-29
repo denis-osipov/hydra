@@ -47,11 +47,12 @@ Setting.prototype.getOrganisms = function() {
 };
 
 // Set and get radioecology parameters
-Setting.prototype.setDistributionCoefficient = function(nuclide, value) {
+// text added for uniformity with other getters/setters
+Setting.prototype.setDistributionCoefficient = function(nuclide, text, value) {
     this.distributionCoefficients[nuclide] = value;
 };
 
-Setting.prototype.getDistributionCoefficient = function(nuclide) {
+Setting.prototype.getDistributionCoefficient = function(nuclide, text) {
     return this.distributionCoefficients[nuclide];
 };
 
@@ -356,10 +357,14 @@ organismsList.parentElement.addEventListener("click", function() {
 var isotopesList = document.getElementById("isotopes");
 isotopesList.parentElement.addEventListener("click", function() {
     showInput("isotopes");
-})
+});
 var concentrationRatios = document.getElementById("c-ratios");
 concentrationRatios.addEventListener("click", function() {
     showInput("CRs");
+});
+var distributionCoefficients = document.getElementById("k-ratios");
+distributionCoefficients.addEventListener("click", function() {
+    showInput("Kds");
 });
 
 var updateList = function(source, target) {
@@ -405,14 +410,20 @@ var getInput = function(event) {
     var form = event.target.closest("form");
     var inputs = form.querySelectorAll("table input");
     var setter;
-    if (form.name === "isotopes") {
-        setter = setting.setActivityConcentration.bind(setting);
-    }
-    else if (form.name === "organisms") {
-        setter = setting.setOccupancyFactor.bind(setting);
-    }
-    else if (form.name === "CRs") {
-        setter = setting.setConcentrationRatio.bind(setting);
+
+    switch (form.name) {
+        case "isotopes":
+            setter = setting.setActivityConcentration.bind(setting);
+            break;
+        case "organisms":
+            setter = setting.setOccupancyFactor.bind(setting);
+            break;
+        case "CRs":
+            setter = setting.setConcentrationRatio.bind(setting);
+            break;
+        case "Kds":
+            setter = setting.setDistributionCoefficient.bind(setting);
+            break;
     }
 
     // Fill setting with values
@@ -433,23 +444,37 @@ var generateTable = function(type) {
     var cols;
     var getter;
 
-    if (type === "isotopes") {
-        caption.textContent = "Enter activity concentrations, Bq/kg";
-        rows = setting.getIsotopes();
-        cols = setting.media.concat(setting.getOrganisms());
-        getter = setting.getActivityConcentration.bind(setting);
-    }
-    else if (type === "organisms") {
-        caption.textContent = "Enter occupancy factors for organisms";
-        rows = setting.getOrganisms();
-        cols = Object.keys(setting.habitats);
-        getter = setting.getOccupancyFactor.bind(setting);
-    }
-    else if (type === "CRs") {
-        caption.textContent = "Enter concentration ratios";
-        rows = setting.getIsotopes();
-        cols = setting.getOrganisms();
-        getter = setting.getConcentrationRatio.bind(setting);
+    switch (type) {
+        case "isotopes":
+            caption.textContent = "Enter activity concentrations, Bq/kg";
+            rows = setting.getIsotopes();
+            cols = setting.media.concat(setting.getOrganisms());
+            getter = setting.getActivityConcentration.bind(setting);
+            break;
+        case "organisms":
+            caption.textContent = "Enter occupancy factors for organisms";
+            rows = setting.getOrganisms();
+            cols = Object.keys(setting.habitats);
+            getter = setting.getOccupancyFactor.bind(setting);
+            break;
+        case "CRs":
+            caption.textContent = "Enter concentration ratios";
+            rows = setting.getIsotopes();
+            rows.forEach(function(value, index, array) {
+                array[index] = value.split("-")[0];
+            });
+            cols = setting.getOrganisms();
+            getter = setting.getConcentrationRatio.bind(setting);
+            break;
+        case "Kds":
+            caption.textContent = "Enter distribution coefficients";
+            rows = setting.getIsotopes();
+            rows.forEach(function(value, index, array) {
+                array[index] = value.split("-")[0];
+            });
+            cols = ["Sediment to water activity concentration ratio"];
+            getter = setting.getDistributionCoefficient.bind(setting);
+            break;
     }
 
     // Generate header
