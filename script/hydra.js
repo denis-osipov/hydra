@@ -325,17 +325,17 @@ Result.prototype.getExternal = function() {
 
 // Calculate total dose rate using occupancy factors
 Result.prototype.getTotal = function() {
-    this.totalDoseRate = {};
+    this.totalDoseRates = {};
     var habitats = Object.keys(this.habitats);
     for (isotope in this.activityConcentrations) {
-        this.totalDoseRate[isotope] = {};
+        this.totalDoseRates[isotope] = {};
         for (organism of this.organisms) {
             var occupancy = this.occupancyFactors[organism];
             var total = this.internalDoseRates[isotope][organism];
             for (habitat of habitats) {
                 total += this.habitatDoseRates[habitat][isotope][organism] * occupancy[habitat];
             }
-            this.totalDoseRate[isotope][organism] = total;
+            this.totalDoseRates[isotope][organism] = total;
         }
     }
 };
