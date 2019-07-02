@@ -240,10 +240,10 @@ Result.prototype.fillGaps = function(setting) {
     // Fill occupancy factors
     for (organism of this.organisms) {
         var factors = this.occupancyFactors[organism];
-        if (Object.values(factors).every(function(value) {
+        if (!factors || Object.values(factors).every(function(value) {
             return isNaN(value) || value === null;
         })) {
-            factors = erica.occ[organism];
+            this.occupancyFactors[organism] = erica.occ[organism];
         }
         else {
             for (habitat in factors) {
