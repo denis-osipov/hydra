@@ -357,6 +357,7 @@ Result.prototype.calculate = function() {
 
 // Create new setting
 var setting = new Setting();
+var result;
 
 
 // Update list elements
@@ -602,4 +603,7 @@ addIsotopeButton.addEventListener("click", function(e){
 
 // Calculate button
 var calculateButton = document.getElementById("calculate");
-calculateButton.addEventListener("click", setting.calculate);
+calculateButton.addEventListener("click", function() {
+    result = new Result(setting);
+    result.calculate();
+});
