@@ -183,6 +183,7 @@ body {
   top: 5%;
   background-color: silver;
   border-radius: 10px;
+  overflow: auto;
 }
 
 .output-table {
