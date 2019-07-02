@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing of Hydra</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <!-- App frame -->
+    <div class="app-frame"><!--
+
+      Input
+
+      --><div class="app-subframe input-frame" id="input"><!--
+
+        Pond
+
+        --><div class="input-sub-frame pond-frame" id="pond">
+          <div class="box left-box">
+            <h3 class="box-header">Organisms</h3>
+            <ul class="box-list" id="organisms"></ul>
+          </div>
+          <div class="box right-box">
+            <h3 class="box-header">Isotopes</h3>
+            <ul class="box-list" id="isotopes"></ul>
+          </div>
+          <div class="box top-left-box" id="c-ratios">
+            <h3 class="box-header">CR</h3>
+          </div>
+          <div class="box top-right-box" id="k-ratios">
+            <h3 class="box-header">Kd</h3>
+          </div>
+          <div class="box bottom-right-box" id="dry-weight">
+            <h3 class="box-header">Sediment</h3>
+          </div>
+        </div><!--
+
+        Controls
+
+        --><div class="input-sub-frame control-frame" id="control">
+
+          <form>
+
+            <fieldset class="control-field">
+              <legend>Organisms</legend>
+              <button class="button" id="add-organism" type="button">+</button>
+            </fieldset>
+
+            <fieldset class="control-field">
+              <legend>Isotopes</legend>
+              <button class="button" id="add-isotope" type="button">+</button>
+            </fieldset>
+
+          </form>
+
+        </div>
+      </div><!--
+
+      Output
+
+      --><div class="app-subframe output-frame">
+        <h3 class="box-header">Results</h3>
+        <div class="output-table" id="results"></div>
+        <button class="button" id="calculate" type="button">Calculate</button>
+      </div>
+    </div>
+
+    <p>Pick .csv file with ERICA's results for all organisms and all isotopes with activity concentration in water 1 Bq per kg for each. Then push "Compare" button.</p>
+
+    <form>
+      <label>ERICA's results <input type="file"></label>
+      <button type="button">Compare</button>
+    </form>
+
+    <script src="script/sql.js/sql-wasm.js"></script>
+    <script src="script/erica/erica.js"></script>
+    <script src="script/hydra.js"></script>
+    <script src="script/test.js"></script>
+
+  </body>
+</html>
