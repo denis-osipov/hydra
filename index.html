@@ -43,10 +43,18 @@
 
         <h3 class="content-header">How to use Hydra</h3>
         <ol class="how-to">
-          <li>Add organisms to corresponding habitats.</li>
-          <li>Add isotopes and their specific activities. Hydra will calculate missing values using ERICA's coefficients.</li>
+          <li>Add organisms and isotopes to setup.</li>
+          <li>Enter parameters:
+            <ul>
+              <li>Specific activities of isotopes - Isotopes block. For each isotope at least activity concentration either in water or in sediment is needed. Hydra will calculate other values using ERICA's coefficients.</li>
+              <li>Organisms occupancy factors - Organisms block.</li>
+              <li>Concentration ratios - CR block.</li>
+              <li>Distribution coefficients - Kd block.</li>
+              <li>Percentage dry weight for sediment - Sediment block.</li>
+            </ul>
+            <p>For missing data Hydra will use ERICA's database values.</p>
           <li>Push Calculate button.</li>
-          <li>Get results under app frame.</li>
+          <li>Get results at right side. Total dose rate for each organism and each isotope will be shown.</li>
         </ol>
 
       </section>

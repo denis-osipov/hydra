@@ -594,7 +594,7 @@ var addItemSelector = function(event, array) {
     // Item button
     var button = document.createElement("button");
     button.type = "button";
-    button.textContent = "^";
+    button.textContent = "Add";
     button.addEventListener("click", function(e) {
         var value = e.target.previousSibling.value;
         if (event.target.id === "add-isotope") {
