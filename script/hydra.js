@@ -265,7 +265,7 @@ Result.prototype.getCoefficients = function() {
     this.internalCoefficients = {};
     this.externalCoefficients = {};
     
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.internalCoefficients[isotope] = {};
         this.externalCoefficients[isotope] = {};
         for (organism of this.organisms) {
@@ -312,7 +312,7 @@ Result.prototype.getExternal = function() {
     for (habitat in this.habitats) {
         var coef = this.habitats[habitat];
         var temp = {};
-        for (isotope of this.isotopes) {
+        for (isotope in this.activityConcentrations) {
             temp[isotope] = {};
             for (organism of this.organisms) {
                 var ext = this.externalDoseRates[isotope][organism];
@@ -325,17 +325,17 @@ Result.prototype.getExternal = function() {
 
 // Calculate total dose rate using occupancy factors
 Result.prototype.getTotal = function() {
-    this.totalDoseRate = {};
+    this.totalDoseRates = {};
     var habitats = Object.keys(this.habitats);
     for (isotope in this.activityConcentrations) {
-        this.totalDoseRate[isotope] = {};
+        this.totalDoseRates[isotope] = {};
         for (organism of this.organisms) {
             var occupancy = this.occupancyFactors[organism];
             var total = this.internalDoseRates[isotope][organism];
             for (habitat of habitats) {
                 total += this.habitatDoseRates[habitat][isotope][organism] * occupancy[habitat];
             }
-            this.totalDoseRate[isotope][organism] = total;
+            this.totalDoseRates[isotope][organism] = total;
         }
     }
 };
@@ -352,12 +352,25 @@ Result.prototype.calculate = function() {
     this.getInternal();
     this.getExternal();
     this.getTotal();
+    var table = generateTable("output");
+    if (output.hasChildNodes()) {
+        output.removeChild(output.children[0]);
+    }
+    output.appendChild(table);
+};
+
+Result.prototype.getTotalDoseRate = function(isotope, organism) {
+    if (!this.totalDoseRates[isotope]) {
+        return undefined;
+    }
+    return this.totalDoseRates[isotope][organism];
 };
 
 
 // Create new setting
 var setting = new Setting();
 var result;
+var output = document.getElementById("results");
 
 
 // Update list elements
@@ -492,6 +505,11 @@ var generateTable = function(type) {
             cols = ["Sediment to water activity concentration ratio"];
             getter = setting.getPercentageDryWeight.bind(setting);
             break;
+        case "output":
+            caption.textContent = "Total dose rates, \u03bcGy h\u207b\u00b9";
+            rows = setting.getIsotopes();
+            cols = setting.getOrganisms();
+            getter = result.getTotalDoseRate.bind(result);
     }
 
     // Generate header
@@ -517,28 +535,34 @@ var generateTable = function(type) {
         bodyRow.appendChild(header);
         for (col of cols) {
             var cell = document.createElement("td");
-            var value = document.createElement("input");
-            value.type = "number";
-            value.name = (row + "." + col).replace(/ /g, "_");
-            value.min = "0";
-            if (type === "organisms") {
-                // TODO: Don't allow input more than 1 in total
-                value.max = "1";
+            if (type === "output") {
+                var value = getter(row, col);
+                cell.textContent = value ? value.toExponential(2) : "No data";
             }
-            // allow decimals
-            value.step = "0.001";
+            else {
+                var value = document.createElement("input");
+                value.type = "number";
+                value.name = (row + "." + col).replace(/ /g, "_");
+                value.min = "0";
+                if (type === "organisms") {
+                    // TODO: Don't allow input more than 1 in total
+                    value.max = "1";
+                }
+                // allow decimals
+                value.step = "0.001";
 
-            // Customization for dry weight
-            if (type === "dry") {
-                value.max = "100";
-                value.step = "0.1";
+                // Customization for dry weight
+                if (type === "dry") {
+                    value.max = "100";
+                    value.step = "0.1";
+                }
+
+                if (getter(row)) {
+                    value.defaultValue = getter(row, col);
+                }
+
+                cell.appendChild(value);
             }
-
-            if (getter(row)) {
-                value.defaultValue = getter(row, col);
-            }
-
-            cell.appendChild(value);
             bodyRow.append(cell);
         }
         tableBody.appendChild(bodyRow);
