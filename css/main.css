@@ -175,11 +175,11 @@ body {
 }
 
 .input-box {
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
-    right: 5%;
-    top: 5%;
-    background-color: silver;
-    border-radius: 10px;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  top: 5%;
+  background-color: silver;
+  border-radius: 10px;
 }
