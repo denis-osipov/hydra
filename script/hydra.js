@@ -282,7 +282,7 @@ Result.prototype.getCoefficients = function() {
 // Calculate internal dose rates
 Result.prototype.getInternal = function() {
     this.internalDoseRates = {};
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.internalDoseRates[isotope] = {};
         var activity = this.activityConcentrations[isotope];
         var coef = this.internalCoefficients[isotope];
@@ -295,7 +295,7 @@ Result.prototype.getInternal = function() {
 // Calculate external dose rates from each media
 Result.prototype.getExternal = function() {
     this.externalDoseRates = {};
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.externalDoseRates[isotope] = {};
         var activity = this.activityConcentrations[isotope];
         var coef = this.externalCoefficients[isotope];
@@ -327,7 +327,7 @@ Result.prototype.getExternal = function() {
 Result.prototype.getTotal = function() {
     this.totalDoseRate = {};
     var habitats = Object.keys(this.habitats);
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.totalDoseRate[isotope] = {};
         for (organism of this.organisms) {
             var occupancy = this.occupancyFactors[organism];
