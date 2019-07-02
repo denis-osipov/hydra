@@ -506,7 +506,7 @@ var generateTable = function(type) {
             getter = setting.getPercentageDryWeight.bind(setting);
             break;
         case "output":
-            caption.textContent = "Total dose rates, mcGy/h";
+            caption.textContent = "Total dose rates, \u03bcGy h\u207b\u00b9";
             rows = setting.getIsotopes();
             cols = setting.getOrganisms();
             getter = result.getTotalDoseRate.bind(result);
