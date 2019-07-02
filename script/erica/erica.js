@@ -61,24 +61,9 @@ initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(SQL =>
         erica.occ = {};
         db.each("SELECT * FROM occ;", function(row) {
             if (!erica.occ[row.organism]) {
-                erica.occ[row.organism] = Array(4);
+                erica.occ[row.organism] = {};
             }
-            var index;
-            switch (row.habitat) {
-                case "Water-surface":
-                    index = 0;
-                    break;
-                case "Water":
-                    index = 1;
-                    break;
-                case "Sediment-surface":
-                    index = 2;
-                    break;
-                case "Sediment":
-                    index = 3;
-                    break;
-            }
-            erica.occ[row.organism][index] = row.value;
+            erica.occ[row.organism][row.habitat] = row.value;
         });
     };
     request.send();
