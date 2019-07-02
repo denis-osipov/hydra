@@ -184,3 +184,8 @@ body {
   background-color: silver;
   border-radius: 10px;
 }
+
+.output-table {
+  overflow: auto;
+  margin-bottom: 20px;
+}
