@@ -312,9 +312,9 @@ Result.prototype.getExternal = function() {
     for (habitat in this.habitats) {
         var coef = this.habitats[habitat];
         var temp = {};
-        for (isotope of this.isotopes) {
+        for (isotope in this.activityConcentrations) {
             temp[isotope] = {};
-            for (organism in this.activityConcentrations) {
+            for (organism of this.organisms) {
                 var ext = this.externalDoseRates[isotope][organism];
                 temp[isotope][organism] = ext[0] * coef[0] + ext[1] * coef[1];
             }
