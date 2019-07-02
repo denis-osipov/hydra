@@ -352,12 +352,14 @@ Result.prototype.calculate = function() {
     this.getInternal();
     this.getExternal();
     this.getTotal();
+    output.textContent = JSON.stringify(this.totalDoseRates);
 };
 
 
 // Create new setting
 var setting = new Setting();
 var result;
+var output = document.getElementById("results");
 
 
 // Update list elements
