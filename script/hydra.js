@@ -302,7 +302,7 @@ Result.prototype.getExternal = function() {
         for (organism of this.organisms) {
             this.externalDoseRates[isotope][organism] = [
                 activity["Water"] * coef[organism],
-                activity["Sediment"] * coef[organism]
+                activity["Sediment"] * this.percentageDryWeight / 100 * coef[organism]
             ];
         }
     }
