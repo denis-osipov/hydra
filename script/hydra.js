@@ -332,8 +332,8 @@ Result.prototype.getTotal = function() {
         for (organism of this.organisms) {
             var occupancy = this.occupancyFactors[organism];
             var total = this.internalDoseRates[isotope][organism];
-            for (var i = 0; i < habitats.length; i++) {
-                total += this.habitatDoseRates[habitats[i]][isotope][organism] * occupancy[i];
+            for (habitat of habitats) {
+                total += this.habitatDoseRates[habitat][isotope][organism] * occupancy[habitat];
             }
             this.totalDoseRate[isotope][organism] = total;
         }
