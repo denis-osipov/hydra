@@ -265,7 +265,7 @@ Result.prototype.getCoefficients = function() {
     this.internalCoefficients = {};
     this.externalCoefficients = {};
     
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.internalCoefficients[isotope] = {};
         this.externalCoefficients[isotope] = {};
         for (organism of this.organisms) {
@@ -314,7 +314,7 @@ Result.prototype.getExternal = function() {
         var temp = {};
         for (isotope of this.isotopes) {
             temp[isotope] = {};
-            for (organism of this.organisms) {
+            for (organism in this.activityConcentrations) {
                 var ext = this.externalDoseRates[isotope][organism];
                 temp[isotope][organism] = ext[0] * coef[0] + ext[1] * coef[1];
             }
