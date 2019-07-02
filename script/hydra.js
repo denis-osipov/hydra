@@ -352,7 +352,18 @@ Result.prototype.calculate = function() {
     this.getInternal();
     this.getExternal();
     this.getTotal();
-    output.textContent = JSON.stringify(this.totalDoseRates);
+    var table = generateTable("output");
+    if (output.hasChildNodes()) {
+        output.removeChild(output.children[0]);
+    }
+    output.appendChild(table);
+};
+
+Result.prototype.getTotalDoseRate = function(isotope, organism) {
+    if (!this.totalDoseRates[isotope]) {
+        return undefined;
+    }
+    return this.totalDoseRates[isotope][organism];
 };
 
 
@@ -494,6 +505,11 @@ var generateTable = function(type) {
             cols = ["Sediment to water activity concentration ratio"];
             getter = setting.getPercentageDryWeight.bind(setting);
             break;
+        case "output":
+            caption.textContent = "Total dose rates, mcGy/h";
+            rows = setting.getIsotopes();
+            cols = setting.getOrganisms();
+            getter = result.getTotalDoseRate.bind(result);
     }
 
     // Generate header
@@ -519,28 +535,34 @@ var generateTable = function(type) {
         bodyRow.appendChild(header);
         for (col of cols) {
             var cell = document.createElement("td");
-            var value = document.createElement("input");
-            value.type = "number";
-            value.name = (row + "." + col).replace(/ /g, "_");
-            value.min = "0";
-            if (type === "organisms") {
-                // TODO: Don't allow input more than 1 in total
-                value.max = "1";
+            if (type === "output") {
+                var value = getter(row, col);
+                cell.textContent = value ? value.toExponential(2) : "No data";
             }
-            // allow decimals
-            value.step = "0.001";
+            else {
+                var value = document.createElement("input");
+                value.type = "number";
+                value.name = (row + "." + col).replace(/ /g, "_");
+                value.min = "0";
+                if (type === "organisms") {
+                    // TODO: Don't allow input more than 1 in total
+                    value.max = "1";
+                }
+                // allow decimals
+                value.step = "0.001";
 
-            // Customization for dry weight
-            if (type === "dry") {
-                value.max = "100";
-                value.step = "0.1";
+                // Customization for dry weight
+                if (type === "dry") {
+                    value.max = "100";
+                    value.step = "0.1";
+                }
+
+                if (getter(row)) {
+                    value.defaultValue = getter(row, col);
+                }
+
+                cell.appendChild(value);
             }
-
-            if (getter(row)) {
-                value.defaultValue = getter(row, col);
-            }
-
-            cell.appendChild(value);
             bodyRow.append(cell);
         }
         tableBody.appendChild(bodyRow);
