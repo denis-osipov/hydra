@@ -240,10 +240,10 @@ Result.prototype.fillGaps = function(setting) {
     // Fill occupancy factors
     for (organism of this.organisms) {
         var factors = this.occupancyFactors[organism];
-        if (Object.values(factors).every(function(value) {
+        if (!factors || Object.values(factors).every(function(value) {
             return isNaN(value) || value === null;
         })) {
-            factors = erica.occ[organism];
+            this.occupancyFactors[organism] = erica.occ[organism];
         }
         else {
             for (habitat in factors) {
@@ -282,7 +282,7 @@ Result.prototype.getCoefficients = function() {
 // Calculate internal dose rates
 Result.prototype.getInternal = function() {
     this.internalDoseRates = {};
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.internalDoseRates[isotope] = {};
         var activity = this.activityConcentrations[isotope];
         var coef = this.internalCoefficients[isotope];
@@ -295,14 +295,14 @@ Result.prototype.getInternal = function() {
 // Calculate external dose rates from each media
 Result.prototype.getExternal = function() {
     this.externalDoseRates = {};
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.externalDoseRates[isotope] = {};
         var activity = this.activityConcentrations[isotope];
         var coef = this.externalCoefficients[isotope];
         for (organism of this.organisms) {
             this.externalDoseRates[isotope][organism] = [
                 activity["Water"] * coef[organism],
-                activity["Sediment"] * coef[organism]
+                activity["Sediment"] * this.percentageDryWeight / 100 * coef[organism]
             ];
         }
     }
@@ -327,13 +327,13 @@ Result.prototype.getExternal = function() {
 Result.prototype.getTotal = function() {
     this.totalDoseRate = {};
     var habitats = Object.keys(this.habitats);
-    for (isotope of this.isotopes) {
+    for (isotope in this.activityConcentrations) {
         this.totalDoseRate[isotope] = {};
         for (organism of this.organisms) {
             var occupancy = this.occupancyFactors[organism];
             var total = this.internalDoseRates[isotope][organism];
-            for (var i = 0; i < habitats.length; i++) {
-                total += this.habitatDoseRates[habitats[i]][isotope][organism] * occupancy[i];
+            for (habitat of habitats) {
+                total += this.habitatDoseRates[habitat][isotope][organism] * occupancy[habitat];
             }
             this.totalDoseRate[isotope][organism] = total;
         }
@@ -357,6 +357,7 @@ Result.prototype.calculate = function() {
 
 // Create new setting
 var setting = new Setting();
+var result;
 
 
 // Update list elements
@@ -602,4 +603,7 @@ addIsotopeButton.addEventListener("click", function(e){
 
 // Calculate button
 var calculateButton = document.getElementById("calculate");
-calculateButton.addEventListener("click", setting.calculate);
+calculateButton.addEventListener("click", function() {
+    result = new Result(setting);
+    result.calculate();
+});
