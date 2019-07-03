@@ -20,6 +20,8 @@ var readTable = function() {
         var data = lines.slice(1);
         for (row of data) {
             var cells = row.split(";");
+
+            // Isotopes are in first column
             var isotope = cells[0];
             standardResults[isotope] = {};
             for (var i = 0; i < organisms.length; i++) {
