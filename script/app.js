@@ -23,7 +23,7 @@ var showInput = function(appFrame, type, setting) {
     form.name = type;
     container.appendChild(form);
 
-    var table = generateTable(type);
+    var table = generateTable(type, setting);
     form.appendChild(table);
 
     var confirmButton = document.createElement("button");
@@ -52,7 +52,7 @@ var getInput = function(source, setting) {
     var inputs = source.querySelectorAll("table input");
     var setter;
 
-    switch (form.name) {
+    switch (source.name) {
         case "isotopes":
             setter = setting.setActivityConcentration.bind(setting);
             break;

@@ -181,6 +181,15 @@ var Result = function(setting) {
     }
 };
 
+// Get isotopes and organisms list
+Result.prototype.getIsotopes = function() {
+    return this.isotopes;
+};
+
+Result.prototype.getOrganisms = function() {
+    return this.organisms;
+};
+
 // Fill missing data using ERICA's coefficients
 Result.prototype.fillGaps = function(setting) {
     for (isotope of this.isotopes) {
@@ -352,7 +361,7 @@ Result.prototype.calculate = function() {
     this.getInternal();
     this.getExternal();
     this.getTotal();
-    var table = generateTable("output");
+    var table = generateTable("output", this);
     if (output.hasChildNodes()) {
         output.removeChild(output.children[0]);
     }
