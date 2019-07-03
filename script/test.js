@@ -59,11 +59,11 @@ var compare = function() {
             /* Hydra's results are slightly different compare ERICA's sandart values.
             It can be result of floating point ariphmetic errors in Hydra.
             Check that results don't differ too much.
-            Difference not more than 0.1% of ERICA's value seems good enough.*/
+            Difference not more than 0.05% of ERICA's value seems good enough.*/
             var standard = standardResults[isotope][organism];
             var checking = hydraResults[isotope][organism];
             var diff = Math.abs(standard - checking);
-            if (diff >= standard * 0.001) {
+            if (diff >= standard * 0.0005) {
                 console.log(`${isotope}:${organism}:`);
                 console.log(`standard = ${standard}, hydra: ${checking}`);
             }
