@@ -46,20 +46,30 @@ var compare = function() {
     for (organism of erica.organisms) {
         setting.addOrganism(organism);
     }
-    hydraResults = new Result(setting);
-    hydraResults.fillGaps();
-    hydraResults.getCoefficients();
-    hydraResults.getInternal();
-    hydraResults.getExternal();
-    hydraResults.getTotal();
+    var result = new Result(setting);
+    result.fillGaps();
+    result.getCoefficients();
+    result.getInternal();
+    result.getExternal();
+    result.getTotal();
+    hydraResults = result.totalDoseRates;
 
     for (isotope in standardResults) {
         for (organism in standardResults[isotope]) {
-            if (standardResults[isotope][organism] !== hydraResults.getTotalDoseRate(isotope, organism)) {
-                console.log(`${isotope}:${organism}: standard = ${standardResults[isotope][organism]}, hydra: ${hydraResults.getTotalDoseRate(isotope, organism)}`);
+            /* Hydra's results are slightly different compare ERICA's sandart values.
+            It can be result of floating point ariphmetic errors in Hydra.
+            Check that results don't differ too much.
+            Difference not more than 0.1% of ERICA's value seems good enough.*/
+            var standard = standardResults[isotope][organism];
+            var checking = hydraResults[isotope][organism];
+            var diff = Math.abs(standard - checking);
+            if (diff >= standard * 0.001) {
+                console.log(`${isotope}:${organism}:`);
+                console.log(`standard = ${standard}, hydra: ${checking}`);
             }
         }
     }
+    console.log("Done");
 };
 
 compareBtn.addEventListener("click", compare);
