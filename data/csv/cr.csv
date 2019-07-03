@@ -1,508 +1,508 @@
 nuclide TEXT;organism TEXT;value REAL
-Ag;Amphibian;1.5E+03
-Ag;Benthic fish;4.1E+02
-Ag;Bird;1.5E+03
-Ag;Mollusc - bivalve;2.1E+04
-Ag;Crustacean;2.1E+04
-Ag;Mollusc - gastropod;2.1E+04
-Ag;Insect larvae;2.1E+04
-Ag;Mammal;1.5E+03
-Ag;Pelagic fish;4.1E+02
-Ag;Phytoplankton;6.7E+02
-Ag;Vascular plant;6.7E+02
-Ag;Zooplankton;2.1E+04
-Ag;Reptile;1.5E+03
-Am;Amphibian;3.2E+03
-Am;Benthic fish;7.6E+02
-Am;Bird;3.2E+03
-Am;Mollusc - bivalve;1.0E+04
-Am;Crustacean;1.0E+04
-Am;Mollusc - gastropod;1.0E+04
-Am;Insect larvae;1.8E+03
-Am;Mammal;3.2E+03
-Am;Pelagic fish;7.6E+02
-Am;Phytoplankton;1.3E+03
-Am;Vascular plant;1.3E+03
-Am;Zooplankton;1.8E+03
-Am;Reptile;3.2E+03
-Ba;Amphibian;1.7E+02
-Ba;Benthic fish;1.7E+02
-Ba;Bird;3.4E+03
-Ba;Mollusc - bivalve;1.2E+03
-Ba;Crustacean;1.2E+03
-Ba;Mollusc - gastropod;1.2E+03
-Ba;Insect larvae;1.2E+03
-Ba;Mammal;1.7E+02
-Ba;Pelagic fish;1.7E+02
-Ba;Phytoplankton;5.0E+01
-Ba;Vascular plant;4.5E+02
-Ba;Zooplankton;1.2E+03
-Ba;Reptile;1.4E+02
-C;Amphibian;1.8E+05
-C;Benthic fish;1.8E+05
-C;Bird;1.8E+05
-C;Mollusc - bivalve;1.8E+05
-C;Crustacean;1.8E+05
-C;Mollusc - gastropod;1.8E+05
-C;Insect larvae;1.8E+05
-C;Mammal;1.8E+05
-C;Pelagic fish;1.8E+05
-C;Phytoplankton;4.0E+03
-C;Vascular plant;8.8E+03
-C;Zooplankton;1.8E+05
-C;Reptile;1.8E+05
-Ca;Amphibian;1.2E+03
-Ca;Benthic fish;1.4E+03
-Ca;Bird;5.5E+02
-Ca;Mollusc - bivalve;7.4E+02
-Ca;Crustacean;6.6E+02
-Ca;Mollusc - gastropod;7.4E+02
-Ca;Insect larvae;4.3E+01
-Ca;Mammal;3.9E+02
-Ca;Pelagic fish;1.4E+03
-Ca;Phytoplankton;2.4E+02
-Ca;Vascular plant;2.5E+02
-Ca;Zooplankton;4.3E+01
-Ca;Reptile;5.0E+02
-Cd;Amphibian;1.7E+03
-Cd;Benthic fish;2.1E+03
-Cd;Bird;2.4E+02
-Cd;Mollusc - bivalve;1.7E+05
-Cd;Crustacean;2.8E+04
-Cd;Mollusc - gastropod;1.7E+05
-Cd;Insect larvae;1.7E+05
-Cd;Mammal;1.7E+03
-Cd;Pelagic fish;2.1E+03
-Cd;Phytoplankton;1.8E+03
-Cd;Vascular plant;3.6E+03
-Cd;Zooplankton;1.7E+05
-Cd;Reptile;1.7E+03
-Ce;Amphibian;1.7E+02
-Ce;Benthic fish;1.7E+02
-Ce;Bird;4.4E+03
-Ce;Mollusc - bivalve;1.0E+03
-Ce;Crustacean;1.0E+03
-Ce;Mollusc - gastropod;1.0E+03
-Ce;Insect larvae;1.0E+03
-Ce;Mammal;1.7E+02
-Ce;Pelagic fish;1.7E+02
-Ce;Phytoplankton;8.8E+03
-Ce;Vascular plant;8.8E+02
-Ce;Zooplankton;1.0E+03
-Ce;Reptile;6.3E+02
-Cf;Amphibian;3.2E+03
-Cf;Benthic fish;8.3E+02
-Cf;Bird;3.2E+03
-Cf;Mollusc - bivalve;1.0E+04
-Cf;Crustacean;6.0E+02
-Cf;Mollusc - gastropod;1.0E+04
-Cf;Insect larvae;2.5E+03
-Cf;Mammal;3.2E+03
-Cf;Pelagic fish;8.3E+02
-Cf;Phytoplankton;5.9E+03
-Cf;Vascular plant;1.3E+03
-Cf;Zooplankton;5.4E+02
-Cf;Reptile;3.2E+03
-Cl;Amphibian;1.2E+03
-Cl;Benthic fish;1.2E+03
-Cl;Bird;1.2E+03
-Cl;Mollusc - bivalve;1.2E+03
-Cl;Crustacean;1.2E+03
-Cl;Mollusc - gastropod;1.2E+03
-Cl;Insect larvae;1.2E+03
-Cl;Mammal;1.2E+03
-Cl;Pelagic fish;1.2E+03
-Cl;Phytoplankton;2.6E+02
-Cl;Vascular plant;2.6E+02
-Cl;Zooplankton;1.2E+03
-Cl;Reptile;1.2E+03
-Cm;Amphibian;7.7E+01
-Cm;Benthic fish;8.3E+02
-Cm;Bird;7.7E+01
-Cm;Mollusc - bivalve;1.7E+01
-Cm;Crustacean;2.5E+02
-Cm;Mollusc - gastropod;1.7E+01
-Cm;Insect larvae;2.5E+02
-Cm;Mammal;7.7E+01
-Cm;Pelagic fish;8.3E+02
-Cm;Phytoplankton;5.9E+03
-Cm;Vascular plant;2.3E+00
-Cm;Zooplankton;2.5E+02
-Cm;Reptile;7.7E+01
-Co;Amphibian;2.3E+02
-Co;Benthic fish;2.3E+02
-Co;Bird;7.0E+02
-Co;Mollusc - bivalve;1.1E+03
-Co;Crustacean;1.9E+03
-Co;Mollusc - gastropod;1.1E+03
-Co;Insect larvae;1.9E+03
-Co;Mammal;2.3E+02
-Co;Pelagic fish;2.3E+02
-Co;Phytoplankton;6.5E+02
-Co;Vascular plant;9.3E+02
-Co;Zooplankton;1.9E+03
-Co;Reptile;1.2E+01
-Cr;Amphibian;6.5E+01
-Cr;Benthic fish;2.0E+02
-Cr;Bird;1.9E+01
-Cr;Mollusc - bivalve;1.3E+03
-Cr;Crustacean;1.3E+03
-Cr;Mollusc - gastropod;1.3E+03
-Cr;Insect larvae;1.3E+03
-Cr;Mammal;1.3E+03
-Cr;Pelagic fish;2.0E+02
-Cr;Phytoplankton;3.7E+02
-Cr;Vascular plant;3.7E+02
-Cr;Zooplankton;1.3E+03
-Cr;Reptile;1.3E+03
-Cs;Amphibian;4.0E+03
-Cs;Benthic fish;3.4E+03
-Cs;Bird;2.3E+03
-Cs;Mollusc - bivalve;1.3E+02
-Cs;Crustacean;1.8E+03
-Cs;Mollusc - gastropod;1.3E+02
-Cs;Insect larvae;2.0E+03
-Cs;Mammal;2.3E+03
-Cs;Pelagic fish;3.4E+03
-Cs;Phytoplankton;1.4E+02
-Cs;Vascular plant;3.6E+02
-Cs;Zooplankton;9.0E+01
-Cs;Reptile;4.0E+03
-Eu;Amphibian;5.7E+03
-Eu;Benthic fish;6.6E+01
-Eu;Bird;5.7E+03
-Eu;Mollusc - bivalve;1.5E+03
-Eu;Crustacean;1.5E+03
-Eu;Mollusc - gastropod;1.5E+03
-Eu;Insect larvae;1.5E+03
-Eu;Mammal;5.7E+03
-Eu;Pelagic fish;6.6E+01
-Eu;Phytoplankton;2.3E+02
-Eu;Vascular plant;2.3E+02
-Eu;Zooplankton;1.5E+03
-Eu;Reptile;5.7E+03
-H;Amphibian;1.0E+00
-H;Benthic fish;1.0E+00
-H;Bird;1.0E+00
-H;Mollusc - bivalve;1.0E+00
-H;Crustacean;1.0E+00
-H;Mollusc - gastropod;1.0E+00
-H;Insect larvae;1.0E+00
-H;Mammal;1.0E+00
-H;Pelagic fish;1.0E+00
-H;Phytoplankton;1.0E+00
-H;Vascular plant;1.0E+00
-H;Zooplankton;1.0E+00
-H;Reptile;1.0E+00
-I;Amphibian;3.2E+02
-I;Benthic fish;3.2E+02
-I;Bird;3.9E+01
-I;Mollusc - bivalve;8.3E+01
-I;Crustacean;8.3E+01
-I;Mollusc - gastropod;8.3E+01
-I;Insect larvae;8.3E+01
-I;Mammal;3.2E+02
-I;Pelagic fish;3.2E+02
-I;Phytoplankton;5.4E+01
-I;Vascular plant;5.4E+01
-I;Zooplankton;8.3E+01
-I;Reptile;3.2E+02
-Ir;Amphibian;1.2E+03
-Ir;Benthic fish;6.8E+05
-Ir;Bird;2.8E+04
-Ir;Mollusc - bivalve;1.7E+05
-Ir;Crustacean;2.8E+04
-Ir;Mollusc - gastropod;1.7E+05
-Ir;Insect larvae;3.2E+03
-Ir;Mammal;1.6E+03
-Ir;Pelagic fish;6.8E+05
-Ir;Phytoplankton;1.2E+04
-Ir;Vascular plant;9.8E+04
-Ir;Zooplankton;6.6E+03
-Ir;Reptile;2.3E+04
-La;Amphibian;2.4E+02
-La;Benthic fish;1.3E+02
-La;Bird;2.4E+02
-La;Mollusc - bivalve;2.7E+03
-La;Crustacean;2.7E+03
-La;Mollusc - gastropod;2.7E+03
-La;Insect larvae;2.7E+03
-La;Mammal;2.4E+02
-La;Pelagic fish;1.3E+02
-La;Phytoplankton;8.6E+02
-La;Vascular plant;8.6E+02
-La;Zooplankton;2.7E+03
-La;Reptile;2.4E+02
-Mn;Amphibian;7.4E+02
-Mn;Benthic fish;2.9E+03
-Mn;Bird;7.4E+02
-Mn;Mollusc - bivalve;1.1E+04
-Mn;Crustacean;3.8E+03
-Mn;Mollusc - gastropod;1.1E+04
-Mn;Insect larvae;1.1E+04
-Mn;Mammal;3.4E+02
-Mn;Pelagic fish;2.9E+03
-Mn;Phytoplankton;1.9E+02
-Mn;Vascular plant;5.1E+03
-Mn;Zooplankton;1.1E+04
-Mn;Reptile;7.4E+02
-Nb;Amphibian;4.3E+03
-Nb;Benthic fish;3.2E+01
-Nb;Bird;4.3E+03
-Nb;Mollusc - bivalve;9.6E+02
-Nb;Crustacean;9.6E+02
-Nb;Mollusc - gastropod;9.6E+02
-Nb;Insect larvae;9.6E+02
-Nb;Mammal;4.3E+03
-Nb;Pelagic fish;3.2E+01
-Nb;Phytoplankton;3.8E+03
-Nb;Vascular plant;3.8E+03
-Nb;Zooplankton;9.6E+02
-Nb;Reptile;4.3E+03
-Ni;Amphibian;2.0E+02
-Ni;Benthic fish;2.0E+02
-Ni;Bird;2.0E+02
-Ni;Mollusc - bivalve;2.2E+02
-Ni;Crustacean;1.9E+03
-Ni;Mollusc - gastropod;2.2E+02
-Ni;Insect larvae;1.9E+03
-Ni;Mammal;2.0E+02
-Ni;Pelagic fish;2.0E+02
-Ni;Phytoplankton;5.2E+02
-Ni;Vascular plant;5.2E+02
-Ni;Zooplankton;1.9E+03
-Ni;Reptile;9.5E+02
-Np;Amphibian;1.2E+02
-Np;Benthic fish;7.2E+01
-Np;Bird;5.3E+01
-Np;Crustacean;2.0E+02
-Np;Insect larvae;2.0E+02
-Np;Mammal;1.2E+02
-Np;Mollusc - bivalve;5.6E+02
-Np;Mollusc - gastropod;5.6E+02
-Np;Pelagic fish;7.2E+01
-Np;Phytoplankton;7.1E+01
-Np;Reptile;1.2E+02
-Np;Vascular plant;2.2E+02
-Np;Zooplankton;2.0E+02
-P;Amphibian;6.8E+05
-P;Benthic fish;6.8E+05
-P;Bird;6.8E+05
-P;Mollusc - bivalve;6.0E+04
-P;Crustacean;6.0E+04
-P;Mollusc - gastropod;6.0E+04
-P;Insect larvae;6.0E+04
-P;Mammal;6.8E+05
-P;Pelagic fish;6.8E+05
-P;Phytoplankton;1.3E+03
-P;Vascular plant;1.3E+03
-P;Zooplankton;6.0E+04
-P;Reptile;6.8E+05
-Pa;Amphibian;3.2E+03
-Pa;Benthic fish;8.3E+02
-Pa;Bird;3.2E+03
-Pa;Mollusc - bivalve;1.0E+04
-Pa;Crustacean;6.0E+02
-Pa;Mollusc - gastropod;1.0E+04
-Pa;Insect larvae;2.5E+03
-Pa;Mammal;3.2E+03
-Pa;Pelagic fish;8.3E+02
-Pa;Phytoplankton;5.9E+03
-Pa;Vascular plant;1.3E+03
-Pa;Zooplankton;5.4E+02
-Pa;Reptile;3.2E+03
-Pb;Amphibian;5.3E+00
-Pb;Benthic fish;3.6E+02
-Pb;Bird;2.4E+02
-Pb;Mollusc - bivalve;5.8E+03
-Pb;Crustacean;8.2E+03
-Pb;Mollusc - gastropod;5.8E+03
-Pb;Insect larvae;8.2E+03
-Pb;Mammal;4.4E+02
-Pb;Pelagic fish;3.6E+02
-Pb;Phytoplankton;1.6E+03
-Pb;Vascular plant;3.0E+02
-Pb;Zooplankton;8.2E+03
-Pb;Reptile;4.4E+02
-Po;Amphibian;2.0E+03
-Po;Benthic fish;2.0E+03
-Po;Bird;2.0E+03
-Po;Mollusc - bivalve;1.2E+05
-Po;Crustacean;8.3E+03
-Po;Mollusc - gastropod;1.2E+05
-Po;Insect larvae;1.2E+05
-Po;Mammal;2.0E+03
-Po;Pelagic fish;2.0E+03
-Po;Phytoplankton;1.6E+03
-Po;Vascular plant;1.6E+03
-Po;Zooplankton;1.2E+05
-Po;Reptile;3.6E+03
-Pu;Amphibian;4.6E+03
-Pu;Benthic fish;8.3E+02
-Pu;Bird;2.9E+03
-Pu;Mollusc - bivalve;5.5E+03
-Pu;Crustacean;6.0E+02
-Pu;Mollusc - gastropod;5.5E+03
-Pu;Insect larvae;2.5E+03
-Pu;Mammal;4.6E+03
-Pu;Pelagic fish;8.3E+02
-Pu;Phytoplankton;5.9E+03
-Pu;Vascular plant;1.1E+03
-Pu;Zooplankton;5.4E+02
-Pu;Reptile;5.9E+03
-Ra;Amphibian;6.3E+03
-Ra;Benthic fish;1.8E+02
-Ra;Bird;6.3E+03
-Ra;Mollusc - bivalve;2.4E+04
-Ra;Crustacean;2.7E+02
-Ra;Mollusc - gastropod;2.4E+04
-Ra;Insect larvae;2.4E+04
-Ra;Mammal;2.1E-01
-Ra;Pelagic fish;1.8E+02
-Ra;Phytoplankton;5.5E+02
-Ra;Vascular plant;1.1E+03
-Ra;Zooplankton;2.4E+04
-Ra;Reptile;7.7E+02
-Ru;Amphibian;1.0E+02
-Ru;Benthic fish;1.0E+02
-Ru;Bird;1.0E+02
-Ru;Mollusc - bivalve;1.0E+02
-Ru;Crustacean;1.0E+02
-Ru;Mollusc - gastropod;1.0E+02
-Ru;Insect larvae;1.0E+02
-Ru;Mammal;1.0E+02
-Ru;Pelagic fish;1.0E+02
-Ru;Phytoplankton;1.3E+03
-Ru;Vascular plant;2.1E+03
-Ru;Zooplankton;1.0E+02
-Ru;Reptile;1.0E+02
-S;Amphibian;2.4E+02
-S;Benthic fish;2.4E+02
-S;Bird;2.4E+02
-S;Mollusc - bivalve;2.4E+02
-S;Crustacean;2.4E+02
-S;Mollusc - gastropod;2.4E+02
-S;Insect larvae;2.4E+02
-S;Mammal;2.4E+02
-S;Pelagic fish;2.4E+02
-S;Phytoplankton;2.0E+02
-S;Vascular plant;2.0E+02
-S;Zooplankton;2.4E+02
-S;Reptile;2.4E+02
-Sb;Amphibian;2.3E+03
-Sb;Benthic fish;3.4E+01
-Sb;Bird;2.3E+03
-Sb;Mollusc - bivalve;4.9E+01
-Sb;Crustacean;1.7E+02
-Sb;Mollusc - gastropod;4.9E+01
-Sb;Insect larvae;8.2E+01
-Sb;Mammal;2.3E+03
-Sb;Pelagic fish;3.4E+01
-Sb;Phytoplankton;8.3E+01
-Sb;Vascular plant;3.6E+01
-Sb;Zooplankton;8.2E+01
-Sb;Reptile;2.3E+03
-Se;Amphibian;2.7E+03
-Se;Benthic fish;2.7E+03
-Se;Bird;6.9E+00
-Se;Mollusc - bivalve;3.3E+03
-Se;Crustacean;4.4E+02
-Se;Mollusc - gastropod;3.3E+03
-Se;Insect larvae;3.2E+03
-Se;Mammal;2.7E+03
-Se;Pelagic fish;2.7E+03
-Se;Phytoplankton;1.8E+01
-Se;Vascular plant;2.2E+02
-Se;Zooplankton;5.4E+03
-Se;Reptile;2.7E+03
-Sr;Amphibian;1.2E+04
-Sr;Benthic fish;8.6E+02
-Sr;Bird;7.3E+03
-Sr;Mollusc - bivalve;4.6E+02
-Sr;Crustacean;8.4E+02
-Sr;Mollusc - gastropod;4.6E+02
-Sr;Insect larvae;3.7E+03
-Sr;Mammal;1.2E+04
-Sr;Pelagic fish;8.6E+02
-Sr;Phytoplankton;1.2E+02
-Sr;Vascular plant;1.8E+02
-Sr;Zooplankton;3.7E+03
-Sr;Reptile;1.2E+04
-Tc;Amphibian;9.9E+01
-Tc;Benthic fish;9.9E+01
-Tc;Bird;9.9E+01
-Tc;Mollusc - bivalve;9.9E+01
-Tc;Crustacean;9.9E+01
-Tc;Mollusc - gastropod;9.9E+01
-Tc;Insect larvae;9.9E+01
-Tc;Mammal;9.9E+01
-Tc;Pelagic fish;9.9E+01
-Tc;Phytoplankton;4.0E+01
-Tc;Vascular plant;4.0E+01
-Tc;Zooplankton;9.9E+01
-Tc;Reptile;9.9E+01
-Te;Amphibian;2.7E+03
-Te;Benthic fish;3.3E+02
-Te;Bird;2.7E+03
-Te;Mollusc - bivalve;3.3E+03
-Te;Crustacean;4.4E+02
-Te;Mollusc - gastropod;3.3E+03
-Te;Insect larvae;3.2E+03
-Te;Mammal;2.7E+03
-Te;Pelagic fish;3.3E+02
-Te;Phytoplankton;1.8E+01
-Te;Vascular plant;1.8E+01
-Te;Zooplankton;5.4E+03
-Te;Reptile;2.7E+03
-Th;Amphibian;3.2E+03
-Th;Benthic fish;7.1E+02
-Th;Bird;3.2E+03
-Th;Mollusc - bivalve;1.0E+04
-Th;Crustacean;6.0E+02
-Th;Mollusc - gastropod;1.0E+04
-Th;Insect larvae;2.5E+03
-Th;Mammal;3.2E+03
-Th;Pelagic fish;7.1E+02
-Th;Phytoplankton;1.2E+04
-Th;Vascular plant;9.8E+04
-Th;Zooplankton;5.4E+02
-Th;Reptile;1.0E+03
-U;Amphibian;1.2E+02
-U;Benthic fish;7.2E+01
-U;Bird;5.3E+01
-U;Mollusc - bivalve;5.6E+02
-U;Crustacean;2.0E+02
-U;Mollusc - gastropod;5.6E+02
-U;Insect larvae;2.0E+02
-U;Mammal;1.2E+02
-U;Pelagic fish;7.2E+01
-U;Phytoplankton;7.1E+01
-U;Vascular plant;3.7E+02
-U;Zooplankton;2.0E+02
-U;Reptile;1.2E+02
-Zn;Amphibian;7.3E+02
-Zn;Benthic fish;7.8E+03
-Zn;Bird;1.5E+03
-Zn;Mollusc - bivalve;7.4E+02
-Zn;Crustacean;2.0E+04
-Zn;Mollusc - gastropod;7.4E+02
-Zn;Insect larvae;2.0E+04
-Zn;Mammal;1.6E+03
-Zn;Pelagic fish;7.8E+03
-Zn;Phytoplankton;4.4E+03
-Zn;Vascular plant;5.8E+02
-Zn;Zooplankton;2.0E+04
-Zn;Reptile;2.3E+04
-Zr;Amphibian;1.2E+03
-Zr;Benthic fish;9.3E+02
-Zr;Bird;3.0E+01
-Zr;Mollusc - bivalve;9.6E+02
-Zr;Crustacean;9.6E+02
-Zr;Mollusc - gastropod;9.6E+02
-Zr;Insect larvae;9.6E+02
-Zr;Mammal;1.2E+03
-Zr;Pelagic fish;9.3E+02
-Zr;Phytoplankton;1.7E+03
-Zr;Vascular plant;9.9E+01
-Zr;Zooplankton;9.6E+02
-Zr;Reptile;1.2E+03
+Ag;Amphibian;1500
+Am;Amphibian;3220
+Ba;Amphibian;172.4740604
+C;Amphibian;180000
+Ca;Amphibian;1233.333333
+Cd;Amphibian;1688.108571
+Ce;Amphibian;170.9018158
+Cf;Amphibian;3220
+Cl;Amphibian;1247.69887
+Cm;Amphibian;77
+Co;Amphibian;231.3131294
+Cr;Amphibian;65.45
+Cs;Amphibian;3954.794624
+Eu;Amphibian;5749.062081
+H;Amphibian;1
+I;Amphibian;318.5380312
+Ir;Amphibian;1233.333333
+La;Amphibian;239
+Mn;Amphibian;740.3041667
+Nb;Amphibian;4295.860301
+Ni;Amphibian;199.9981243
+Np;Amphibian;116.2375
+P;Amphibian;678269.9387
+Pa;Amphibian;3220
+Pb;Amphibian;5.315
+Po;Amphibian;2029.41633
+Pu;Amphibian;4621
+Ra;Amphibian;6282.666667
+Ru;Amphibian;102.2227059
+S;Amphibian;240
+Sb;Amphibian;2278.3
+Se;Amphibian;2653.545455
+Sr;Amphibian;11844.64725
+Tc;Amphibian;99.03
+Te;Amphibian;2653.545455
+Th;Amphibian;3220
+U;Amphibian;116.2375
+Zn;Amphibian;727
+Zr;Amphibian;1226.5
+Ag;Benthic fish;410
+Am;Benthic fish;759.8117647
+Ba;Benthic fish;172.4740604
+C;Benthic fish;180000
+Ca;Benthic fish;1430.703799
+Cd;Benthic fish;2066.426741
+Ce;Benthic fish;170.9018158
+Cf;Benthic fish;833.140892
+Cl;Benthic fish;1247.69887
+Cm;Benthic fish;833.140892
+Co;Benthic fish;231.3131294
+Cr;Benthic fish;197.2517954
+Cs;Benthic fish;3370.858029
+Eu;Benthic fish;65.6498287
+H;Benthic fish;1
+I;Benthic fish;318.5380312
+Ir;Benthic fish;680000
+La;Benthic fish;131.0272759
+Mn;Benthic fish;2900
+Nb;Benthic fish;32.26612861
+Ni;Benthic fish;199.9981243
+Np;Benthic fish;72.42508625
+P;Benthic fish;678269.9387
+Pa;Benthic fish;833.140892
+Pb;Benthic fish;359.3734327
+Po;Benthic fish;2029.41633
+Pu;Benthic fish;833.140892
+Ra;Benthic fish;180.5318062
+Ru;Benthic fish;102.2227059
+S;Benthic fish;240
+Sb;Benthic fish;34.41056381
+Se;Benthic fish;2652.727049
+Sr;Benthic fish;859.586644
+Tc;Benthic fish;99.03
+Te;Benthic fish;330.3733333
+Th;Benthic fish;712.8329012
+U;Benthic fish;72.42508625
+Zn;Benthic fish;7834.377118
+Zr;Benthic fish;931.7599006
+Ag;Bird;1500
+Am;Bird;3220
+Ba;Bird;3440.947523
+C;Bird;180000
+Ca;Bird;547.2462513
+Cd;Bird;241.2637784
+Ce;Bird;4412.498186
+Cf;Bird;3220
+Cl;Bird;1247.69887
+Cm;Bird;77
+Co;Bird;700.0975621
+Cr;Bird;18.54439379
+Cs;Bird;2265.280011
+Eu;Bird;5749.062081
+H;Bird;1
+I;Bird;39.08326954
+Ir;Bird;28000
+La;Bird;239
+Mn;Bird;740.3041667
+Nb;Bird;4295.860301
+Ni;Bird;199.9981243
+Np;Bird;52.57078663
+P;Bird;678269.9387
+Pa;Bird;3220
+Pb;Bird;238.4865317
+Po;Bird;2029.41633
+Pu;Bird;2914.5
+Ra;Bird;6282.666667
+Ru;Bird;102.2227059
+S;Bird;240
+Sb;Bird;2278.3
+Se;Bird;6.919156149
+Sr;Bird;7267.824211
+Tc;Bird;99.03
+Te;Bird;2653.545455
+Th;Bird;3220
+U;Bird;52.57078663
+Zn;Bird;1490.612447
+Zr;Bird;30.09834071
+Ag;Crustacean;21000
+Am;Crustacean;10396
+Ba;Crustacean;1195.533333
+C;Crustacean;180000
+Ca;Crustacean;663.1308957
+Cd;Crustacean;27744.06838
+Ce;Crustacean;1028.027837
+Cf;Crustacean;597
+Cl;Crustacean;1247.69887
+Cm;Crustacean;250
+Co;Crustacean;1850.769231
+Cr;Crustacean;1318
+Cs;Crustacean;1813.388278
+Eu;Crustacean;1500
+H;Crustacean;1
+I;Crustacean;83.14285714
+Ir;Crustacean;28000
+La;Crustacean;2700
+Mn;Crustacean;3758.578387
+Nb;Crustacean;964.3352007
+Ni;Crustacean;1850.769231
+Np;Crustacean;200
+P;Crustacean;60000
+Pa;Crustacean;597
+Pb;Crustacean;8179.307971
+Po;Crustacean;8293.333333
+Pu;Crustacean;597
+Ra;Crustacean;270
+Ru;Crustacean;102.2227059
+S;Crustacean;240
+Sb;Crustacean;166.9965278
+Se;Crustacean;440.7470238
+Sr;Crustacean;844.375
+Tc;Crustacean;99.03
+Te;Crustacean;440.7470238
+Th;Crustacean;597
+U;Crustacean;200
+Zn;Crustacean;19859.70696
+Zr;Crustacean;964.3352007
+Ag;Insect larvae;21000
+Am;Insect larvae;1750
+Ba;Insect larvae;1195.533333
+C;Insect larvae;180000
+Ca;Insect larvae;42.925
+Cd;Insect larvae;169652.8753
+Ce;Insect larvae;1028.027837
+Cf;Insect larvae;2500
+Cl;Insect larvae;1247.69887
+Cm;Insect larvae;250
+Co;Insect larvae;1850.769231
+Cr;Insect larvae;1318
+Cs;Insect larvae;1987.5
+Eu;Insect larvae;1457.151655
+H;Insect larvae;1
+I;Insect larvae;83.14285714
+Ir;Insect larvae;3200
+La;Insect larvae;2700
+Mn;Insect larvae;11000
+Nb;Insect larvae;964.3352007
+Ni;Insect larvae;1850.769231
+Np;Insect larvae;200
+P;Insect larvae;60000
+Pa;Insect larvae;2500
+Pb;Insect larvae;8179.307971
+Po;Insect larvae;123505
+Pu;Insect larvae;2500
+Ra;Insect larvae;24302.76744
+Ru;Insect larvae;102.2227059
+S;Insect larvae;240
+Sb;Insect larvae;82.07285714
+Se;Insect larvae;3193.041892
+Sr;Insect larvae;3700
+Tc;Insect larvae;99.03
+Te;Insect larvae;3193.041892
+Th;Insect larvae;2500
+U;Insect larvae;200
+Zn;Insect larvae;19859.70696
+Zr;Insect larvae;964.3352007
+Ag;Mammal;1500
+Am;Mammal;3220
+Ba;Mammal;172.4740604
+C;Mammal;180000
+Ca;Mammal;393
+Cd;Mammal;1688.108571
+Ce;Mammal;170.9018158
+Cf;Mammal;3220
+Cl;Mammal;1247.69887
+Cm;Mammal;77
+Co;Mammal;231.3131294
+Cr;Mammal;1306.073333
+Cs;Mammal;2265.280011
+Eu;Mammal;5749.062081
+H;Mammal;1
+I;Mammal;318.5380312
+Ir;Mammal;1600
+La;Mammal;239
+Mn;Mammal;340.5182749
+Nb;Mammal;4295.860301
+Ni;Mammal;199.9981243
+Np;Mammal;116.2375
+P;Mammal;678269.9387
+Pa;Mammal;3220
+Pb;Mammal;439.8083333
+Po;Mammal;2029.41633
+Pu;Mammal;4621
+Ra;Mammal;0.213970724
+Ru;Mammal;102.2227059
+S;Mammal;240
+Sb;Mammal;2278.3
+Se;Mammal;2653.545455
+Sr;Mammal;11844.64725
+Tc;Mammal;99.03
+Te;Mammal;2653.545455
+Th;Mammal;3220
+U;Mammal;116.2375
+Zn;Mammal;1615.384615
+Zr;Mammal;1226.5
+Ag;Mollusc - bivalve;21000
+Am;Mollusc - bivalve;10396
+Ba;Mollusc - bivalve;1195.533333
+C;Mollusc - bivalve;180000
+Ca;Mollusc - bivalve;739.7218774
+Cd;Mollusc - bivalve;169652.8753
+Ce;Mollusc - bivalve;1028.027837
+Cf;Mollusc - bivalve;10396
+Cl;Mollusc - bivalve;1247.69887
+Cm;Mollusc - bivalve;17
+Co;Mollusc - bivalve;1053.842584
+Cr;Mollusc - bivalve;1318
+Cs;Mollusc - bivalve;129.3
+Eu;Mollusc - bivalve;1457.151655
+H;Mollusc - bivalve;1
+I;Mollusc - bivalve;83.14285714
+Ir;Mollusc - bivalve;170000
+La;Mollusc - bivalve;2673.765656
+Mn;Mollusc - bivalve;11202.78842
+Nb;Mollusc - bivalve;964.3352007
+Ni;Mollusc - bivalve;217.7235866
+Np;Mollusc - bivalve;556.5194628
+P;Mollusc - bivalve;60000
+Pa;Mollusc - bivalve;10396
+Pb;Mollusc - bivalve;5786.568956
+Po;Mollusc - bivalve;123505
+Pu;Mollusc - bivalve;5472.704545
+Ra;Mollusc - bivalve;24302.76744
+Ru;Mollusc - bivalve;102.2227059
+S;Mollusc - bivalve;240
+Sb;Mollusc - bivalve;49.3
+Se;Mollusc - bivalve;3280.914837
+Sr;Mollusc - bivalve;460.6355839
+Tc;Mollusc - bivalve;99.03
+Te;Mollusc - bivalve;3280.914837
+Th;Mollusc - bivalve;10396
+U;Mollusc - bivalve;556.5194628
+Zn;Mollusc - bivalve;736
+Zr;Mollusc - bivalve;964.3352007
+Ag;Mollusc - gastropod;21000
+Am;Mollusc - gastropod;10396
+Ba;Mollusc - gastropod;1195.533333
+C;Mollusc - gastropod;180000
+Ca;Mollusc - gastropod;739.7218774
+Cd;Mollusc - gastropod;169652.8753
+Ce;Mollusc - gastropod;1028.027837
+Cf;Mollusc - gastropod;10396
+Cl;Mollusc - gastropod;1247.69887
+Cm;Mollusc - gastropod;17
+Co;Mollusc - gastropod;1053.842584
+Cr;Mollusc - gastropod;1318
+Cs;Mollusc - gastropod;129.3
+Eu;Mollusc - gastropod;1457.151655
+H;Mollusc - gastropod;1
+I;Mollusc - gastropod;83.14285714
+Ir;Mollusc - gastropod;170000
+La;Mollusc - gastropod;2673.765656
+Mn;Mollusc - gastropod;11202.78842
+Nb;Mollusc - gastropod;964.3352007
+Ni;Mollusc - gastropod;217.7235866
+Np;Mollusc - gastropod;556.5194628
+P;Mollusc - gastropod;60000
+Pa;Mollusc - gastropod;10396
+Pb;Mollusc - gastropod;5786.568956
+Po;Mollusc - gastropod;123505
+Pu;Mollusc - gastropod;5472.704545
+Ra;Mollusc - gastropod;24302.76744
+Ru;Mollusc - gastropod;102.2227059
+S;Mollusc - gastropod;240
+Sb;Mollusc - gastropod;49.3
+Se;Mollusc - gastropod;3280.914837
+Sr;Mollusc - gastropod;460.6355839
+Tc;Mollusc - gastropod;99.03
+Te;Mollusc - gastropod;3280.914837
+Th;Mollusc - gastropod;10396
+U;Mollusc - gastropod;556.5194628
+Zn;Mollusc - gastropod;736
+Zr;Mollusc - gastropod;964.3352007
+Ag;Pelagic fish;410
+Am;Pelagic fish;759.8117647
+Ba;Pelagic fish;172.4740604
+C;Pelagic fish;180000
+Ca;Pelagic fish;1430.703799
+Cd;Pelagic fish;2066.426741
+Ce;Pelagic fish;170.9018158
+Cf;Pelagic fish;833.140892
+Cl;Pelagic fish;1247.69887
+Cm;Pelagic fish;833.140892
+Co;Pelagic fish;231.3131294
+Cr;Pelagic fish;197.2517954
+Cs;Pelagic fish;3370.858029
+Eu;Pelagic fish;65.6498287
+H;Pelagic fish;1
+I;Pelagic fish;318.5380312
+Ir;Pelagic fish;680000
+La;Pelagic fish;131.0272759
+Mn;Pelagic fish;2900
+Nb;Pelagic fish;32.26612861
+Ni;Pelagic fish;199.9981243
+Np;Pelagic fish;72.42508625
+P;Pelagic fish;678269.9387
+Pa;Pelagic fish;833.140892
+Pb;Pelagic fish;359.3734327
+Po;Pelagic fish;2029.41633
+Pu;Pelagic fish;833.140892
+Ra;Pelagic fish;180.5318062
+Ru;Pelagic fish;102.2227059
+S;Pelagic fish;240
+Sb;Pelagic fish;34.41056381
+Se;Pelagic fish;2652.727049
+Sr;Pelagic fish;859.586644
+Tc;Pelagic fish;99.03
+Te;Pelagic fish;330.3733333
+Th;Pelagic fish;712.8329012
+U;Pelagic fish;72.42508625
+Zn;Pelagic fish;7834.377118
+Zr;Pelagic fish;931.7599006
+Ag;Phytoplankton;670
+Am;Phytoplankton;1347.601364
+Ba;Phytoplankton;50.16
+C;Phytoplankton;4000
+Ca;Phytoplankton;241.25
+Cd;Phytoplankton;1827.439206
+Ce;Phytoplankton;8774.285714
+Cf;Phytoplankton;5900
+Cl;Phytoplankton;258.4948572
+Cm;Phytoplankton;5900
+Co;Phytoplankton;645.5833333
+Cr;Phytoplankton;366.932933
+Cs;Phytoplankton;142.2
+Eu;Phytoplankton;232.2895956
+H;Phytoplankton;1
+I;Phytoplankton;54.06724849
+Ir;Phytoplankton;12000
+La;Phytoplankton;863.5299571
+Mn;Phytoplankton;188.4383562
+Nb;Phytoplankton;3763.43052
+Ni;Phytoplankton;523.354118
+Np;Phytoplankton;70.675
+P;Phytoplankton;1316.714286
+Pa;Phytoplankton;5900
+Pb;Phytoplankton;1591.25
+Po;Phytoplankton;1600
+Pu;Phytoplankton;5900
+Ra;Phytoplankton;550.5
+Ru;Phytoplankton;1265.166667
+S;Phytoplankton;200.2
+Sb;Phytoplankton;83.125
+Se;Phytoplankton;17.64285714
+Sr;Phytoplankton;122.9536601
+Tc;Phytoplankton;40
+Te;Phytoplankton;17.64285714
+Th;Phytoplankton;11701.66667
+U;Phytoplankton;70.675
+Zn;Phytoplankton;4367.431023
+Zr;Phytoplankton;1722.536287
+Ag;Reptile;1500
+Am;Reptile;3220
+Ba;Reptile;141
+C;Reptile;180000
+Ca;Reptile;500.65
+Cd;Reptile;1688.108571
+Ce;Reptile;626
+Cf;Reptile;3220
+Cl;Reptile;1247.69887
+Cm;Reptile;77
+Co;Reptile;12.24857143
+Cr;Reptile;1306.073333
+Cs;Reptile;3954.794624
+Eu;Reptile;5749.062081
+H;Reptile;1
+I;Reptile;318.5380312
+Ir;Reptile;23000
+La;Reptile;239
+Mn;Reptile;740.3041667
+Nb;Reptile;4295.860301
+Ni;Reptile;946.1
+Np;Reptile;116.2375
+P;Reptile;678269.9387
+Pa;Reptile;3220
+Pb;Reptile;439.8083333
+Po;Reptile;3634.285714
+Pu;Reptile;5900.06
+Ra;Reptile;766.7368421
+Ru;Reptile;102.2227059
+S;Reptile;240
+Sb;Reptile;2278.3
+Se;Reptile;2653.545455
+Sr;Reptile;11844.64725
+Tc;Reptile;99.03
+Te;Reptile;2653.545455
+Th;Reptile;1028.285714
+U;Reptile;116.2375
+Zn;Reptile;23060
+Zr;Reptile;1226.5
+Ag;Vascular plant;670
+Am;Vascular plant;1347.601364
+Ba;Vascular plant;450
+C;Vascular plant;8800
+Ca;Vascular plant;250
+Cd;Vascular plant;3586.433578
+Ce;Vascular plant;880.7560124
+Cf;Vascular plant;1347.601364
+Cl;Vascular plant;258.4948572
+Cm;Vascular plant;2.299269231
+Co;Vascular plant;928.1209079
+Cr;Vascular plant;366.932933
+Cs;Vascular plant;358.5738351
+Eu;Vascular plant;232.2895956
+H;Vascular plant;1
+I;Vascular plant;54.06724849
+Ir;Vascular plant;98000
+La;Vascular plant;863.5299571
+Mn;Vascular plant;5100
+Nb;Vascular plant;3763.43052
+Ni;Vascular plant;523.354118
+Np;Vascular plant;223.3333333
+P;Vascular plant;1316.714286
+Pa;Vascular plant;1347.601364
+Pb;Vascular plant;298.2685096
+Po;Vascular plant;1600
+Pu;Vascular plant;1062.39101
+Ra;Vascular plant;1100
+Ru;Vascular plant;2100
+S;Vascular plant;200.2
+Sb;Vascular plant;36.19714447
+Se;Vascular plant;223.0037175
+Sr;Vascular plant;183.1777311
+Tc;Vascular plant;40
+Te;Vascular plant;17.64285714
+Th;Vascular plant;97736.21704
+U;Vascular plant;370.6632834
+Zn;Vascular plant;583.8264213
+Zr;Vascular plant;99.24179881
+Ag;Zooplankton;21000
+Am;Zooplankton;1750
+Ba;Zooplankton;1195.533333
+C;Zooplankton;180000
+Ca;Zooplankton;42.925
+Cd;Zooplankton;169652.8753
+Ce;Zooplankton;1028.027837
+Cf;Zooplankton;537.25
+Cl;Zooplankton;1247.69887
+Cm;Zooplankton;250
+Co;Zooplankton;1850.769231
+Cr;Zooplankton;1318
+Cs;Zooplankton;89.68292683
+Eu;Zooplankton;1500
+H;Zooplankton;1
+I;Zooplankton;83.14285714
+Ir;Zooplankton;6600
+La;Zooplankton;2700
+Mn;Zooplankton;11000
+Nb;Zooplankton;964.3352007
+Ni;Zooplankton;1850.769231
+Np;Zooplankton;200
+P;Zooplankton;60000
+Pa;Zooplankton;537.25
+Pb;Zooplankton;8179.307971
+Po;Zooplankton;123505
+Pu;Zooplankton;537.25
+Ra;Zooplankton;24302.76744
+Ru;Zooplankton;102.2227059
+S;Zooplankton;240
+Sb;Zooplankton;82.07285714
+Se;Zooplankton;5444.207843
+Sr;Zooplankton;3700
+Tc;Zooplankton;99.03
+Te;Zooplankton;5444.207843
+Th;Zooplankton;537.25
+U;Zooplankton;200
+Zn;Zooplankton;19859.70696
+Zr;Zooplankton;964.3352007
