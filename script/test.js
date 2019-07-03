@@ -5,6 +5,7 @@ Compare Hydra's results with ERICA's results
 */
 
 var standardResults = {};
+var hydraResults;
 
 var standardFile = document.getElementById("standard");
 
@@ -33,3 +34,32 @@ var readTable = function() {
 };
 
 standardFile.addEventListener("change", readTable);
+
+
+var compareBtn = document.getElementById("compare");
+
+var compare = function() {
+    for (isotope of erica.isotopes) {
+        setting.addIsotope(isotope);
+        setting.setActivityConcentration(isotope, "Water", 1);
+    }
+    for (organism of erica.organisms) {
+        setting.addOrganism(organism);
+    }
+    hydraResults = new Result(setting);
+    hydraResults.fillGaps();
+    hydraResults.getCoefficients();
+    hydraResults.getInternal();
+    hydraResults.getExternal();
+    hydraResults.getTotal();
+
+    for (isotope in standardResults) {
+        for (organism in standardResults[isotope]) {
+            if (standardResults[isotope][organism] !== hydraResults.getTotalDoseRate(isotope, organism)) {
+                console.log(`${isotope}:${organism}: standard = ${standardResults[isotope][organism]}, hydra: ${hydraResults.getTotalDoseRate(isotope, organism)}`);
+            }
+        }
+    }
+};
+
+compareBtn.addEventListener("click", compare);

@@ -69,11 +69,11 @@
         </div>
       </div>
 
-      <p>Pick .csv file with ERICA's results for all organisms and all isotopes with activity concentration in water 1 Bq per kg for each. Then push "Compare" button.</p>
+      <p>Pick .csv file with ERICA's results for all organisms and all isotopes with activity concentration in water 1 Bq per kg for each. Then push "Compare" button. Output with failed comparisions will be in console.</p>
 
       <form>
         <label>ERICA's results <input type="file" id="standard"></label>
-        <button type="button">Compare</button>
+        <button type="button" id="compare">Compare</button>
       </form>
 
       <script src="script/sql.js/sql-wasm.js"></script>
