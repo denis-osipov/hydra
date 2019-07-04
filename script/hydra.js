@@ -27,7 +27,7 @@ var Setting = function() {
     this.doseConversionCoefficients = {};
 };
 
-// Isotopes adder and getter
+// Isotopes adder
 Setting.prototype.addIsotope = function(isotope) {
     this.isotopes.add(isotope);
 };
@@ -35,6 +35,11 @@ Setting.prototype.addIsotope = function(isotope) {
 // Get isotopes as array
 Setting.prototype.getIsotopes = function() {
     return Array.from(this.isotopes);
+};
+
+// Delete isotope
+Setting.prototype.deleteIsotope = function(isotope) {
+    this.isotopes.delete(isotope);
 };
 
 // Get nuclides list
@@ -53,6 +58,11 @@ Setting.prototype.addOrganism = function(organism) {
 
 Setting.prototype.getOrganisms = function() {
     return Array.from(this.organisms);
+};
+
+// Delete organism
+Setting.prototype.deleteOrganism = function(organism) {
+    this.organisms.delete(organism);
 };
 
 // Set and get radioecology parameters

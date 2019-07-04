@@ -97,11 +97,6 @@ body {
   color: #aee5f4;
 }
 
-#calculate {
-  bottom: 0;
-  position: absolute;
-}
-
 .pond-frame {
   position: relative;
   height: 200px;
@@ -114,10 +109,18 @@ body {
   color: #aee5f4;
 }
 
-.selector {
+.control-field label {
   display: inline-block;
+  width: 30%;
+  margin: 1px;
+  padding: 5px;
+  border: 2px solid #7aadbc;
+  border-radius: 5px;
 }
 
+.selected-item {
+  background-color: #004e17;
+}
 
 /* List of parameters */
 .box {
@@ -177,11 +180,10 @@ body {
 
 .input-box {
   position: absolute;
-  bottom: 5%;
-  left: 5%;
-  right: 5%;
-  top: 5%;
-  background-color: silver;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  background-color: #f8fcf9;
   border-radius: 10px;
   overflow: auto;
 }
