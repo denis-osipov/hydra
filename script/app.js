@@ -185,48 +185,38 @@ var generateTable = function(type, source) {
 
 
 // Add item selector right before target element (button)
-var addCheckbox = function(target, array, setter) {
+var addCheckbox = function(target, type, setting, list) {
+
+    var array;
+    var setter;
+    var getter;
+
+    switch (type) {
+        case "isotopes":
+            array = erica.isotopes;
+            setter = setting.addIsotope.bind(setting);
+            getter = setting.getIsotopes.bind(setting);
+            break;
+        case "organisms":
+            array = erica.organisms;
+            setter = setting.addOrganism.bind(setting);
+            getter = setting.getOrganisms.bind(setting);
+            break;
+    }
 
     for (item of array) {
         var label = document.createElement("label");
         label.textContent = item;
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+
+        checkbox.addEventListener("change", function(e) {
+            var value = e.target.parentNode.textContent;
+            setter(value);
+            updateList(getter(), list);
+        })
+
         label.appendChild(checkbox);
         target.appendChild(label);
     }
-
-    // // Parent container
-    // var newItemSelector = document.createElement("div");
-    // newItemSelector.className = "selector";  // for styling
-
-    // // Selector
-    // // TODO: Add labels for selectors
-    // var selector = document.createElement("select");
-    // for (var i = 0; i < array.length; i++) {
-    //     var option = document.createElement("option");
-    //     option.textContent = array[i];
-    //     selector.appendChild(option);
-    // }
-    // newItemSelector.appendChild(selector);
-
-    // // Item button
-    // var button = document.createElement("button");
-    // button.type = "button";
-    // button.textContent = "Add";
-    // button.addEventListener("click", function(e) {
-    //     var value = e.target.previousSibling.value;
-    //     if (event.target.id === "add-isotope") {
-    //         setting.addIsotope(value);
-    //         updateList(setting.getIsotopes(), isotopes);
-    //     }
-    //     else {
-    //         setting.addOrganism(value);
-    //         updateList(setting.getOrganisms(), organisms);
-    //     }
-    // });
-    // newItemSelector.appendChild(button);
-
-    // var target = event.target;
-    // target.parentNode.insertBefore(newItemSelector, target);
 };
