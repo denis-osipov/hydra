@@ -190,17 +190,20 @@ var addCheckbox = function(target, type, setting, list) {
     var array;
     var setter;
     var getter;
+    var remover;
 
     switch (type) {
         case "isotopes":
             array = erica.isotopes;
             setter = setting.addIsotope.bind(setting);
             getter = setting.getIsotopes.bind(setting);
+            remover = setting.deleteIsotope.bind(setting);
             break;
         case "organisms":
             array = erica.organisms;
             setter = setting.addOrganism.bind(setting);
             getter = setting.getOrganisms.bind(setting);
+            remover = setting.deleteOrganism.bind(setting);
             break;
     }
 
@@ -212,7 +215,12 @@ var addCheckbox = function(target, type, setting, list) {
 
         checkbox.addEventListener("change", function(e) {
             var value = e.target.parentNode.textContent;
-            setter(value);
+            if (e.target.checked) {
+                setter(value);
+            }
+            else {
+                remover(value);
+            }
             updateList(getter(), list);
         })
 
