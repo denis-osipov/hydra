@@ -222,6 +222,7 @@ var addCheckbox = function(target, type, setting, list) {
                 remover(value);
             }
             updateList(getter(), list);
+            e.target.parentNode.classList.toggle("selected-item");
         })
 
         label.appendChild(checkbox);

@@ -123,6 +123,9 @@ body {
   border-radius: 5px;
 }
 
+.selected-item {
+  background-color: #004e17;
+}
 
 /* List of parameters */
 .box {
