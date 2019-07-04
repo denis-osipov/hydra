@@ -114,8 +114,13 @@ body {
   color: #aee5f4;
 }
 
-.selector {
+.control-field label {
   display: inline-block;
+  width: 30%;
+  margin: 1px;
+  padding: 5px;
+  border: 2px solid #7aadbc;
+  border-radius: 5px;
 }
 
 
