@@ -41,16 +41,12 @@ percentageDryWeight.addEventListener("click", function() {
 
 
 // organisms fieldset
-var addOrganismButton = document.getElementById("add-organism");
-addOrganismButton.addEventListener("click", function(e){
-    addItemSelector(e, erica.organisms, setting)
-});
+var allOrganisms = document.getElementById("all-organisms");
+addCheckbox(allOrganisms, erica.organisms);
 
 // isotopes fieldset
-var addIsotopeButton = document.getElementById("add-isotope");
-addIsotopeButton.addEventListener("click", function(e){
-    addItemSelector(e, erica.isotopes, setting)
-});
+var allIsotopes = document.getElementById("all-isotopes");
+addCheckbox(allIsotopes, erica.isotopes);
 
 // Calculate button
 var calculateButton = document.getElementById("calculate");
