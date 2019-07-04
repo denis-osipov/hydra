@@ -180,11 +180,10 @@ body {
 
 .input-box {
   position: absolute;
-  bottom: 5%;
-  left: 5%;
-  right: 5%;
-  top: 5%;
-  background-color: silver;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  background-color: #f8fcf9;
   border-radius: 10px;
   overflow: auto;
 }
