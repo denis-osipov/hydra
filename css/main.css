@@ -97,11 +97,6 @@ body {
   color: #aee5f4;
 }
 
-#calculate {
-  bottom: 0;
-  position: absolute;
-}
-
 .pond-frame {
   position: relative;
   height: 200px;
