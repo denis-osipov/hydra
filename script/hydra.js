@@ -281,6 +281,11 @@ Result.prototype.fillGaps = function(setting) {
         this.isotopes.splice(index, 1);
     }
 
+    // Clear organism list if there is no any data for activity concentration
+    if (!this.isotopes.length) {
+        this.organisms.splice();
+    }
+
     // Fill occupancy factors
     for (organism of this.organisms) {
         var factors = this.occupancyFactors[organism];
@@ -396,11 +401,6 @@ Result.prototype.calculate = function() {
     this.getInternal();
     this.getExternal();
     this.getTotal();
-    var table = generateTable("output", this);
-    if (output.hasChildNodes()) {
-        output.removeChild(output.children[0]);
-    }
-    output.appendChild(table);
 };
 
 Result.prototype.getTotalDoseRate = function(isotope, organism) {

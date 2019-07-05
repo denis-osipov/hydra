@@ -65,4 +65,10 @@ var calculateButton = document.getElementById("calculate");
 calculateButton.addEventListener("click", function() {
     result = new Result(setting);
     result.calculate();
+    
+    var table = generateTable("output", result);
+    if (output.hasChildNodes()) {
+        output.removeChild(output.children[0]);
+    }
+    output.appendChild(table);
 });
