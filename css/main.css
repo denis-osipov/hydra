@@ -80,15 +80,9 @@ body {
 */
 .app-frame {
   position: relative;
-  display: flex;
   padding: 10px;
   background-color: #0a4859;
   border-radius: 10px;
-}
-
-.app-subframe {
-  display: inline-block;
-  width: 50%;
 }
 
 .output-frame {
@@ -98,6 +92,8 @@ body {
 }
 
 .pond-frame {
+  display: inline-block;
+  width: 50%;
   position: relative;
   height: 200px;
   background-color: #7aadbc;
@@ -105,8 +101,13 @@ body {
         linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
 
-.control-frame {
+.items-frame {
   color: #aee5f4;
+}
+
+.organisms-frame {
+  display: inline-block;
+  width: 50%;
 }
 
 .control-item {
