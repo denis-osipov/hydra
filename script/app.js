@@ -219,6 +219,7 @@ var addCheckbox = function(target, type, setting, list) {
 
     for (item of array) {
         var label = document.createElement("label");
+        label.className = "control-item";
         label.textContent = item;
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";

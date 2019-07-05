@@ -109,7 +109,7 @@ body {
   color: #aee5f4;
 }
 
-.control-field label {
+.control-item {
   display: inline-block;
   width: 30%;
   margin: 1px;
@@ -120,6 +120,7 @@ body {
 
 .selected-item {
   background-color: #ce8c48;
+  border-color: #023341;
   color: #112f46;
   font-weight: bold;
 }
