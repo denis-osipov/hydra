@@ -120,6 +120,10 @@ body {
   border-radius: 5px;
 }
 
+.control-item input {
+  float: right;
+}
+
 .organisms-frame .control-item {
   width: 49%;
 }
