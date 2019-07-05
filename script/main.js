@@ -53,7 +53,7 @@ var checker = setInterval(function() {
     else {
         console.log("Waiting for ERICA");
     }
-}, 100);
+}, 500);
 
 // Calculate button
 var calculateButton = document.getElementById("calculate");
