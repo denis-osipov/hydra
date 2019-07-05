@@ -119,7 +119,9 @@ body {
 }
 
 .selected-item {
-  background-color: #004e17;
+  background-color: #ce8c48;
+  color: #112f46;
+  font-weight: bold;
 }
 
 /* List of parameters */
