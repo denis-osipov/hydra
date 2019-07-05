@@ -75,7 +75,7 @@ var getInput = function(source, setting) {
 
     // Fill setting with values
     for (input of inputs) {
-        var names = input.name.replace(/_/, " ").split(".");
+        var names = input.name.replace(/_/g, " ").split(".");
         setter(names[0], names[1], parseFloat(input.value));
     }
 };
