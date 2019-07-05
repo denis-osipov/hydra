@@ -65,13 +65,17 @@ var getInput = function(source, setting) {
         case "Kds":
             setter = setting.setDistributionCoefficient.bind(setting);
             break;
+        case "WFs":
+            setter = setting.setRadiationWeightingFactor.bind(setting);
+            break;
         case "dry":
             setter = setting.setPercentageDryWeight.bind(setting);
+            break;
     }
 
     // Fill setting with values
     for (input of inputs) {
-        var names = input.name.replace(/_/, " ").split(".");
+        var names = input.name.replace(/_/g, " ").split(".");
         setter(names[0], names[1], parseFloat(input.value));
     }
 };
@@ -109,6 +113,12 @@ var generateTable = function(type, source) {
             rows = source.getNuclides();
             cols = ["Sediment to water activity concentration ratio"];
             getter = source.getDistributionCoefficient.bind(source);
+            break;
+        case "WFs":
+            caption.textContent = "Enter radiation weighting factors";
+            rows = ["Alpha", "Beta/gamma", "Low Beta"];
+            cols = ["Radiation weighting factors"];
+            getter = source.getRadiationWeightingFactor.bind(source);
             break;
         case "dry":
             caption.textContent = "Enter percentage dry weight for sediment";
@@ -209,6 +219,7 @@ var addCheckbox = function(target, type, setting, list) {
 
     for (item of array) {
         var label = document.createElement("label");
+        label.className = "control-item";
         label.textContent = item;
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";

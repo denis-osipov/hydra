@@ -7,6 +7,8 @@ body {
   color: #295B70;
   background-color: #fff;
   background: linear-gradient(to right, #7aadbc, #fff 15%);
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 *,
@@ -80,15 +82,9 @@ body {
 */
 .app-frame {
   position: relative;
-  display: flex;
   padding: 10px;
   background-color: #0a4859;
   border-radius: 10px;
-}
-
-.app-subframe {
-  display: inline-block;
-  width: 50%;
 }
 
 .output-frame {
@@ -98,28 +94,43 @@ body {
 }
 
 .pond-frame {
+  display: inline-block;
+  width: 50%;
   position: relative;
-  height: 200px;
+  height: 225px;
   background-color: #7aadbc;
   background: linear-gradient(to top left, #523928 45%, transparent 45%),
         linear-gradient(#fff 10%,#396cf7 10%, #fff);
 }
 
-.control-frame {
+.items-frame {
   color: #aee5f4;
 }
 
-.control-field label {
+.organisms-frame {
   display: inline-block;
-  width: 30%;
-  margin: 1px;
+  width: 50%;
+}
+
+.control-item {
+  display: inline-block;
+  margin: 1px 2px;
   padding: 5px;
   border: 2px solid #7aadbc;
   border-radius: 5px;
 }
 
+.organisms-frame .control-item {
+  width: 49%;
+}
+
+.isotopes-frame .control-item {
+  width: 11%;
+}
+
 .selected-item {
   background-color: #ce8c48;
+  border-color: #023341;
   color: #112f46;
   font-weight: bold;
 }
@@ -177,6 +188,12 @@ body {
 .bottom-right-box {
   bottom: 10px;
   right: 30%;
+  border-radius: 50%;
+}
+
+.bottom-left-box {
+  bottom: 10px;
+  left: 30%;
   border-radius: 50%;
 }
 
