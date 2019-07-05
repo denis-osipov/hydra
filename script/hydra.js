@@ -221,6 +221,7 @@ Result.prototype.getOrganisms = function() {
 
 // Fill missing data using ERICA's coefficients
 Result.prototype.fillGaps = function(setting) {
+    var toRemove = [];
     for (isotope of this.isotopes) {
 
         // Stop if there is no data about some isotope
@@ -229,6 +230,7 @@ Result.prototype.fillGaps = function(setting) {
                 return isNaN(value) || value === null;
             })) {
             console.log(`Can't find any data for ${isotope}`);
+            toRemove.unshift(this.indexOf(isotope));
             continue;
         }
 
@@ -273,6 +275,11 @@ Result.prototype.fillGaps = function(setting) {
             }
         }
 
+        // Remove isotopes with no data
+        for (index of toRemove) {
+            this.isotopes.splice(index, 1);
+        }
+
     }
 
     // Fill occupancy factors
@@ -303,7 +310,7 @@ Result.prototype.getCoefficients = function() {
     this.internalCoefficients = {};
     this.externalCoefficients = {};
     
-    for (isotope in this.activityConcentrations) {
+    for (isotope of this.isotopes) {
         this.internalCoefficients[isotope] = {};
         this.externalCoefficients[isotope] = {};
         for (organism of this.organisms) {
@@ -320,7 +327,7 @@ Result.prototype.getCoefficients = function() {
 // Calculate internal dose rates
 Result.prototype.getInternal = function() {
     this.internalDoseRates = {};
-    for (isotope in this.activityConcentrations) {
+    for (isotope of this.isotopes) {
         this.internalDoseRates[isotope] = {};
         var activity = this.activityConcentrations[isotope];
         var coef = this.internalCoefficients[isotope];
@@ -333,7 +340,7 @@ Result.prototype.getInternal = function() {
 // Calculate external dose rates from each media
 Result.prototype.getExternal = function() {
     this.externalDoseRates = {};
-    for (isotope in this.activityConcentrations) {
+    for (isotope of this.isotopes) {
         this.externalDoseRates[isotope] = {};
         var activity = this.activityConcentrations[isotope];
         var coef = this.externalCoefficients[isotope];
@@ -350,7 +357,7 @@ Result.prototype.getExternal = function() {
     for (habitat in this.habitats) {
         var coef = this.habitats[habitat];
         var temp = {};
-        for (isotope in this.activityConcentrations) {
+        for (isotope of this.isotopes) {
             temp[isotope] = {};
             for (organism of this.organisms) {
                 var ext = this.externalDoseRates[isotope][organism];
@@ -365,7 +372,7 @@ Result.prototype.getExternal = function() {
 Result.prototype.getTotal = function() {
     this.totalDoseRates = {};
     var habitats = Object.keys(this.habitats);
-    for (isotope in this.activityConcentrations) {
+    for (isotope of this.isotopes) {
         this.totalDoseRates[isotope] = {};
         for (organism of this.organisms) {
             var occupancy = this.occupancyFactors[organism];
