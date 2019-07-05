@@ -114,17 +114,16 @@ Setting.prototype.getOccupancyFactor = function(organism, habitat) {
 
 /*
 Set and get radiation weighting factors
-values must be an array of 3 floats in [0, +inf) in order:
-    - alpha
-    - beta/gamma
-    - low beta
+type must "Appha", "Beta/gamma" or "Low Beta".
 */
-Setting.prototype.setRadiationWeightingFactors = function(values) {
-    this.radiationWeightingFactors = values;
+Setting.prototype.setRadiationWeightingFactor = function(type, text, value) {
+    var index = {"Alpha": 0, "Beta/gamma": 1, "Low Beta": 2};
+    this.radiationWeightingFactors[index[type]] = value;
 };
 
-Setting.prototype.getRadiationWeightingFactors = function() {
-    return this.radiationWeightingFactors;
+Setting.prototype.getRadiationWeightingFactor = function(type, text) {
+    var index = {"Alpha": 0, "Beta/gamma": 1, "Low Beta": 2};
+    return this.radiationWeightingFactors[index[type]];
 };
 
 // Set and get activity concentrations

@@ -65,8 +65,12 @@ var getInput = function(source, setting) {
         case "Kds":
             setter = setting.setDistributionCoefficient.bind(setting);
             break;
+        case "WFs":
+            setter = setting.setRadiationWeightingFactor.bind(setting);
+            break;
         case "dry":
             setter = setting.setPercentageDryWeight.bind(setting);
+            break;
     }
 
     // Fill setting with values
@@ -109,6 +113,12 @@ var generateTable = function(type, source) {
             rows = source.getNuclides();
             cols = ["Sediment to water activity concentration ratio"];
             getter = source.getDistributionCoefficient.bind(source);
+            break;
+        case "WFs":
+            caption.textContent = "Enter radiation weighting factors";
+            rows = ["Alpha", "Beta/gamma", "Low Beta"];
+            cols = ["Radiation weighting factors"];
+            getter = source.getRadiationWeightingFactor.bind(source);
             break;
         case "dry":
             caption.textContent = "Enter percentage dry weight for sediment";

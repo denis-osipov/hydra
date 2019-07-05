@@ -12,7 +12,7 @@ var output = document.getElementById("results");
 var appFrame = document.getElementsByClassName("app-frame")[0];
 
 
-// Update list elements
+// Settings
 var organismsList = document.getElementById("organisms");
 organismsList.parentElement.addEventListener("click", function() {
     var container = showInput(appFrame, "organisms", setting);
@@ -36,6 +36,11 @@ distributionCoefficients.addEventListener("click", function() {
 var percentageDryWeight = document.getElementById("dry-weight");
 percentageDryWeight.addEventListener("click", function() {
     var container = showInput(appFrame, "dry", setting);
+    container.className = "input-box";
+});
+var weightingFactors = document.getElementById("wfs");
+weightingFactors.addEventListener("click", function() {
+    var container = showInput(appFrame, "WFs", setting);
     container.className = "input-box";
 });
 
