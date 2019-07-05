@@ -5,6 +5,7 @@ Parse ERICA Assessment Tool data
 */
 
 var erica = {};
+var isEricaReady = false;
 
 initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(SQL => {
 
@@ -65,6 +66,7 @@ initSqlJs({ locateFile: filename => `./script/sql.js/${filename}` }).then(SQL =>
             }
             erica.occ[row.organism][row.habitat] = row.value;
         });
+        isEricaReady = true;
     };
     request.send();
 });
