@@ -38,8 +38,14 @@ Setting.prototype.getIsotopes = function() {
 };
 
 // Delete isotope
-Setting.prototype.deleteIsotope = function(isotope) {
+Setting.prototype.deleteIsotope = function(isotope, all=false) {
     this.isotopes.delete(isotope);
+    if (all) {
+        delete this.activityConcentrations[isotope];
+        delete this.concentrationRatios[isotope];
+        delete this.distributionCoefficients[isotope];
+        delete this.doseConversionCoefficients[isotope];
+    }
 };
 
 // Get nuclides list
@@ -61,8 +67,22 @@ Setting.prototype.getOrganisms = function() {
 };
 
 // Delete organism
-Setting.prototype.deleteOrganism = function(organism) {
+Setting.prototype.deleteOrganism = function(organism, all=false) {
     this.organisms.delete(organism);
+    if (all) {
+        delete this.occupancyFactors[organism];
+        for (isotope of this.isotopes) {
+            if (this.activityConcentrations[isotope]) {
+                delete this.activityConcentrations[isotope][organism];
+            }
+            if (this.concentrationRatios[isotope]) {
+                delete this.activityConcentrations[isotope][organism];
+            }
+            if (this.doseConversionCoefficients[isotope]) {
+                delete this.doseConversionCoefficients[isotope][organism];
+            }
+        }
+    }
 };
 
 // Set and get radioecology parameters
