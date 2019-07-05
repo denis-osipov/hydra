@@ -274,12 +274,11 @@ Result.prototype.fillGaps = function(setting) {
                 dcc[organism] = erica.dcc[isotope][organism];
             }
         }
+    }
 
-        // Remove isotopes with no data
-        for (index of toRemove) {
-            this.isotopes.splice(index, 1);
-        }
-
+    // Remove isotopes with no data
+    for (index of toRemove) {
+        this.isotopes.splice(index, 1);
     }
 
     // Fill occupancy factors
