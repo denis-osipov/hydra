@@ -67,8 +67,16 @@ calculateButton.addEventListener("click", function() {
     result.calculate();
     
     var table = generateTable("output", result);
-    if (output.hasChildNodes()) {
+    if (output.childElementCount) {
         output.removeChild(output.children[0]);
     }
-    output.appendChild(table);
+    else {
+        output.textContent = "";
+    }
+    if (table.tHead.textContent) {
+        output.appendChild(table);
+    }
+    else {
+        output.textContent = "No data";
+    }
 });
