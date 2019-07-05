@@ -230,7 +230,7 @@ Result.prototype.fillGaps = function(setting) {
                 return isNaN(value) || value === null;
             })) {
             console.log(`Can't find any data for ${isotope}`);
-            toRemove.unshift(this.indexOf(isotope));
+            toRemove.unshift(this.isotopes.indexOf(isotope));
             continue;
         }
 
