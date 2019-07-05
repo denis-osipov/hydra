@@ -230,7 +230,7 @@ Result.prototype.fillGaps = function(setting) {
                 return isNaN(value) || value === null;
             })) {
             console.log(`Can't find any data for ${isotope}`);
-            toRemove.unshift(this.indexOf(isotope));
+            toRemove.unshift(this.isotopes.indexOf(isotope));
             continue;
         }
 
@@ -274,12 +274,16 @@ Result.prototype.fillGaps = function(setting) {
                 dcc[organism] = erica.dcc[isotope][organism];
             }
         }
+    }
 
-        // Remove isotopes with no data
-        for (index of toRemove) {
-            this.isotopes.splice(index, 1);
-        }
+    // Remove isotopes with no data
+    for (index of toRemove) {
+        this.isotopes.splice(index, 1);
+    }
 
+    // Clear organism list if there is no any data for activity concentration
+    if (!this.isotopes.length) {
+        this.organisms.splice(0);
     }
 
     // Fill occupancy factors
@@ -397,11 +401,6 @@ Result.prototype.calculate = function() {
     this.getInternal();
     this.getExternal();
     this.getTotal();
-    var table = generateTable("output", this);
-    if (output.hasChildNodes()) {
-        output.removeChild(output.children[0]);
-    }
-    output.appendChild(table);
 };
 
 Result.prototype.getTotalDoseRate = function(isotope, organism) {
