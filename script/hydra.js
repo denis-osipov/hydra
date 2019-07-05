@@ -283,7 +283,7 @@ Result.prototype.fillGaps = function(setting) {
 
     // Clear organism list if there is no any data for activity concentration
     if (!this.isotopes.length) {
-        this.organisms.splice();
+        this.organisms.splice(0);
     }
 
     // Fill occupancy factors
