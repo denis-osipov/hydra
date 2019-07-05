@@ -205,9 +205,11 @@ body {
   background-color: #f8fcf9;
   border-radius: 10px;
   overflow: auto;
+  padding: 10px;
 }
 
 .output-table {
   overflow: auto;
   margin-bottom: 20px;
+  padding: 10px;
 }
