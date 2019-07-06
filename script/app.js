@@ -188,7 +188,25 @@ var generateTable = function(type, source) {
         }
         tableBody.appendChild(bodyRow);
     }
+
     table.appendChild(tableBody);
+
+    if (type === "output") {
+        var footer = document.createElement("tfoot");
+        var totalRow = document.createElement("tr");
+        var header = document.createElement("th");
+        header.textContent = "Total";
+        header.scope = "row";
+        totalRow.appendChild(header);
+        for (col of cols) {
+            var cell = document.createElement("td");
+            var value = source.getOrganismTotalDoseRate(col);
+            cell.textContent = value ? value.toExponential(2) : "No data";
+            totalRow.append(cell);
+        }
+        footer.appendChild(totalRow);
+        table.appendChild(footer);
+    }
 
     return table;
 };
