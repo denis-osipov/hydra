@@ -189,7 +189,10 @@ var generateTable = function(type, source) {
         tableBody.appendChild(bodyRow);
     }
 
+    table.appendChild(tableBody);
+
     if (type === "output") {
+        var footer = document.createElement("tfoot");
         var totalRow = document.createElement("tr");
         var header = document.createElement("th");
         header.textContent = "Total";
@@ -201,10 +204,9 @@ var generateTable = function(type, source) {
             cell.textContent = value ? value.toExponential(2) : "No data";
             totalRow.append(cell);
         }
-        tableBody.appendChild(totalRow);
+        footer.appendChild(totalRow);
+        table.appendChild(footer);
     }
-
-    table.appendChild(tableBody);
 
     return table;
 };
