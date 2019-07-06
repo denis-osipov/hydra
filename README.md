@@ -18,7 +18,7 @@ But step-by-step interface may not be the most convenient in some cases. In part
 
 - **Hydra** can't create new organisms and uses standart ERICA's list. If you need this feature, use ERICA.
 
-- **Hydra** outputs only total dose rate from each isotope. *(Internal and external dose rates accessible through console.)*
+- **Hydra** outputs only total dose rate from each isotope. *(Internal and external dose rates can be accessed through console.)*
 
 ## How to use Hydra
 
