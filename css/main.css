@@ -217,3 +217,36 @@ body {
   margin-bottom: 20px;
   padding: 10px;
 }
+
+.output-table table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #aee5f4;
+}
+
+.output-table caption {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 115%;
+}
+
+.output-table thead th {
+  width: 130px;
+}
+
+.output-table th,
+.output-table td {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #aee5f4;
+}
+
+.output-table tbody tr:nth-child(odd) {
+  background-color: #023341;
+}
+
+.output-table thead,
+.output-table tfoot {
+  background-color: #011f28;
+  font-weight: bold;
+}
