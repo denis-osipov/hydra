@@ -12,11 +12,13 @@ But step-by-step interface may not be the most convenient in some cases. In part
 
 ## When not to use Hydra
 
+In all other cases:)
+
 - **Hydra** works only for freshwater ecosystems. If you need marine or terrestrial ecosystems, you should use [ERICA](http://erica-tool.com/).
 
-- **Hydra** uses ERICA's dose conversion coefficients and not allow you to change them. *(Actually, you can do it using browser console.)*
+- **Hydra** uses ERICA's dose conversion coefficients and not allow you to change them. *(Actually, you can do this using browser console.)*
 
-- **Hydra** can't create new organisms and uses standart ERICA's list. If you need this feature, use ERICA.
+- **Hydra** can't create new organisms and uses standart ERICA's list. If you want to define new geometry, use ERICA.
 
 - **Hydra** outputs only total dose rate from each isotope. *(Internal and external dose rates can be accessed through console.)*
 
