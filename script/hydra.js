@@ -409,3 +409,11 @@ Result.prototype.getTotalDoseRate = function(isotope, organism) {
     }
     return this.totalDoseRates[isotope][organism];
 };
+
+Result.prototype.getOrganismTotalDoseRate = function(organism) {
+    var total = 0;
+    for (isotope in this.totalDoseRates) {
+        total += this.totalDoseRates[isotope][organism];
+    }
+    return total;
+};

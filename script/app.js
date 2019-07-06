@@ -188,6 +188,22 @@ var generateTable = function(type, source) {
         }
         tableBody.appendChild(bodyRow);
     }
+
+    if (type === "output") {
+        var totalRow = document.createElement("tr");
+        var header = document.createElement("th");
+        header.textContent = "Total";
+        header.scope = "row";
+        totalRow.appendChild(header);
+        for (col of cols) {
+            var cell = document.createElement("td");
+            var value = source.getOrganismTotalDoseRate(col);
+            cell.textContent = value ? value.toExponential(2) : "No data";
+            totalRow.append(cell);
+        }
+        tableBody.appendChild(totalRow);
+    }
+
     table.appendChild(tableBody);
 
     return table;
