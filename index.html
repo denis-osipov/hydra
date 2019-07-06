@@ -12,7 +12,7 @@
 
       <header class="header">
 
-        <h1 class="main-header">HYDRA tool</h1>
+        <h1 class="main-header">HYDRA: HYdrobionts Dose Rate Assessment tool</h1>
         <h2 class="sub-header">alternative interface for ERICA's Tier 2 assessment</h2>
 
         <!-- Links to other resources -->
@@ -46,15 +46,15 @@
           <li>Add organisms and isotopes to setup.</li>
           <li>Enter parameters:
             <ul>
-              <li>Specific activities of isotopes - Isotopes block. For each isotope at least activity concentration either in water or in sediment is needed. HYDRA will calculate other values using ERICA's coefficients.</li>
-              <li>Organisms occupancy factors - Organisms block.</li>
-              <li>Concentration ratios - CR block.</li>
-              <li>Distribution coefficients - Kd block.</li>
-              <li>Radiation weighting factors - WF block.</li>
-              <li>Percentage dry weight for sediment - Sediment block.</li>
+              <li>Specific activities of isotopes - <b>Activity</b> block. For each isotope activity concentration in water or in sediment must be set. HYDRA will calculate other values using ERICA's coefficients.</li>
+              <li>Organisms occupancy factors - <b>OCC</b> block.</li>
+              <li>Concentration ratios - <b>CR</b> block.</li>
+              <li>Distribution coefficients - <b>Kd</b> block.</li>
+              <li>Radiation weighting factors - <b>WF</b> block.</li>
+              <li>Percentage dry weight for sediment - <b>Dry weight</b> block.</li>
             </ul>
             <p>For missing data HYDRA will use ERICA's database values.</p>
-          <li>Push Calculate button.</li>
+          <li>Push <b>Calculate</b> button.</li>
           <li>Get results at the bottom of the page. Total dose rate for each organism and each isotope will be shown.</li>
         </ol>
 
@@ -65,11 +65,11 @@
 
         <div class="pond-frame">
           <div class="box left-box">
-            <h3 class="box-header">Organisms</h3>
+            <h3 class="box-header">OCC</h3>
             <ul class="box-list" id="organisms"></ul>
           </div>
           <div class="box right-box">
-            <h3 class="box-header">Isotopes</h3>
+            <h3 class="box-header">Activity</h3>
             <ul class="box-list" id="isotopes"></ul>
           </div>
           <div class="box top-left-box" id="c-ratios">
@@ -82,7 +82,7 @@
             <h3 class="box-header">WF</h3>
           </div>
           <div class="box bottom-right-box" id="dry-weight">
-            <h3 class="box-header">Sediment</h3>
+            <h3 class="box-header">Dry weight</h3>
           </div>
         </div><!--
 

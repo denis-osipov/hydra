@@ -28,20 +28,20 @@ In all other cases:)
 
 2. Enter parameters:
 
-    - Specific activities of isotopes - **Isotopes block**. For each isotope at least activity concentration either in water or in sediment is needed. HYDRA will calculate other values using ERICA's coefficients.
+    - Specific activities of isotopes - **Activity** block. For each isotope activity concentration either in water or in sediment must be set. HYDRA will calculate other values using ERICA's coefficients.
 
-    - Organisms occupancy factors - **Organisms block**.
+    - Organisms occupancy factors - **OCC** block.
 
-    - Concentration ratios - **CR block**.
+    - Concentration ratios - **CR** block.
 
-    - Distribution coefficients - **Kd block**.
+    - Distribution coefficients - **Kd** block.
 
-    - Radiation weighting factors - **WF block**.
+    - Radiation weighting factors - **WF** block.
 
-    - Percentage dry weight for sediment - **Sediment block**.
+    - Percentage dry weight for sediment - **Dry weight** block.
 
     For missing data HYDRA will use ERICA's database values.
 
-3. Push Calculate button.
+3. Push **Calculate** button.
 
 4. Get results at the bottom of the page. Total dose rate for each organism and each isotope will be shown.
