@@ -1,6 +1,6 @@
 # HYDRERICA
 
-**HYdrobionts Dose Rate assessment using ERICA** tool allows to calculate dose rate for aquatic organisms.
+**HYdrobionts Dose Rate assessment using ERICA tools data** allows to calculate dose rate for aquatic organisms.
 
 HYDRERICA uses data files of [ERICA Assessment Tool](http://erica-tool.com/) (version 1.3.1.33).
 
@@ -14,7 +14,7 @@ But step-by-step interface may not be the most convenient in some cases. In part
 
 In all other cases:)
 
-- HYDRERICA works only for freshwater ecosystems. If you need marine or terrestrial ecosystems, you should use [ERICA](http://erica-tool.com/).
+- HYDRERICA works only for freshwater ecosystems. If you need marine or terrestrial ecosystems, you should use ERICA.
 
 - HYDRERICA uses ERICA's dose conversion coefficients and not allow you to change them. *(Actually, you can do this using browser console.)*
 
