@@ -10,7 +10,7 @@ HYDRERICA uses data files of [ERICA Assessment Tool](http://erica-tool.com/) (ve
 
 But step-by-step interface may not be the most convenient in some cases. For example, you want to fix typo in inputted values or want to change isotopes and/or organisms lists or activity concentrations to try different variants. In such cases HYDRERICA allows you to go through "change settings -> get result" cycle faster. (The latest version of ERICA can use spatial and temporal series of data, which can be used to try variants.)
 
-Also if all you need is some dose rates and you don't want to involve any stakeholders or make decisions, HYDRERICA will give you result faster.
+Also, if all you need is some dose rates and you don't want to involve any stakeholders or make decisions, HYDRERICA will give you result faster.
 
 ## When not to use HYDRERICA
 
@@ -20,7 +20,7 @@ In all other cases:)
 
 - HYDRERICA uses ERICA's dose conversion coefficients and not allow you to change them. *(Actually, you can do this using browser console.)*
 
-- HYDRERICA can't create new organisms and uses standart ERICA's list. If you want to define new geometry, use ERICA.
+- HYDRERICA can't create new organisms and uses standard ERICA's list. If you want to define new geometry, use ERICA.
 
 - HYDRERICA outputs only total dose rate from each isotope. *(Internal and external dose rates can be accessed through console.)*
 
