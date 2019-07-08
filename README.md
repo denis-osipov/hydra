@@ -6,7 +6,7 @@ HYDRERICA uses data files of [ERICA Assessment Tool](http://erica-tool.com/) (ve
 
 ## When to use HYDRERICA
 
-[ERICA](http://erica-tool.com/) is great tool, which allows to perform dose rate calculations even for dosimetrists. It has clear step-by-step interface and appropriate defaults.
+[ERICA](http://erica-tool.com/) is great tool, which allows to perform dose rate calculations even for non-dosimetrists. It has clear step-by-step interface and appropriate defaults.
 
 But step-by-step interface may not be the most convenient in some cases. In particular, you want to fix typo in inputted values or want to change isotopes and/or organisms list to try different variants. In such cases HYDRERICA allows you to go through "change settings -> get result" cycle faster.
 
