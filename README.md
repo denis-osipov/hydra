@@ -8,7 +8,9 @@ HYDRERICA uses data files of [ERICA Assessment Tool](http://erica-tool.com/) (ve
 
 [ERICA](http://erica-tool.com/) is great tool, which allows to perform dose rate calculations even for non-dosimetrists. It has clear step-by-step interface and appropriate defaults.
 
-But step-by-step interface may not be the most convenient in some cases. In particular, you want to fix typo in inputted values or want to change isotopes and/or organisms list to try different variants. In such cases HYDRERICA allows you to go through "change settings -> get result" cycle faster.
+But step-by-step interface may not be the most convenient in some cases. For example, you want to fix typo in inputted values or want to change isotopes and/or organisms lists or activity concentrations to try different variants. In such cases HYDRERICA allows you to go through "change settings -> get result" cycle faster. (The latest version of ERICA can use spatial and temporal series of data, which can be used to try variants.)
+
+Also if all you need is some dose rates and you don't want to involve any stakeholders or make decisions, HYDRERICA will give you result faster.
 
 ## When not to use HYDRERICA
 
@@ -21,6 +23,8 @@ In all other cases:)
 - HYDRERICA can't create new organisms and uses standart ERICA's list. If you want to define new geometry, use ERICA.
 
 - HYDRERICA outputs only total dose rate from each isotope. *(Internal and external dose rates can be accessed through console.)*
+
+- HYDRERICA doesn't support data import/export. If you need these features, use ERICA.
 
 ## How to use HYDRERICA
 
