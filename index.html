@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>HYDRERICA tool</title>
+    <title>HYDRA tool</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
@@ -12,14 +12,14 @@
 
       <header class="header">
 
-        <h1 class="main-header">HYDRERICA</h1>
-        <h2 class="sub-header">HYdrobionts Dose Rate assessment using ERICA tool's data</h2>
+        <h1 class="main-header">HYDRA</h1>
+        <h2 class="sub-header">HYdrobionts Dose Rate Assessment</h2>
 
         <!-- Links to other resources -->
         <aside class="links">
           <ul class="links-list">
             <li class="link"><a href="http://www.erica-tool.com/" target="_blank">ERICA's website</a></li>
-            <li class="link"><a href="https://github.com/denis-osipov/hydrerica" target="_blank">HYDRERICA on GitHub</a></li>
+            <li class="link"><a href="https://github.com/denis-osipov/hydra" target="_blank">HYDRA on GitHub</a></li>
           </ul>
         </aside>
 
@@ -33,29 +33,29 @@
         <h3 class="content-header">About ERICA</h3>
 
         <p>The ERICA Tool is a software system that has a structure based upon the tiered <a href="https://wiki.ceh.ac.uk/display/rpemain/ERICA" target="_blank">ERICA Integrated Approach</a> to assessing the radiological risk to terrestrial, freshwater and marine biota. The Tool guides the user through the assessment process, recording information and decisions and allowing the necessary calculations to be performed to estimate risks to selected animals and plants.</p>
-        <p>HYDRERICA uses data files of ERICA Tool 1.3.1.33.</p>
+        <p>HYDRA uses data files of ERICA Tool 1.3.1.33.</p>
         <p>More on <a href="http://erica-tool.com/" target="_blank">ERICA Assessment Tool website</a>.</p>
 
       </section>
 
-      <!-- How to use HYDRERICA -->
+      <!-- How to use HYDRA -->
       <section class="text-content docs">
 
-        <h3 class="content-header">How to use HYDRERICA</h3>
-        <p>HYDRERICA is an alternative interface for ERICA tool's Tier 2 assessment with some limitations (see <a href="https://github.com/denis-osipov/hydrerica/blob/master/README.md" target="_blank">Readme on GitHub</a>).</p>
+        <h3 class="content-header">How to use HYDRA</h3>
+        <p>HYDRA is an alternative interface for ERICA tool's Tier 2 assessment with some limitations (see <a href="https://github.com/denis-osipov/hydra/blob/master/README.md" target="_blank">Readme on GitHub</a>).</p>
         <p>To calculate dose rates:</p>
         <ol class="how-to">
           <li>Add organisms and isotopes to setup.</li>
           <li>Enter parameters:
             <ul>
-              <li>Specific activities of isotopes - <b>Activity</b> block. For each isotope activity concentration in water or in sediment must be set. HYDRERICA will calculate other values using ERICA's coefficients.</li>
+              <li>Specific activities of isotopes - <b>Activity</b> block. For each isotope activity concentration in water or in sediment must be set. HYDRA will calculate other values using ERICA's coefficients.</li>
               <li>Organisms occupancy factors - <b>OCC</b> block.</li>
               <li>Concentration ratios - <b>CR</b> block.</li>
               <li>Distribution coefficients - <b>Kd</b> block.</li>
               <li>Radiation weighting factors - <b>WF</b> block.</li>
               <li>Percentage dry weight for sediment - <b>Dry weight</b> block.</li>
             </ul>
-            <p>For missing data HYDRERICA will use ERICA's database values.</p>
+            <p>For missing data HYDRA will use ERICA's database values.</p>
           <li>Push <b>Calculate</b> button.</li>
           <li>Get results at the bottom of the page. Total dose rate for each organism and each isotope will be shown.</li>
         </ol>
@@ -126,7 +126,7 @@
     </div>
     <script src="script/sql.js/sql-wasm.js"></script>
     <script src="script/erica.js"></script>
-    <script src="script/hydrerica.js"></script>
+    <script src="script/hydra.js"></script>
     <script src="script/app.js"></script>
     <script src="script/main.js"></script>
   </body>

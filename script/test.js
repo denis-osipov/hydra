@@ -1,11 +1,11 @@
 /*
 
-Compare HYDRERICA's results with ERICA's results
+Compare HYDRA's results with ERICA's results
 
 */
 
 var standardResults = {};
-var hydrericaResults;
+var hydraResults;
 
 var standardFile = document.getElementById("standard");
 
@@ -52,20 +52,20 @@ var compare = function() {
     result.getInternal();
     result.getExternal();
     result.getTotal();
-    hydrericaResults = result.totalDoseRates;
+    hydraResults = result.totalDoseRates;
 
     for (isotope in standardResults) {
         for (organism in standardResults[isotope]) {
-            /* HYDRERICA's results are slightly different compare ERICA's sandart values.
-            It can be result of floating point ariphmetic errors in HYDRERICA.
+            /* HYDRA's results are slightly different compare ERICA's sandart values.
+            It can be result of floating point ariphmetic errors in HYDRA.
             Check that results don't differ too much.
             Difference not more than 0.05% of ERICA's value seems good enough.*/
             var standard = standardResults[isotope][organism];
-            var checking = hydrericaResults[isotope][organism];
+            var checking = hydraResults[isotope][organism];
             var diff = Math.abs(standard - checking);
             if (diff >= standard * 0.0005) {
                 console.log(`${isotope}:${organism}:`);
-                console.log(`standard = ${standard}, HYDRERICA: ${checking}`);
+                console.log(`ERICA: ${standard}, HYDRA: ${checking}`);
             }
         }
     }

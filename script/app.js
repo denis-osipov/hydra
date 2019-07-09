@@ -1,6 +1,6 @@
 /*
 
-App functions for interaction with user for HYDRERICA.
+App functions for interaction with user for HYDRA.
 
 */
 
