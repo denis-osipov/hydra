@@ -50,4 +50,4 @@ In all other cases:)
 
 4. Get results at the bottom of the page. Total dose rate for each organism and each isotope will be shown.
 
-![HYDRERICA demo](./img/demo_normal.gif)
+![HYDRERICA demo](./img/demo.gif)
