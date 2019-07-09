@@ -1,6 +1,6 @@
 /*
 
-Compare Hydra's results with ERICA's results
+Compare HYDRA's results with ERICA's results
 
 */
 
@@ -56,8 +56,8 @@ var compare = function() {
 
     for (isotope in standardResults) {
         for (organism in standardResults[isotope]) {
-            /* Hydra's results are slightly different compare ERICA's sandart values.
-            It can be result of floating point ariphmetic errors in Hydra.
+            /* HYDRA's results are slightly different compare ERICA's sandart values.
+            It can be result of floating point ariphmetic errors in HYDRA.
             Check that results don't differ too much.
             Difference not more than 0.05% of ERICA's value seems good enough.*/
             var standard = standardResults[isotope][organism];
@@ -65,7 +65,7 @@ var compare = function() {
             var diff = Math.abs(standard - checking);
             if (diff >= standard * 0.0005) {
                 console.log(`${isotope}:${organism}:`);
-                console.log(`standard = ${standard}, hydra: ${checking}`);
+                console.log(`ERICA: ${standard}, HYDRA: ${checking}`);
             }
         }
     }
