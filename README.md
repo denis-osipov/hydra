@@ -1,5 +1,7 @@
 # HYDRA
 
+**v1.0.0** [![DOI](https://zenodo.org/badge/191348869.svg)](https://zenodo.org/badge/latestdoi/191348869)
+
 **HYdrobionts Dose Rate Assessment** allows to calculate dose rate for aquatic organisms.
 
 HYDRA uses data files of [ERICA Assessment Tool](http://erica-tool.com/) (version 1.3.1.33).
