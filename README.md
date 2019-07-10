@@ -1,6 +1,6 @@
 # HYDRA
 
-v1.0.0 [![DOI](https://zenodo.org/badge/191348869.svg)](https://zenodo.org/badge/latestdoi/191348869)
+**v1.0.0** [![DOI](https://zenodo.org/badge/191348869.svg)](https://zenodo.org/badge/latestdoi/191348869)
 
 **HYdrobionts Dose Rate Assessment** allows to calculate dose rate for aquatic organisms.
 
