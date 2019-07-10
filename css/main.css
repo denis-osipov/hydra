@@ -45,6 +45,10 @@ body {
   padding: 0;
 }
 
+.links-list li {
+  display: inline-block;
+}
+
 .link {
   display: inline-block;
   padding: 10px;
@@ -52,6 +56,8 @@ body {
   text-align: center;
   background-color: #4a8798;
   border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
 }
 
 .link:hover {
@@ -62,6 +68,7 @@ body {
   float: right;
   width: auto;
   background-color: #ec9934;
+  border-radius: 10px;
 }
 
 .doi img {
@@ -70,11 +77,6 @@ body {
 
 .doi:hover {
   background-color: #ca7812;
-}
-
-.link a {
-  text-decoration: none;
-  color: #fff;
 }
 
 /*
