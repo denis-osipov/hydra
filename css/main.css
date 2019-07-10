@@ -58,6 +58,20 @@ body {
   background-color: #1b5d70;
 }
 
+.doi {
+  float: right;
+  width: auto;
+  background-color: #ec9934;
+}
+
+.doi img {
+  vertical-align: -30%;
+}
+
+.doi:hover {
+  background-color: #ca7812;
+}
+
 .link a {
   text-decoration: none;
   color: #fff;
